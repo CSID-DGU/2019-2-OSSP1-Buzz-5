@@ -7,12 +7,15 @@
     "type": "git",
     "url": "https://github.com/dondido/webrtc-video-room.git"
   },
+  "homepage": "https://csid-dgu.github.io/2019-2-OSSP1-Buzz-5/",
   "scripts": {
-    "start": "HTTPS=true react-scripts start",
+    "start": "react-scripts start",
     "test": "react-scripts test",
+    "build": "react-scripts build",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "dev": "webpack --mode development",
-    "build": "webpack --mode production",
     "postinstall": "webpack --mode production"
   },
   "author": "Dian Dimitrov",
