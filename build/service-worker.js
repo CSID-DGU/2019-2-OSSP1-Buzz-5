@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/2019-2-OSSP1-Buzz-5/precache-manifest.9d8b71789951c9af1f86c0fb5ab131fb.js"
+  "/2019-2-OSSP1-Buzz-5/precache-manifest.1c1dd70e8ed7f4777e2fe1a153113ce8.js"
 );
 
 self.addEventListener('message', (event) => {
