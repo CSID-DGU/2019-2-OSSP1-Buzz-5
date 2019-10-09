@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/2019-2-OSSP1-Buzz-5/static/js/main.d20f1db2.chunk.js",
-    "main.js.map": "/2019-2-OSSP1-Buzz-5/static/js/main.d20f1db2.chunk.js.map",
+    "main.js": "/2019-2-OSSP1-Buzz-5/static/js/main.c3d99670.chunk.js",
+    "main.js.map": "/2019-2-OSSP1-Buzz-5/static/js/main.c3d99670.chunk.js.map",
     "runtime-main.js": "/2019-2-OSSP1-Buzz-5/static/js/runtime-main.e0b658aa.js",
     "runtime-main.js.map": "/2019-2-OSSP1-Buzz-5/static/js/runtime-main.e0b658aa.js.map",
     "static/js/2.0dee24b3.chunk.js": "/2019-2-OSSP1-Buzz-5/static/js/2.0dee24b3.chunk.js",
     "static/js/2.0dee24b3.chunk.js.map": "/2019-2-OSSP1-Buzz-5/static/js/2.0dee24b3.chunk.js.map",
     "index.html": "/2019-2-OSSP1-Buzz-5/index.html",
-    "precache-manifest.bb5faa7bb22856edc58b2a60ed23e9e3.js": "/2019-2-OSSP1-Buzz-5/precache-manifest.bb5faa7bb22856edc58b2a60ed23e9e3.js",
+    "precache-manifest.9b75135d35311dde7e48a0b6f0c4bec6.js": "/2019-2-OSSP1-Buzz-5/precache-manifest.9b75135d35311dde7e48a0b6f0c4bec6.js",
     "service-worker.js": "/2019-2-OSSP1-Buzz-5/service-worker.js"
   },
   "entrypoints": [
     "static/js/runtime-main.e0b658aa.js",
     "static/js/2.0dee24b3.chunk.js",
-    "static/js/main.d20f1db2.chunk.js"
+    "static/js/main.c3d99670.chunk.js"
   ]
 }
