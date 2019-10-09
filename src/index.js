@@ -10,7 +10,7 @@ import NotFound from './components/NotFound'
 
 render(
 	<Provider store={store}>
-		<BrowserRouter basename={process.env.PUBLIC_URL}>
+		<BrowserRouter basename={process.env.basename}>
 			<Switch>
 				<Route exact path="/" component={Home} />
 				<Route path="/r/:room" component={Room} />
