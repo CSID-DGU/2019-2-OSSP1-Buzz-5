@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "10982f62265c7b74e140d8750c8e8f30",
+    "revision": "61e0cebecc22da5979784d6be72a9880",
     "url": "/2019-2-OSSP1-Buzz-5/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/2019-2-OSSP1-Buzz-5/static/js/2.0dee24b3.chunk.js"
   },
   {
-    "revision": "bd14e973cea42233952a",
-    "url": "/2019-2-OSSP1-Buzz-5/static/js/main.1cb0f5ce.chunk.js"
+    "revision": "7bae93e6c3db9efabf79",
+    "url": "/2019-2-OSSP1-Buzz-5/static/js/main.d20f1db2.chunk.js"
   },
   {
     "revision": "ea7e9550a4c4d5a090c3",
