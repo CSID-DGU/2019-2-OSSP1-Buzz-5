@@ -12,12 +12,15 @@ class RoomPage extends Component {
       audio: true,
       video: true
     }).catch(e => alert('getUserMedia() error: ' + e.name))
-    this.socket = io.connect("https://csid-dgu.github.io/2019-2-OSSP1-Buzz-5:3000", {transports : ['websocket'] });
+    this.socket = io("https://csid-dgu.github.io", {
+      path: "/2019-2-OSSP1-Buzz-5/#/r"
+    });
+    //this.socket = io()
   }
   componentDidMount() {
     this.props.addRoom();
   }
-  render(){
+  render() {
     return (
       <div>
         <MediaContainer media={media => this.media = media} socket={this.socket} getUserMedia={this.getUserMedia} />
@@ -26,10 +29,10 @@ class RoomPage extends Component {
     );
   }
 }
-const mapStateToProps = store => ({rooms: new Set([...store.rooms])});
+const mapStateToProps = store => ({ rooms: new Set([...store.rooms]) });
 const mapDispatchToProps = (dispatch, ownProps) => (
-    {
-      addRoom: () => store.dispatch({ type: 'ADD_ROOM', room: ownProps.match.params.room })
-    }
-  );
+  {
+    addRoom: () => store.dispatch({ type: 'ADD_ROOM', room: ownProps.match.params.room })
+  }
+);
 export default connect(mapStateToProps, mapDispatchToProps)(RoomPage);
