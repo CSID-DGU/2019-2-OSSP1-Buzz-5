@@ -15,7 +15,7 @@ const app = express(),
   port = process.env.PORT || 3000,
   server = process.env.NODE_ENV === 'production' ?
     http.createServer(app).listen(port) :
-    https.createServer(options, app).listen(port),
+    https.createServer(options, app).listen(port), // 여기가 문제가 있는듯 싶
   io = sio(server);
 // compress all requests
 app.use(compression());
