@@ -12,9 +12,7 @@ class RoomPage extends Component {
       audio: true,
       video: true
     }).catch(e => alert('getUserMedia() error: ' + e.name))
-    this.socket = io("https://csid-dgu.github.io", {
-      path: "/2019-2-OSSP1-Buzz-5/#/r"
-    });
+    this.socket = io.connect("https://csid-dgu.github.io", {path: "/2019-2-OSSP1-Buzz-5/#/r"}, {secure : true});
     //this.socket = io()
   }
   componentDidMount() {
