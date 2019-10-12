@@ -13,9 +13,9 @@ const app = express(),
     cert: fs.readFileSync(__dirname + '/rtc-video-room-cert.pem')
   },
   port = process.env.HTTPS_PORT || 443,
-  server = process.env.NODE_ENV === 'production' ?
-    http.createServer(app).listen(port) :
-    https.createServer(options, app).listen(port), // 여기가 문제가 있는듯 싶
+  // server = process.env.NODE_ENV === 'production' ?
+  //   http.createServer(app).listen(port) :
+  server = https.createServer(options, app).listen(port), // 여기가 문제가 있는듯 싶
   io = sio(server);
 // compress all requests
 app.use(compression());
