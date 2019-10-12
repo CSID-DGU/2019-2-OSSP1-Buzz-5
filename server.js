@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
-const sio = require('socket.io')(https, {path: "/2019-2-OSSP1-Buzz-5/#/r"});
+const sio = require('socket.io')(https, {path: "static/node_modules/socket.io-client"});
 const favicon = require('serve-favicon');
 const compression = require('compression');
 
