@@ -1,14 +1,7 @@
 {
   "name": "buzz-webrtc-online-course",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
-  "engines": {
-    "node": "10.x"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/CSID-DGU/2019-2-OSSP1-Buzz-5.git"
-  },
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test",
@@ -16,12 +9,6 @@
     "eject": "react-scripts eject",
     "dev": "webpack --mode development"
   },
-  "author": "Dian Dimitrov",
-  "keywords": [
-    "WebRTC Video Chat",
-    "RTCPeerConnection",
-    "React"
-  ],
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -35,8 +22,6 @@
   "dependencies": {
     "babel-eslint": "^10.0.3",
     "compression": "^1.7.4",
-    "express": "^4.17.1",
-    "node": "^10.15.3",
     "react": "^16.4.0",
     "react-dom": ">=16.7.0",
     "react-redux": "^5.0.7",
