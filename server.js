@@ -5,13 +5,13 @@ const fs = require('fs');
 //const https = require('https');
 const app = express()
 const server = require('https').createServer(app)
-const io = require('socket.io')(server, { path : "/socket.io" })
+const io = require('socket.io').listen(server)
 //const sio = require('socket.io')(https, {path: "/socket.io"});
 const favicon = require('serve-favicon');
 const compression = require('compression');
 
 //port = 443
-server.listen('443')
+server.listen(app.get('port'));
 
   //options = { 
   //  key: fs.readFileSync(__dirname + '/rtc-video-room-key.pem'),
