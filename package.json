@@ -1,7 +1,11 @@
 {
-  "name": "webrtc-video-room",
-  "version": "2.0.3",
-  "description": "WebRTC Video Room is a Single-Page App in React using React Router that provides peer-to-peer video and audio communication in a web browser with minimum dependencies required.",
+  "name": "buzz-webrtc-online-course",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.4.1"
+  },
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -36,7 +40,7 @@
     "babel-eslint": "^10.0.3",
     "compression": "^1.7.4",
     "express": "^4.17.1",
-    "node": "^10.16.3",
+    "node": "^10.15.3",
     "react": "^16.4.0",
     "react-dom": ">=16.7.0",
     "react-redux": "^5.0.7",
