@@ -1,64 +1,31 @@
+  
 {
-  "name": "buzz-webrtc-online-course",
+  "name": "heroku-webrtc-app",
   "version": "1.0.0",
-  "description": "",
   "engines": {
-    "node": "10.15.3",
-    "npm": "6.4.1"
-  },
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dondido/webrtc-video-room.git"
+    "node": "10.x"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "test": "react-scripts test",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "dev": "webpack --mode development"
+    "start": "node server",
+    "build": "cd client/ && npm install && npm run build"
   },
-  "author": "Dian Dimitrov",
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CSID-DGU/2019-2-OSSP1-Buzz-5.git"
+  },
   "keywords": [
-    "WebRTC Video Chat",
-    "RTCPeerConnection",
-    "React"
+    "node",
+    "heroku",
+    "create-react-app",
+    "react"
   ],
   "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.2.0",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.41.0"
-  },
-  "dependencies": {
-    "babel-eslint": "^10.0.3",
-    "compression": "^1.7.4",
-    "express": "^4.17.1",
-    "node": "^10.15.3",
-    "react": "^16.4.0",
-    "react-dom": ">=16.7.0",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "^3.2.0",
-    "redux": "^4.0.0",
-    "serve-favicon": "^2.5.0",
-    "socket.io": "^2.3.0",
-    "standard": "^14.3.1"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "devDependencies": {}
 }
