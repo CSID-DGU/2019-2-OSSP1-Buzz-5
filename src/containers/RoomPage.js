@@ -12,8 +12,8 @@ class RoomPage extends Component {
       audio: true,
       video: true
     }).catch(e => alert('getUserMedia() error: ' + e.name))
-    this.socket = io.connect(window.location.hostname);
-    //this.socket = io()
+    this.socket = io.connect();
+    //this.socket = io.connect('http://127.0.0.1:3000')
   }
   componentDidMount() {
     this.props.addRoom();
