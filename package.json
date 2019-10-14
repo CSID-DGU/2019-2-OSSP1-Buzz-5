@@ -14,7 +14,10 @@
     "client/node_modules"
   ],
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "socket.io": "^2.3.0",
+    "serve-favicon": "^2.5.0",
+    "compression": "^1.7.4"
   },
   "repository": {
     "type": "git",
