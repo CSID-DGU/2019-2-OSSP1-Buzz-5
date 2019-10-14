@@ -1,27 +1,22 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-//const http = require('http');
-//const https = require('https');
-const app = express()
-const server = require('https').createServer(app)
-const io = require('socket.io').listen(server)
-//const sio = require('socket.io')(https, {path: "/socket.io"});
+const http = require('http');
+const https = require('https');
+const sio = require('socket.io');
 const favicon = require('serve-favicon');
 const compression = require('compression');
 
-//port = 443
-server.listen(app.get('port'));
-
-  //options = { 
-  //  key: fs.readFileSync(__dirname + '/rtc-video-room-key.pem'),
-  //  cert: fs.readFileSync(__dirname + '/rtc-video-room-cert.pem')
-  //},
-  //port = process.env.HTTPS_PORT || 443,
-  // server = process.env.NODE_ENV === 'production' ?
-  //   http.createServer(app).listen(port) :
-  //server = https.createServer(options, app).listen(port), // 여기가 문제가 있는듯 싶
-  //io = sio(server);
+const app = express(),
+  options = { 
+    key: fs.readFileSync(__dirname + '/rtc-video-room-key.pem'),
+    cert: fs.readFileSync(__dirname + '/rtc-video-room-cert.pem')
+  },
+  port = process.env.PORT || 3000,
+  server = process.env.NODE_ENV === 'production' ?
+    http.createServer(app).listen(port) :
+    https.createServer(options, app).listen(port),
+  io = sio(server);
 // compress all requests
 app.use(compression());
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -63,4 +58,3 @@ io.sockets.on('connection', socket => {
     socket.broadcast.to(room).emit('hangup');
     socket.leave(room);});
 });
-
