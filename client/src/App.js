@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import store from './store';
 import { HashRouter, Switch, Route } from 'react-router-dom';
+import signup from './components/signup'
 import Home from './containers/HomePage'
 import Room from './containers/RoomPage'
 import NotFound from './components/NotFound'
@@ -14,6 +15,7 @@ export class App extends Component {
             <Provider store={store} basename={process.env.PUBLIC_URL}>
                 <HashRouter>
                     <Switch>
+                        <Route path="/signup" component={signup} />
                         <Route exact path="/" component={Home} />
                         <Route path="/r/:room" component={Room} />
                         <Route path="*" component={NotFound} />
