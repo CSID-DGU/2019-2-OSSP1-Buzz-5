@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types';
-import Home from '../components/Home';
+import Home from '../components/Ori_Home';
 
 class HomePage extends Component {
   constructor(props) {

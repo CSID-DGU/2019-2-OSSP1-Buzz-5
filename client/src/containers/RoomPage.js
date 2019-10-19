@@ -13,12 +13,11 @@ class RoomPage extends Component {
       video: true
     }).catch(e => alert('getUserMedia() error: ' + e.name))
     this.socket = io.connect();
-    //this.socket = io.connect('http://127.0.0.1:3000')
   }
   componentDidMount() {
     this.props.addRoom();
   }
-  render() {
+  render(){
     return (
       <div>
         <MediaContainer media={media => this.media = media} socket={this.socket} getUserMedia={this.getUserMedia} />
@@ -27,10 +26,10 @@ class RoomPage extends Component {
     );
   }
 }
-const mapStateToProps = store => ({ rooms: new Set([...store.rooms]) });
+const mapStateToProps = store => ({rooms: new Set([...store.rooms])});
 const mapDispatchToProps = (dispatch, ownProps) => (
-  {
-    addRoom: () => store.dispatch({ type: 'ADD_ROOM', room: ownProps.match.params.room })
-  }
-);
+    {
+      addRoom: () => store.dispatch({ type: 'ADD_ROOM', room: ownProps.match.params.room })
+    }
+  );
 export default connect(mapStateToProps, mapDispatchToProps)(RoomPage);
