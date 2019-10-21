@@ -15,19 +15,20 @@ export class App extends Component {
         return (
             <div>
                 <Header/>
-                <Provider store={store} basename={process.env.PUBLIC_URL}>
-                    <HashRouter>
-                        <Switch>
-                            <Route path="/" component={Home}/>
-                            <Route path="/r/:room" component={Room} />
-                            <Route path="*" component={NotFound} />
-                        </Switch>
-                    </HashRouter>
-                </Provider>
+
                 <Footer/>
             </div>
         )
     }
 }
 
+{/* <Provider store={store} basename={process.env.PUBLIC_URL}>
+<HashRouter>
+    <Switch>
+        <Route path="/" component={Home}/>
+        <Route path="/r/:room" component={Room} />
+        <Route path="*" component={NotFound} />
+    </Switch>
+</HashRouter>
+</Provider> */}
 export default App
