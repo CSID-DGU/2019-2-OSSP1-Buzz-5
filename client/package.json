@@ -9,6 +9,7 @@
     "eject": "react-scripts eject",
     "dev": "webpack --mode development"
   },
+  "main": "App.js",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.5",
