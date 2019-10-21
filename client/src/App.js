@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import store from './store';
 import Room from './containers/RoomPage'
 import NotFound from './components/NotFound'
-import Home from './components/Home';
+import Home from './components/Ori_Home';
 import Header from './components/Header';
 import Footer from './components/Footer'
 import styles from './App.css'
