@@ -10,8 +10,8 @@ export class Header extends Component {
                 <NavbarBrand href="#">
                     <img
                         src={logo}
-                        width="200"
-                        height="200"
+                        width="150"
+                        height="150"
                         className="d-inline-block align-top"
                         alt="WxW logo"
                     />
