@@ -19,6 +19,7 @@ const app = express(),
   io = sio(server);
 // compress all requests
 app.use(compression());
+app.use(express.static(path.join(__dirname, "static")));
 app.use(express.static(path.join(__dirname, './client/dist')));
 app.use((req, res) => res.sendFile(__dirname + './client/dist/index.html'));
 app.use(favicon('./client/dist/favicon.ico'));
