@@ -14,7 +14,8 @@ export class App extends Component {
     render() {
         return (
             <div>
-                <Provider store={store} basename={process.env.PUBLIC_URL}>
+                <Header/>
+                {/* <Provider store={store} basename={process.env.PUBLIC_URL}>
                     <HashRouter>
                         <Switch>
                             <Route path="/" component={Home}/>
@@ -22,7 +23,8 @@ export class App extends Component {
                             <Route path="*" component={NotFound} />
                         </Switch>
                     </HashRouter>
-                </Provider>
+                </Provider> */}
+                <Footer/>
             </div>
         )
     }
