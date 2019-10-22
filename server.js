@@ -8,20 +8,20 @@ const favicon = require('serve-favicon');
 const compression = require('compression');
 
 const app = express(),
-  options = { 
-    key: fs.readFileSync(__dirname + '/rtc-video-room-key.pem'),
-    cert: fs.readFileSync(__dirname + '/rtc-video-room-cert.pem')
-  },
+  // options = { 
+  //   key: fs.readFileSync(__dirname + '/rtc-video-room-key.pem'),
+  //   cert: fs.readFileSync(__dirname + '/rtc-video-room-cert.pem')
+  // },
   port = process.env.PORT || 3000,
   server = process.env.NODE_ENV === 'production' ?
     http.createServer(app).listen(port) :
-    https.createServer(options, app).listen(port),
+    https.createServer(app).listen(port),
   io = sio(server);
 // compress all requests
 app.use(compression());
-app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use('/client', express.static(path.join(__dirname, 'dist')));
 app.use((req, res) => res.sendFile(__dirname + '/client/dist/index.html'));
-app.use(favicon('./client/dist/favicon.ico'));
+app.use(favicon('./dist/favicon.ico'));
 // Switch off the default 'X-Powered-By: Express' header
 app.disable('x-powered-by');
 io.sockets.on('connection', socket => {
