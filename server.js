@@ -4,7 +4,7 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 const sio = require('socket.io');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 const compression = require('compression');
 
 const app = express(),
@@ -21,7 +21,7 @@ const app = express(),
 app.use(compression());
 app.use(express.static(path.join(__dirname, '/client/dist')));
 app.use((req, res) => res.sendFile(__dirname + '/client/dist/index.html'));
-app.use(favicon('/client/dist/favicon.ico'));
+// app.use(favicon('/client/dist/favicon.ico'));
 // Switch off the default 'X-Powered-By: Express' header
 app.disable('x-powered-by');
 io.sockets.on('connection', socket => {
