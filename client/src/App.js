@@ -1,41 +1,29 @@
 import React, { Component } from 'react'
-import { HashRouter, Switch, Route } from 'react-router-dom';
+// import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import store from './store';
-import Room from './containers/RoomPage'
-import Home from './containers/HomePage'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer'
-import styles from './App.css'
+import Home from './containers/HomePage'
+import Room from './containers/RoomPage'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import styles from './App.css'
 
 export class App extends Component {
     render() {
         return (
-            <div>
+            <Provider store={store}>
                 {/* <Header/> */}
-                <Provider store={store} basename={process.env.PUBLIC_URL}>
-                    <HashRouter>
-                        <Switch>
-                            <Route path="/" component={Home}/>
-                            <Route path="/r/:room" component={Room} />
-                        </Switch>
-                    </HashRouter>
-                </Provider>
-                {/* <Footer/> */}
-            </div>
+                <BrowserRouter basename={process.env.PUBLIC_URL}>
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/r/:room" component={Room} />
+                    </Switch>
+                </BrowserRouter>
+            </Provider>
         )
     }
 }
 
 export default App
-
-{/* <Provider store={store} basename={process.env.PUBLIC_URL}>
-<HashRouter>
-    <Switch>
-        <Route path="/" component={Home}/>
-        <Route path="/r/:room" component={Room} />
-        <Route path="*" component={NotFound} />
-    </Switch>
-</HashRouter>
-</Provider> */}
