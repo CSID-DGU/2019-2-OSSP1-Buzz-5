@@ -3,7 +3,6 @@ import { HashRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import store from './store';
 import Room from './containers/RoomPage'
-import NotFound from './components/NotFound'
 import Home from './containers/HomePage'
 import Header from './components/Header';
 import Footer from './components/Footer'
