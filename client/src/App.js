@@ -16,10 +16,14 @@ export class App extends Component {
             <Provider store={store}>
                 {/* <Header/> */}
                 <BrowserRouter basename={process.env.PUBLIC_URL}>
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/r/:room" component={Room} />
-                    </Switch>
+                    <div>
+                        <Header/>
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route path="/r/:room" component={Room} />
+                        </Switch>
+                        <Footer/>
+                    </div>
                 </BrowserRouter>
             </Provider>
         )
