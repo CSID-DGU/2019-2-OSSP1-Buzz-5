@@ -28,7 +28,7 @@ input[type=text] {
     max-width: 18em;
     display: block;
 }
-.home {
+.home_ori {
     display: flex;
     justify-content: center;
     align-items: center;
