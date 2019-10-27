@@ -18,7 +18,7 @@ export default class Footer extends Component {
                 <img src={logo} className="footer-logo" />
                 <div className="row text-regular">
                     <div className="menu-item">
-                        <a href="#">About</a>
+                        <a href="#">Features</a>
                     </div>
                     <div className="menu-item">
                         <a href="#">Login</a>
@@ -29,7 +29,7 @@ export default class Footer extends Component {
                 </div>
             </div>
             <div className="footer-part text-smaller">
-                Copyright 2019 (c) Dongguk University, CSE-OSSP-1-Team-Buzz
+                Copyright 2018 (c) Cryptalizer.com
             </div>
         </div>
         <div className="scrollToTop" onClick={()=>this.scrollTop()}>
