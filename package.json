@@ -7,6 +7,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "postbuild": "npm start",
     "build": "cd client/ && npm install && npm rebuild node-sass && npm run build"
   },
   "cacheDirectories": [
