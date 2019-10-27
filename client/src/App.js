@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import store from './store';
 import Room from './containers/RoomPage'
 import NotFound from './components/NotFound'
-import Home from './components/Ori_Home';
+import Home from './containers/HomePage'
 import Header from './components/Header';
 import Footer from './components/Footer'
 import styles from './App.css'
@@ -15,22 +15,21 @@ export class App extends Component {
         return (
             <div>
                 <Header/>
-
+                <Provider store={store} basename={process.env.PUBLIC_URL}>
+                    <HashRouter>
+                        <Switch>
+                            <Route path="/" component={Home}/>
+                            <Route path="/r/:room" component={Room} />
+                            <Route path="*" component={NotFound} />
+                        </Switch>
+                    </HashRouter>
+                </Provider>
                 <Footer/>
             </div>
         )
     }
 }
 
-{/* <Provider store={store} basename={process.env.PUBLIC_URL}>
-<HashRouter>
-    <Switch>
-        <Route path="/" component={Home}/>
-        <Route path="/r/:room" component={Room} />
-        <Route path="*" component={NotFound} />
-    </Switch>
-</HashRouter>
-</Provider> */}
 export default App
 
 {/* <Provider store={store} basename={process.env.PUBLIC_URL}>
