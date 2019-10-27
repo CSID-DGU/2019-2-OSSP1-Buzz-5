@@ -14,7 +14,7 @@ export class App extends Component {
     render() {
         return (
             <div>
-                <Header/>
+                {/* <Header/> */}
                 <Provider store={store} basename={process.env.PUBLIC_URL}>
                     <HashRouter>
                         <Switch>
@@ -24,7 +24,7 @@ export class App extends Component {
                         </Switch>
                     </HashRouter>
                 </Provider>
-                <Footer/>
+                {/* <Footer/> */}
             </div>
         )
     }
