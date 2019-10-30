@@ -18,13 +18,13 @@ export default class Footer extends Component {
                 <img src={logo} className="footer-logo" />
                 <div className="row text-regular">
                     <div className="menu-item">
-                        <a href="#">Features</a>
+                        <a href="/team">Team</a>
                     </div>
                     <div className="menu-item">
-                        <a href="#">Login</a>
+                        <a href="/login">Login</a>
                     </div>
                     <div className="menu-item">
-                        <a href="#">Signup</a>
+                        <a href="/signup">Signup</a>
                     </div>
                 </div>
             </div>

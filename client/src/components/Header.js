@@ -7,7 +7,7 @@ export class Header extends Component {
     render() {
         return (
             <Navbar bg="light" variant="light" expand="xl" sticky="top">
-                <NavbarBrand href="#">
+                <NavbarBrand href="/">
                     <img
                         src={logo}
                         width="150"
@@ -18,8 +18,8 @@ export class Header extends Component {
                 </NavbarBrand>
                 <Navbar.Collapse id ="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <Nav.Link className="Navbar-Font" href="#">Home</Nav.Link>
-                        <Nav.Link className="Navbar-Font" href="#">About</Nav.Link>
+                        <Nav.Link className="Navbar-Font" href="/">Home</Nav.Link>
+                        <Nav.Link className="Navbar-Font" href="/team">Team</Nav.Link>
                         <NavDropdown className="Navbar-Font" title="nav-dropdown">
                             <NavDropdown.Item href="#droplink_1">Accion1</NavDropdown.Item>
                             <NavDropdown.Item href="#droplink_2">Action2</NavDropdown.Item>
