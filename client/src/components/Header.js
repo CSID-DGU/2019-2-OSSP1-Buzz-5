@@ -10,14 +10,14 @@ export class Header extends Component {
                 <NavbarBrand href="/">
                     <img
                         src={logo}
-                        width="150"
-                        height="150"
+                        width="100"
+                        height="100"
                         className="d-inline-block align-top"
                         alt="WxW logo"
                     />
                 </NavbarBrand>
                 <Navbar.Collapse id ="basic-navbar-nav">
-                    <Nav className="ml-auto">
+                    <Nav className="mr-auto">
                         <Nav.Link className="Navbar-Font" href="/">Home</Nav.Link>
                         <Nav.Link className="Navbar-Font" href="/team">Team</Nav.Link>
                         <NavDropdown className="Navbar-Font" title="nav-dropdown">
@@ -27,8 +27,8 @@ export class Header extends Component {
                             <NavDropdown.Item href="#droplink_3">Action3</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
-                    <Button className="mr-sm-2" variant="outline-primary" size="lg" href="#" align="right">Login</Button>
-                    <Button variant="outline-primary" size="lg" href="#">Signup</Button>
+                    <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/login" align="right">Login</Button>
+                    <Button variant="outline-primary" size="lg" href="signup">Signup</Button>
                 </Navbar.Collapse>
             </Navbar>
         );
