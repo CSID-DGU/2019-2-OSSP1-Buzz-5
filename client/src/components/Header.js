@@ -16,20 +16,20 @@ export class Header extends Component {
                         alt="WxW logo"
                     />
                 </NavbarBrand>
-                <Navbar.Collapse id ="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link className="Navbar-Font" href="/">Home</Nav.Link>
-                        <Nav.Link className="Navbar-Font" href="/team">Team</Nav.Link>
-                        <NavDropdown className="Navbar-Font" title="nav-dropdown">
-                            <NavDropdown.Item href="#droplink_1">Accion1</NavDropdown.Item>
-                            <NavDropdown.Item href="#droplink_2">Action2</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#droplink_3">Action3</NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
-                    <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/login" align="right">Login</Button>
-                    <Button variant="outline-primary" size="lg" href="signup">Signup</Button>
-                </Navbar.Collapse>
+                {/* <Navbar.Collapse id ="basic-navbar-nav"> */}
+                <Nav className="mr-auto">
+                    <Nav.Link className="Navbar-Font" href="/">Home</Nav.Link>
+                    <Nav.Link className="Navbar-Font" href="/team">Team</Nav.Link>
+                    <NavDropdown className="Navbar-Font" title="nav-dropdown">
+                        <NavDropdown.Item href="#droplink_1">Accion1</NavDropdown.Item>
+                        <NavDropdown.Item href="#droplink_2">Action2</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="#droplink_3">Action3</NavDropdown.Item>
+                    </NavDropdown>
+                </Nav>
+                <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/login" align="right">Login</Button>
+                <Button variant="outline-primary" size="lg" href="signup">Signup</Button>
+                {/* </Navbar.Collapse> */}
             </Navbar>
         );
     }
