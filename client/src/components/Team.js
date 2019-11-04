@@ -10,7 +10,6 @@ export class Team extends Component {
         const style = {
             color : "#999999"
         }
-
         return (
             <div>
                 <div id="fl-main-content" class="fl-page-content" itemprop="mainContentOfPage">
@@ -95,7 +94,9 @@ export class Team extends Component {
                                                                     <div class="fl-module fl-module-rich-text fl-node-578fc0fedc9dd" data-node="578fc0fedc9dd">
                                                                         <div class="fl-module-content fl-node-content">
                                                                             <div class="fl-rich-text">
-                                                                                <p><span style={style}>Ex consectetuer ligula sem auctor lobortis. Morbi nisi conubia sociis ullamcorper nibh. Voluptate eros excepteur quam posuere elit. Ridiculus sollicitudin orci irure porttitor. Turpis convallis tellusexcepteur scelerisque nullam dolore eu vulputate dui.</span></p>
+                                                                                <p><span style={style}>
+                                                                                    동국대학교 3학년 재학<br/>
+                                                                                </span></p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -139,9 +140,9 @@ export class Team extends Component {
                                                                     </div>
                                                                     <div class="fl-module fl-module-rich-text fl-node-578fc0fedcb76" data-node="578fc0fedcb76">
                                                                         <div class="fl-module-content fl-node-content">
-                                                                            <div class="fl-rich-text">
-                                                                                <p><span style={style}>Netus ullamco dolor lacus rutrum. Aliquet duis tincidunt dictum sociis cupidatat. Imperdiet habitant nam cillum eros mollit. Turpis ipsum nisl rhoncus non ridiculus. Pulvinar parturient irure fugiat tristique rutrum cras natoque vulputate nec sem.</span></p>
-                                                                            </div>
+                                                                            <p><span style={style}>
+                                                                                동국대학교 3학년 재학<br/>
+                                                                            </span></p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -184,9 +185,9 @@ export class Team extends Component {
                                                                     </div>
                                                                     <div class="fl-module fl-module-rich-text fl-node-578fc0fedcd15" data-node="578fc0fedcd15">
                                                                         <div class="fl-module-content fl-node-content">
-                                                                            <div class="fl-rich-text">
-                                                                                <p><span style={style}>Congue tortor eu at himenaeos penatibus. Aute sollicitudin parturient cupidatat arcu. Ipsum occaecat ullamco lobortis fames. Imperdiet tempor cubilia scelerisque nostrud mollit. Leo taciti quis elementum facilisi. Cursus aliquam lacus sed consectetur morbi. Cubilia aenean tincidunt. </span></p>
-                                                                            </div>
+                                                                            <p><span style={style}>
+                                                                                동국대학교 3학년 재학<br/>
+                                                                            </span></p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
