@@ -11,6 +11,8 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from './App.css'
+import CourseList from './components/CourseList'
+import CourseForm from './components/CourseForm'
 
 export class App extends Component {
     render() {
@@ -24,6 +26,8 @@ export class App extends Component {
                             <Route path="/team" component={Team} />
                             <Route path="/login" component={Login} />
                             <Route path="/signup" component={Signup} />
+                            <Route path="/courselist" component={CourseList}/>
+                            <Route path="/courseform" component={CourseForm}/>
                             <Route path="/r/:room" component={Room} />
                         </Switch>
                         <Footer/>

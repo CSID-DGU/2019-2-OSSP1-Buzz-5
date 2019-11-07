@@ -78,10 +78,6 @@ class Signup extends Component {
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   };
 
-  makeHref = () => {
-    return '/login';
-  }
-
   render() {
     const { formErrors } = this.state;
 
