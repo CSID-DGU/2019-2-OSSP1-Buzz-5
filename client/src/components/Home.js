@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import coloredLogo from '../assets/color-logo.png';
-import bridge from '../assets/bridge.png';
 import slide from '../assets/slide-dots.png';
 import lock from '../assets/lock.png';
 import parallex from '../assets/parallex.png';
