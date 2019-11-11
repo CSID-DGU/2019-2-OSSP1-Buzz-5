@@ -33,33 +33,51 @@ export class CourseList extends Component {
                 <input class="form-control" placeholder="Search" name="srch-term" id="srch-term"></input>
                 <div class="input-group-btn">
                   <button class="btn btn-default" type="submit">
-                    <i class="glyphicon glyphicon-search"/>
+                    <i class="fa fa-search"/>
                   </button>
                 </div>
               </div>
               <hr/>
               <div class="list-group">
                 <h5>Language</h5>
-                <a href="#" class="list-group-item"><span class="badge">0</span>JavaScript</a>
-                <a href="#" class="list-group-item"><span class="badge">0</span>C++</a>
-                <a href="#" class="list-group-item"><span class="badge">0</span>Java</a>
-                <a href="#" class="list-group-item"><span class="badge">0</span>C</a>
-                <a href="#" class="list-group-item"><span class="badge">0</span>Objective-C</a>
-                <a href="#" class="list-group-item"><span class="badge">0</span>Python</a>
-                <a href="#" class="list-group-item"><span class="badge">0</span>Go</a>
-                <a href="#" class="list-group-item"><span class="badge">0</span>Kotlin</a>
-                <a href="#" class="list-group-item"><span class="badge">0</span>Swift</a>
+                <a href="#" class="list-group-item d-flex justify-content-between align-items-center h6 text-dark">
+                  JavaScript<span class="badge badge-secondary">0</span>
+                </a>
+                <a href="#" class="list-group-item d-flex justify-content-between align-items-center h6 text-dark">
+                  C++<span class="badge badge-secondary">0</span>
+                </a>
+                <a href="#" class="list-group-item d-flex justify-content-between align-items-center h6 text-dark">
+                  Java<span class="badge badge-secondary">0</span>
+                </a>
+                <a href="#" class="list-group-item d-flex justify-content-between align-items-center h6 text-dark">
+                  C<span class="badge badge-secondary">0</span>
+                </a>
+                <a href="#" class="list-group-item d-flex justify-content-between align-items-center h6 text-dark">
+                  <small>Objective-C</small><span class="badge badge-secondary">0</span>
+                </a>
+                <a href="#" class="list-group-item d-flex justify-content-between align-items-center h6 text-dark">
+                  Python<span class="badge badge-secondary">0</span>
+                </a>
+                <a href="#" class="list-group-item d-flex justify-content-between align-items-center h6 text-dark">
+                  Go<span class="badge badge-secondary">0</span>
+                </a>
+                <a href="#" class="list-group-item d-flex justify-content-between align-items-center h6 text-dark">
+                  Kotlin<span class="badge badge-secondary">0</span>
+                </a>
+                <a href="#" class="list-group-item d-flex justify-content-between align-items-center h6 text-dark">
+                  Swift<span class="badge badge-secondary">0</span>
+                </a>
               </div>
             </div>
 
             <div class="col-md-9">
               <div className="card card-body bg-light">
-                <h5 className="card-title">Create Course Room</h5>
-                <button className="btn btn-default ml-auto" onClick={this.routeChange}>Create</button>
+                <form inline>
+                  <h5 className="card-title">Create Course Room</h5>
+                  <button className="btn btn-default ml-auto" onClick={this.routeChange}>Create</button>
+                </form>
               </div>
               <hr/>
-
-              
             </div>
           </div>
 
