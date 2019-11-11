@@ -12,7 +12,7 @@ export default class Footer extends Component {
 
   render() {
     return (
-      <div className="footer-page">
+      <div className="footer-page" >
         <div className="container">
             <div className="upper-part">
                 <img src={logo} className="footer-logo" />
@@ -21,7 +21,7 @@ export default class Footer extends Component {
                         <a href="#">Features</a>
                     </div>
                     <div className="menu-item">
-                        <a href="#">Login</a>
+                        <a href="#">Login</a> 
                     </div>
                     <div className="menu-item">
                         <a href="#">Signup</a>

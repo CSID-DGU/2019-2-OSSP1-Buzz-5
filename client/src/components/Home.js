@@ -17,17 +17,17 @@ export class Home extends Component {
             <div>
                 <div className="container content-page">
                     <div className="contents">
-                        <img src={background} className="content-background"/>
+                        <img src={background} weight="400" height = "500" className="content-background"/>
                         {/* <img src={coloredLogo} className="content-logo"/>
                         <img src={bridge} className="content-bridge"/> */}
                         <div className="content-item text-medium">
                             <img src={slide} className="slide-icon"/>
                             <div>
-                                Securely and Automatically sync your trades from popular exchanges such as:<br/>
-                                Coinbase Pro, Binance, Bitfinex, Bittrex and more. More exchanges being added continuously.
+                                실시간 화면 공유를 통한 인터넷 강의 서비스<br/><br/>
+                                공간적 제약 없이 공유하는 지식, Wisdom X Wisdom
                             </div>
                         </div>
-                        <div className="content-item text-medium">
+                        {/* <div className="content-item text-medium">
                             <img src={slide} className="slide-icon"/>
                             <div>
                                 Analyze your portfolio risk and get insights into how you can maximize your returns.
@@ -41,44 +41,44 @@ export class Home extends Component {
                             <div className="text-thin">  
                                 <i>(Coming soon)</i>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
                 <div className="container item-page">
                     <div className="row">
-                        <div className="feature-item col-md-3 col-12">
+                        <div className="feature-item col-md-4 col-12">
                             <img src={lock} className="feature-icon" />
                             <div className="text-medium">
-                                Security
+                                Screen Sharing
                             </div>
                             <div className="text-small">
-                                State of the art security to safe gaurd all your data all the time
+                                화면 공유를 통한 자유로운 질의응답 및 소통
                             </div>
                         </div>
-                        <div className="feature-item col-md-3 col-12">
+                        <div className="feature-item col-md-4 col-12">
                             <img src={parallex} className="feature-icon" />
                             <div className="text-medium">
-                                Parallax Effect
+                                File Sharing
                             </div>
                             <div className="text-small">
-                                Intuitive user interface to make tracking and trading across multiple exchanges simple
+                                공간적 제약을 벗어난 공통 자료 공유
                             </div>
                         </div>
-                        <div className="feature-item col-md-6 col-12">
+                        <div className="feature-item col-md-4 col-12">
                             <img src={comming} className="feature-icon" />
                             <div className="text-medium">
-                                Advanced Capabilities (comming soon)
+                                Chatting
                             </div>
                             <div className="text-small">
-                                Personalized insights and recommendations to maximize your returns<br/><br/>
-                                Excute rules-based trades across multiple exchanges from one place
+                                음성 대화가 힘든 상황을 위한 실시간 채팅
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="testimonial-page">
+                <br/><br/>
+                {/* <div className="testimonial-page">
                     <div className="container">
                         <div className="testimonial-title text-extra-big">
                             Testimonials
@@ -137,7 +137,7 @@ export class Home extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         )
     }
