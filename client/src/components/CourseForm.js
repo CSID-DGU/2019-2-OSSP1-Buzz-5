@@ -48,7 +48,16 @@ export class CourseForm extends Component {
   }
 
   routeChange = () => {
-    this.props.history.push('/courselist')
+    this.props.history.push({
+      pathname: '/courselist',
+      state: {
+        course_name: this.state.course_name,
+        tuter_name: this.state.tutor_name,
+        description: this.state.description,
+        language: this.state.language,
+        date: new Date(),
+      }
+    })
   }
 
   render() {
@@ -66,7 +75,7 @@ export class CourseForm extends Component {
                 <input
                     className={formErrors.course_name.length > 0 ? "error" : null}
                     placeholder="Course Name"
-                    name="name"
+                    name="course_name"
                     noValidate
                     onChange={this.handleChange}
                   />
@@ -85,7 +94,7 @@ export class CourseForm extends Component {
 
               <div className="language">
                 <label>Course Language</label>
-                <select noValidate onChange={this.handleChange}>
+                <select noValidate onChange={this.handleChange} name="language">
                   <option value="JavaScript" selected="selected">JavaScript</option>
                   <option value="C++">C++</option>
                   <option value="Java">Java</option>
