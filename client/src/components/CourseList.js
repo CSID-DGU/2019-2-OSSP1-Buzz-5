@@ -53,7 +53,7 @@ export class CourseList extends Component {
                   C<span class="badge badge-secondary">0</span>
                 </a>
                 <a href="#" class="list-group-item d-flex justify-content-between align-items-center h6 text-dark">
-                  <small>Objective-C</small><span class="badge badge-secondary">0</span>
+                  Objective-C<span class="badge badge-secondary">0</span>
                 </a>
                 <a href="#" class="list-group-item d-flex justify-content-between align-items-center h6 text-dark">
                   Python<span class="badge badge-secondary">0</span>
@@ -74,7 +74,7 @@ export class CourseList extends Component {
               <div className="card card-body bg-light">
                 <form inline>
                   <h5 className="card-title">Create Course Room</h5>
-                  <button className="btn btn-default ml-auto" onClick={this.routeChange}>Create</button>
+                  <button className="btn btn-outline-primary ml-auto" onClick={this.routeChange}>Create</button>
                 </form>
               </div>
               <hr/>

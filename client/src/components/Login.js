@@ -5,22 +5,6 @@ const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/    // 이메일 정규 표현식 [아이디]@[###.###]
 );
 
-const formValid = ({ formErrors, ...rest }) => {
-  let valid = true;
-
-  // validate form errors being empty
-  Object.values(formErrors).forEach(val => {
-    val.length > 0 && (valid = false);
-  });
-
-  // validate the form was filled out
-  Object.values(rest).forEach(val => {
-    val === null && (valid = false);
-  });
-
-  return valid;
-};
-
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -33,19 +17,22 @@ class Login extends Component {
         password: ""
       }
     };
+    //this.props.login(this.state.email, this.state.password)
   }
-
+  // 여기서 함수를 넣어보기
   handleSubmit = e => {
     e.preventDefault();
-
-    if (formValid(this.state)) {
-      console.log(`                              
-        --SUBMITTING--
-        Email: ${this.state.email}
-        Password: ${this.state.password}
-      `);
-    } else {
-      console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
+    //let login = this.props.login;
+    let email = this.state.email;
+    let password = this.state.password;
+    try{
+      this.props.login(email, password)
+    } catch (e) {
+      alert("Failed to Login")
+      this.setState({
+        email: null,
+        password: null
+      })
     }
   };
 

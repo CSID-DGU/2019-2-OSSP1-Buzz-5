@@ -5,6 +5,7 @@ import logo from '../assets/logo_wxw.png';
 
 export class Header extends Component {
     render() {
+        const auth = this.props.authenticated
         return (
             <Navbar bg="light" variant="light" expand="xl" sticky="top">
                 <NavbarBrand href="/">
@@ -28,7 +29,11 @@ export class Header extends Component {
                         <NavDropdown.Item href="#droplink_3">Action3</NavDropdown.Item>
                     </NavDropdown> */}
                 </Nav>
-                <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/login" align="right">Login</Button>
+                {auth ? (
+                    <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/" align="right">Logout</Button>
+                ): (
+                    <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/login" align="right">Login</Button>
+                )}
                 <Button variant="outline-primary" size="lg" href="signup">Signup</Button>
                 {/* </Navbar.Collapse> */}
             </Navbar>
