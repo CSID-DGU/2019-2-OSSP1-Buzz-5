@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Navbar, NavbarBrand, Nav, NavDropdown, Button } from 'react-bootstrap'
+import { Navbar, NavbarBrand, Nav, Badge, Button } from 'react-bootstrap'
 import './css/Header.scss'
 import logo from '../assets/logo_wxw.png';
 
@@ -22,23 +22,17 @@ export class Header extends Component {
                     <Nav.Link className="Navbar-Font" href="/">Home</Nav.Link>
                     <Nav.Link className="Navbar-Font" href="/team">Team</Nav.Link>
                     <Nav.Link className="Navbar-Font" href="/courselist">Course</Nav.Link>
-                    {/* <NavDropdown className="Navbar-Font" title="nav-dropdown">
-                        <NavDropdown.Item href="#droplink_1">Accion1</NavDropdown.Item>
-                        <NavDropdown.Item href="#droplink_2">Action2</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#droplink_3">Action3</NavDropdown.Item>
-                    </NavDropdown> */}
                 </Nav>
                 {auth ? (
-                    <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/" align="right" onClick={this.props.logout}>Logout</Button>
+                    <Badge className="mr-sm-2" variant="primary">{this.props.userName}</Badge>
                 ): (
-                    <Button variant="outline-primary" size="lg" href="signup">Signup</Button>
+                    <Button className="mr-sm-2" variant="outline-primary" size="sm" href="signup">Signup</Button>
                 )}
 
                 {auth ? (
-                    <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/" align="right" onClick={this.props.logout}>Logout</Button>
+                    <Button className="mr-sm-2" variant="outline-primary" size="sm" href="/" align="right" onClick={this.props.Logout}>Logout</Button>
                 ): (
-                    <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/login" align="right">Login</Button>
+                    <Button className="mr-sm-2" variant="outline-primary" size="sm" href="/login" align="right">Login</Button>
                 )}
                 
                 {/* </Navbar.Collapse> */}

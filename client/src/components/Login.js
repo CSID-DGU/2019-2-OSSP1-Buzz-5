@@ -31,6 +31,7 @@ class Login extends Component {
       if(user) {
         window.sessionStorage.setItem('email', email)
         window.sessionStorage.setItem('password', password)
+        window.sessionStorage.setItem('name', user.name)
         this.props.history.push("/")
       }
         // (<Link to="/" />)

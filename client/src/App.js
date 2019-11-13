@@ -22,6 +22,7 @@ class App extends Component {
         
         this.state = {
             authenticated: false,
+            name: "",
             login: this.login,
             logout: this.logout
         }
@@ -31,15 +32,20 @@ class App extends Component {
 
     login = () => {
         this.setState({
-            authenticated: true
+            authenticated: true,
+            name: window.sessionStorage.getItem('name')
         })
         // console.log(this.state.authenticated)
     }
 
     logout = () => {
         this.setState({
-            authenticated: false
+            authenticated: false,
+            name: ""
         })
+        window.sessionStorage.removeItem('email');
+        window.sessionStorage.removeItem('password');
+        window.sessionStorage.removeItem('name');
     }
 
     componentWillMount = () => {
@@ -58,10 +64,10 @@ class App extends Component {
         // const {logged, onLogout} = this.state
         const auth = this.state.authenticated
         return (
-            <Provider store={store} value={this.state}>
+            <Provider store={store}>
                 <BrowserRouter basename={process.env.PUBLIC_URL}>
                     <div>
-                        <Header authenticated={this.state.authenticated} Logout={this.logout}/>
+                        <Header authenticated={this.state.authenticated} userName={this.state.name} Logout={this.logout}/>
                         <Switch>
                             <Route exact path="/" component={Home} />
                             <Route path="/team" component={Team} />
@@ -76,7 +82,7 @@ class App extends Component {
                             {/* <Route path="/courseform" component={CourseForm}/> */}
                             <Route path="/r/:room" component={Room} />
                         </Switch>
-                        <Footer authenticated={this.state.authenticated}/>
+                        <Footer authenticated={this.state.authenticated} Logout={this.logout}/>
                     </div>
                 </BrowserRouter>
             </Provider>

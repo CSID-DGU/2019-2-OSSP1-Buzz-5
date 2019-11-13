@@ -21,7 +21,7 @@ export default class Footer extends Component {
                     <div className="menu-item">
                         <a href="/team">Team</a>
                     </div>
-                    <div className="menu-item">
+                    <div className="menu-item" onClick={()=>this.props.Logout}>
                         {auth ? (<a href="/">Logout</a>) : (<a href="/login">Login</a>)}
                     </div>
                     <div className="menu-item">
