@@ -30,11 +30,17 @@ export class Header extends Component {
                     </NavDropdown> */}
                 </Nav>
                 {auth ? (
-                    <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/" align="right">Logout</Button>
+                    <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/" align="right" onClick={this.props.logout}>Logout</Button>
+                ): (
+                    <Button variant="outline-primary" size="lg" href="signup">Signup</Button>
+                )}
+
+                {auth ? (
+                    <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/" align="right" onClick={this.props.logout}>Logout</Button>
                 ): (
                     <Button className="mr-sm-2" variant="outline-primary" size="lg" href="/login" align="right">Login</Button>
                 )}
-                <Button variant="outline-primary" size="lg" href="signup">Signup</Button>
+                
                 {/* </Navbar.Collapse> */}
             </Navbar>
         );

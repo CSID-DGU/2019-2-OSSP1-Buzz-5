@@ -41,15 +41,8 @@ class Signup extends Component {
     e.preventDefault();
 
     if (formValid(this.state)) {
-      console.log(`                              
-        --SUBMITTING--
-        Name: ${this.state.name}
-        Email: ${this.state.email}
-        Password: ${this.state.password}
-      `);
-    } else {
-      console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
-    }
+      
+    } 
   };
 
   handleChange = e => {

@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
+import {withRouter, Redirect, Link} from 'react-router-dom';
+import { signIn } from '../auth/Auth'
 import "./css/Account.scss";
 
 const emailRegex = RegExp(
@@ -17,23 +19,41 @@ class Login extends Component {
         password: ""
       }
     };
-    //this.props.login(this.state.email, this.state.password)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   // 여기서 함수를 넣어보기
   handleSubmit = e => {
     e.preventDefault();
     //let login = this.props.login;
-    let email = this.state.email;
-    let password = this.state.password;
+    const { email, password } = this.state;
     try{
-      this.props.login(email, password)
+      const user = signIn(email, password)
+      if(user) {
+        window.sessionStorage.setItem('email', email)
+        window.sessionStorage.setItem('password', password)
+        this.props.history.push("/")
+      }
+        // (<Link to="/" />)
+        // this.props.history.push("/")
     } catch (e) {
       alert("Failed to Login")
       this.setState({
-        email: null,
-        password: null
+        email: "",
+        password: ""
       })
     }
+    // const user = signIn(email, password)
+    // if(user) {
+    //   window.sessionStorage.setItem('email', email)
+    //   window.sessionStorage.setItem('password', password)
+    //   (<Redirect to="/" />)
+    // } else {
+    //   alert("Failed to Login")
+    //   this.setState({
+    //     email: null,
+    //     password: null
+    //   })
+    // }
   };
 
   handleChange = e => {
@@ -57,10 +77,9 @@ class Login extends Component {
 
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   };
-
+  
   render() {
     const { formErrors } = this.state;
-
     return (
       <div className="wrapper">
         <div className="form-wrapper">
@@ -74,6 +93,7 @@ class Login extends Component {
                 placeholder="Email"
                 type="email"
                 name="email"
+                value={this.state.email}
                 noValidate
                 onChange={this.handleChange}
               />
@@ -89,6 +109,7 @@ class Login extends Component {
                 placeholder="Password"
                 type="password"
                 name="password"
+                value={this.state.password}
                 noValidate
                 onChange={this.handleChange}
               />

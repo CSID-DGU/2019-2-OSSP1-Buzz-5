@@ -4,7 +4,8 @@ const users = [
   { email: 'park@test.com', password: '789012', name: 'Park' }
 ]
 
-export function signIn({ email, password }) {
+export function signIn( email, password ) {
+  console.log(email, password)
   const user = users.find(user => user.email === email && user.password === password);
   if (user === undefined) throw new Error();
   return user;

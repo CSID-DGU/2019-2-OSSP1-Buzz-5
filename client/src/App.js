@@ -14,23 +14,40 @@ import styles from './App.css'
 import CourseList from './components/CourseList'
 import CourseForm from './components/CourseForm'
 import {signIn} from './auth/Auth'
+import { write } from 'fs'
 
 class App extends Component {
     constructor(props) {
         super(props);
         
         this.state = {
-            authenticated: null
+            authenticated: false,
+            login: this.login,
+            logout: this.logout
         }
+        // this.logined = this.logined.bind(this)
     }
 
-    logined = (email, password) => {
-        var user = signIn({email, password});
-        console.log("111213123")
-        if(user) {
-            this.setState({
-                authenticated: true
-            })
+
+    login = () => {
+        this.setState({
+            authenticated: true
+        })
+        // console.log(this.state.authenticated)
+    }
+
+    logout = () => {
+        this.setState({
+            authenticated: false
+        })
+    }
+
+    componentWillMount = () => {
+        const email = window.sessionStorage.getItem('email');
+        if(email) {
+            this.login()
+        } else {
+            this.logout()
         }
     }
     // const [user, setUser] = useState(null);
@@ -38,24 +55,23 @@ class App extends Component {
     // const login = ({ email, password }) => setUser(signIn({ email, password }));
     // const logout = () => setUser(null);
     render() {
+        // const {logged, onLogout} = this.state
+        const auth = this.state.authenticated
         return (
-            <Provider store={store}>
+            <Provider store={store} value={this.state}>
                 <BrowserRouter basename={process.env.PUBLIC_URL}>
                     <div>
-                        <Header authenticated={this.state.authenticated}/>
+                        <Header authenticated={this.state.authenticated} Logout={this.logout}/>
                         <Switch>
                             <Route exact path="/" component={Home} />
                             <Route path="/team" component={Team} />
-                            <Route login={this.logined} path="/login" component={Login} />
+                            <Route path="/login" component={Login} />
+                            {/* <Route path="/login" render = {(props) => <Login {...props} Login={this.login} />} /> */}
+                            {/* <Route path="/login" component={()=> <Login CheckLogin={this.logined} />} /> */}
+                            {/* <Route path="/login" render={props => (<Login location={props.location}{...props}/>)} /> */}
                             <Route path="/signup" component={Signup} />
-                            { this.state.authenticated ? 
-                                <Route path="/courselist" component={CourseList}/>
-                                : <Redirect to="/login" />
-                            }
-                            { this.state.authenticated ? 
-                                <Route path="/courseform" component={CourseForm}/>
-                                : <Redirect to="/login" />
-                            }
+                            { auth ? <Route path="/courselist" component={CourseList}/> : <Redirect to="/login" />}
+                            { auth ? <Route path="/courseform" component={CourseForm}/> : <Redirect to="/login" />}
                             {/* <Route path="/courselist" component={CourseList}/> */}
                             {/* <Route path="/courseform" component={CourseForm}/> */}
                             <Route path="/r/:room" component={Room} />
