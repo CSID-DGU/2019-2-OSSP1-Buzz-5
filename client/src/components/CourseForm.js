@@ -59,6 +59,7 @@ export class CourseForm extends Component {
         description: this.state.description,
         language: this.state.language,
         date: moment().format('MMMM Do YYYY, h:mm:ss a'),
+        course_password: String(new Date() - new Date().setHours(0, 0, 0, 0))
         // course_password: 
       }
     })

@@ -54,12 +54,7 @@ class App extends Component {
             this.logout()
         }
     }
-    // const [user, setUser] = useState(null);
-    // const authenticated = user != null;
-    // const login = ({ email, password }) => setUser(signIn({ email, password }));
-    // const logout = () => setUser(null);
     render() {
-        // const {logged, onLogout} = this.state
         const auth = this.state.authenticated
         return (
             <Provider store={store}>
@@ -70,16 +65,11 @@ class App extends Component {
                             <Route exact path="/" component={Home} />
                             <Route path="/team" component={Team} />
                             <Route path="/login" component={Login} />
-                            {/* <Route path="/login" render = {(props) => <Login {...props} Login={this.login} />} /> */}
-                            {/* <Route path="/login" component={()=> <Login CheckLogin={this.logined} />} /> */}
-                            {/* <Route path="/login" render={props => (<Login location={props.location}{...props}/>)} /> */}
                             <Route path="/signup" component={Signup} />
                             { auth ? <Route path="/courselist" component={CourseList}/> : <Redirect to="/login" />}
                             { auth ? <Route path="/courseform" component={CourseForm}/> : <Redirect to="/login" />}
                             { auth ? <Route path="/courseroom" component={EnterRoomPage} /> : <Redirect to="/login" />}
                             { auth ? <Route path="/r/:room" component={Room} /> : <Redirect to="/login" />}
-
-                            
                         </Switch>
                         <Footer authenticated={this.state.authenticated} Logout={this.logout}/>
                     </div>
