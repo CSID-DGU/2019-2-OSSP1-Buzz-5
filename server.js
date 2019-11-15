@@ -60,25 +60,25 @@ io.sockets.on('connection', socket => {
     socket.leave(room);});
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-const mysql = require('mysql');
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// const mysql = require('mysql');
 
-const connection = mysql.createConnection({
-  host: conf.host,
-  user: conf.user,
-  password: conf.password,
-  port: conf.port,
-  database: conf.database
-});
-connection.connect();
+// const connection = mysql.createConnection({
+//   host: conf.host,
+//   user: conf.user,
+//   password: conf.password,
+//   port: conf.port,
+//   database: conf.database
+// });
+// connection.connect();
 
-app.get('/signup', (req, res) => {
-  connection.query(
-    'SELECT * FROM User',
-    (err, rows, fields) => {
-      res.send(rows);
-    }  
-  )
-});
-app.listen(port, () => console.log(`Listening on port ${port}`));
+// app.get('/signup', (req, res) => {
+//   connection.query(
+//     'SELECT * FROM User',
+//     (err, rows, fields) => {
+//       res.send(rows);
+//     }  
+//   )
+// });
+// app.listen(port, () => console.log(`Listening on port ${port}`));
