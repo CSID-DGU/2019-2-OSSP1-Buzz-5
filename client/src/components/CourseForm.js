@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
+import moment from 'moment'
 import "./css/Course.scss"
 
 export class CourseForm extends Component {
@@ -8,7 +9,7 @@ export class CourseForm extends Component {
 
     this.state = {
       course_name : null,
-      tuter_name : null,
+      tutor: null,
       description : null,
       language : null,
       date : null,
@@ -22,7 +23,8 @@ export class CourseForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    
+    // DB에 저장하는 부분
+    this.routeChange()
   }
 
   handleChange = e => {
@@ -52,19 +54,23 @@ export class CourseForm extends Component {
       pathname: '/courselist',
       state: {
         course_name: this.state.course_name,
-        tuter_name: this.state.tutor_name,
+        tutor: window.sessionStorage.getItem('name'),
         description: this.state.description,
         language: this.state.language,
-        date: new Date(),
+        date: moment().format('MMMM Do YYYY, h:mm:ss a')
       }
     })
+  }
+
+  getParsedDate = () => {
+
   }
 
   render() {
     const { formErrors } = this.state;
 
     return (
-      <div class="row-fluid">
+      <div className="row-fluid">
         <div className="wrapper">
           <h1>Create Course Room</h1>
           <hr/>
@@ -107,7 +113,7 @@ export class CourseForm extends Component {
                 </select>
               </div>
 
-              <button type="submit" onSubmit={this.handleSubmit} onClick={this.routeChange}>Create Course</button>
+              <button type="submit" onSubmit={this.handleSubmit}>Create Course</button>
             </form>
           </div>
         </div>
