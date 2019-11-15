@@ -13,6 +13,7 @@ export class CourseForm extends Component {
       description : null,
       language : null,
       date : null,
+      course_password: null,
 
       formErrors : {
         course_name : "",
@@ -57,7 +58,8 @@ export class CourseForm extends Component {
         tutor: window.sessionStorage.getItem('name'),
         description: this.state.description,
         language: this.state.language,
-        date: moment().format('MMMM Do YYYY, h:mm:ss a')
+        date: moment().format('MMMM Do YYYY, h:mm:ss a'),
+        // course_password: 
       }
     })
   }

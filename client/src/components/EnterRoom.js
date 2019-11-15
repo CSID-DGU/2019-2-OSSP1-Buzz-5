@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Home = props =>
+const EnterRoom = props =>
   <div className="home">
     <div>
       <h1 itemProp="headline">Webrtc Video Room</h1>
@@ -16,7 +16,7 @@ const Home = props =>
     </div>
   </div>;
 
-Home.propTypes = {
+EnterRoom.propTypes = {
   handleChange: PropTypes.func.isRequired,
   defaultRoomId: PropTypes.string.isRequired,
   roomId: PropTypes.string.isRequired,
@@ -25,4 +25,4 @@ Home.propTypes = {
 
 const mapStateToProps = store => ({rooms: store.rooms});
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(EnterRoom);

@@ -119,23 +119,14 @@ export class CourseList extends Component {
                   {this.state.RoomInformation.map((listItem)=>{
                     return (
                       <div>
-                        <ul>
-                          <li>
-                            {listItem.course_name}
-                          </li>
-                          <li>
-                            {listItem.description}
-                          </li>
-                          <li>
-                            {listItem.language}
-                          </li>
-                          <li>
-                            {listItem.tutor}
-                          </li>
-                          <li>
-                            {listItem.date}
-                          </li>
-                        </ul>
+                        <a className="d-flex justify-content-between align-items-center h3" href="/courseroom">{listItem.course_name}
+                          <span className="badge badge-secondary">{listItem.tutor}</span>
+                        </a>
+                        <h6 className="small d-flex justify-content-between align-items-center">{listItem.date}
+                          <span className="badge badge-primary">{listItem.language}</span>
+                        </h6>
+                        <br/>
+                        <h6>{listItem.description}</h6>
                         <hr/>
                       </div>
                     );

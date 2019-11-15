@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types';
-import Home from '../components/Ori_Home';
+import EnterRoom from '../components/EnterRoom';
 
-class HomePage extends Component {
+class EnterRoomPage extends Component {
   constructor(props) {
     super(props);
     this.defaultRoomId = String(new Date() - new Date().setHours(0, 0, 0, 0));
@@ -14,7 +14,7 @@ class HomePage extends Component {
   }
   render(){
     return (
-      <Home
+      <EnterRoom
         defaultRoomId={this.defaultRoomId}
         roomId={this.state.roomId}
         handleChange={this.handleChange}
@@ -23,8 +23,8 @@ class HomePage extends Component {
   }
 }
 
-HomePage.contextTypes = {
+EnterRoomPage.contextTypes = {
   router: PropTypes.object
 };
 
-export default HomePage;
+export default EnterRoomPage;

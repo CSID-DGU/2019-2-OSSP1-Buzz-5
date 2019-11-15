@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './components/Home'
+import EnterRoomPage from './containers/EnterRoomPage'
 import Room from './containers/RoomPage'
 import Team from './components/Team'
 import Login from './components/Login'
@@ -13,9 +14,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from './App.css'
 import CourseList from './components/CourseList'
 import CourseForm from './components/CourseForm'
-import {signIn} from './auth/Auth'
-import { write } from 'fs'
-
 class App extends Component {
     constructor(props) {
         super(props);
@@ -78,9 +76,8 @@ class App extends Component {
                             <Route path="/signup" component={Signup} />
                             { auth ? <Route path="/courselist" component={CourseList}/> : <Redirect to="/login" />}
                             { auth ? <Route path="/courseform" component={CourseForm}/> : <Redirect to="/login" />}
-                            {/* <Route path="/courselist" component={CourseList}/> */}
-                            {/* <Route path="/courseform" component={CourseForm}/> */}
-                            <Route path="/r/:room" component={Room} />
+                            { auth ? <Route path="/courseroom" component={EnterRoomPage} /> : <Redirect to="/login" />}
+                            { auth ? <Route path="/r/:room" component={Room} /> : <Redirect to="/login" />}
                         </Switch>
                         <Footer authenticated={this.state.authenticated} Logout={this.logout}/>
                     </div>
