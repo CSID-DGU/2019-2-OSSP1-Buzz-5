@@ -78,6 +78,8 @@ class App extends Component {
                             { auth ? <Route path="/courseform" component={CourseForm}/> : <Redirect to="/login" />}
                             { auth ? <Route path="/courseroom" component={EnterRoomPage} /> : <Redirect to="/login" />}
                             { auth ? <Route path="/r/:room" component={Room} /> : <Redirect to="/login" />}
+
+                            
                         </Switch>
                         <Footer authenticated={this.state.authenticated} Logout={this.logout}/>
                     </div>
