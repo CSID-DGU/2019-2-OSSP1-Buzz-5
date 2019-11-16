@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import "./css/Account.scss";
 
+//가입회원 db추가 부분
+const express = require('express');
+const router = express.Router();
+const db = require('../module/pool.js');
+
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/    // 이메일 정규 표현식 [아이디]@[###.###]
 );
@@ -41,21 +46,17 @@ class Signup extends Component {
     e.preventDefault();
 
     if (formValid(this.state)) {
-      /*
-      let checkQuery = 'SELECT * FROM innodb.User WHERE Email = ?';
-      let checkResult = await db.queryParam_Arr(checkQuery, [Email]);	
-
-      if (checkResult.length === 1) {		// 배열의 길이 === 1 => DB에 user_id가 존재
-        res.status(400).send({
-          message : "Already Exists"
-        });
-      }
-      */
-    } 
-    else {
+      console.log(`                              
+        —SUBMITTING—
+        Name: ${this.state.name}
+        Email: ${this.state.email}
+        Password: ${this.state.password}
+      `);
+      //db 추가 
       
+    } else {
+      console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
     }
-
   };
 
   handleChange = e => {
