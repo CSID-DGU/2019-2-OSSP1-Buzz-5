@@ -41,8 +41,21 @@ class Signup extends Component {
     e.preventDefault();
 
     if (formValid(this.state)) {
-      
+      /*
+      let checkQuery = 'SELECT * FROM innodb.User WHERE Email = ?';
+      let checkResult = await db.queryParam_Arr(checkQuery, [Email]);	
+
+      if (checkResult.length === 1) {		// 배열의 길이 === 1 => DB에 user_id가 존재
+        res.status(400).send({
+          message : "Already Exists"
+        });
+      }
+      */
     } 
+    else {
+      
+    }
+
   };
 
   handleChange = e => {
