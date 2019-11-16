@@ -1,33 +1,17 @@
-# WebRTC video chat app with ReactJS
-## Synopsis
-WebRTC audio/video conferencing app with user authentication using ReactJS.
-## Motivation
-Simple ReactJS app that interacts with the WebRTC APIs to establish audio/video conference between users, without a trip through a server.
-## Application Logic and Implementations
-To connect two users over WebRTC, we exchange information to allow browsers to talk to each other. This process is called signaling and it is facilitated by using NodeJS and socket server chained to the express 4.0 engine to provide the plumbing. Other than signaling, no data has to be sent through a server. When a connection is successfully established and authentication and authorization are complete, stream data exchanged between peers is directed to a React component for rendering.
+# 2019-2-OSSP1-Buzz-5
+WebRTC video course app with ReactJS
 
-## Installation
+## 프로젝트 설명
+YouTube 강의 영상을 많은 사람들이 시청하고 배우는 것에서 아이디어를 착안하여 간단한 회원가입을 통하여 누구나 튜터, 튜티가 될 수 있는 인터넷 강의 커뮤니티를 만들고자 하였습니다.
 
-Once you have forked this project, go ahead and use npm through the command line to install all required dependecies:
-
-```bash
-npm i
-npm start
-```
+## 팀원
+- 2014112073 서진원
+- 2016112169 이선영
+- 2017112100 한유진
 
 ## Demo
+https://wisdom-x-wisdom.herokuapp.com/
 
-Demo of the app can be found on Heroku:
-https://webrtc-video-room.herokuapp.com/
+## Deploy
+Node.js를 지원하고 무료로 제공하는 Heroku를 통하여 Heroku Git으로 해당 코드를 push하면 build가 용이하게 진행되는 플랫폼을 선택하였습니다.
 
-### License
-
-MIT License
-
-Copyright (c) 2015 Dian Dimitrov
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

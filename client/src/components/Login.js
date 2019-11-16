@@ -1,25 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
+import {withRouter, Redirect, Link} from 'react-router-dom';
+import { signIn } from '../auth/Auth'
 import "./css/Account.scss";
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/    // 이메일 정규 표현식 [아이디]@[###.###]
 );
-
-const formValid = ({ formErrors, ...rest }) => {
-  let valid = true;
-
-  // validate form errors being empty
-  Object.values(formErrors).forEach(val => {
-    val.length > 0 && (valid = false);
-  });
-
-  // validate the form was filled out
-  Object.values(rest).forEach(val => {
-    val === null && (valid = false);
-  });
-
-  return valid;
-};
 
 class Login extends Component {
   constructor(props) {
@@ -33,20 +19,42 @@ class Login extends Component {
         password: ""
       }
     };
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
-
+  // 여기서 함수를 넣어보기
   handleSubmit = e => {
     e.preventDefault();
-
-    if (formValid(this.state)) {
-      console.log(`                              
-        --SUBMITTING--
-        Email: ${this.state.email}
-        Password: ${this.state.password}
-      `);
-    } else {
-      console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
+    //let login = this.props.login;
+    const { email, password } = this.state;
+    try{
+      const user = signIn(email, password)
+      if(user) {
+        window.sessionStorage.setItem('email', email)
+        window.sessionStorage.setItem('password', password)
+        window.sessionStorage.setItem('name', user.name)
+        this.props.history.push("/")
+      }
+        // (<Link to="/" />)
+        // this.props.history.push("/")
+    } catch (e) {
+      alert("Failed to Login")
+      this.setState({
+        email: "",
+        password: ""
+      })
     }
+    // const user = signIn(email, password)
+    // if(user) {
+    //   window.sessionStorage.setItem('email', email)
+    //   window.sessionStorage.setItem('password', password)
+    //   (<Redirect to="/" />)
+    // } else {
+    //   alert("Failed to Login")
+    //   this.setState({
+    //     email: null,
+    //     password: null
+    //   })
+    // }
   };
 
   handleChange = e => {
@@ -70,10 +78,9 @@ class Login extends Component {
 
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   };
-
+  
   render() {
     const { formErrors } = this.state;
-
     return (
       <div className="wrapper">
         <div className="form-wrapper">
@@ -87,6 +94,7 @@ class Login extends Component {
                 placeholder="Email"
                 type="email"
                 name="email"
+                value={this.state.email}
                 noValidate
                 onChange={this.handleChange}
               />
@@ -102,6 +110,7 @@ class Login extends Component {
                 placeholder="Password"
                 type="password"
                 name="password"
+                value={this.state.password}
                 noValidate
                 onChange={this.handleChange}
               />

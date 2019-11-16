@@ -11,6 +11,7 @@ export default class Footer extends Component {
   }
 
   render() {
+    const auth = this.props.authenticated
     return (
       <div className="footer-page" >
         <div className="container">
@@ -20,8 +21,8 @@ export default class Footer extends Component {
                     <div className="menu-item">
                         <a href="/team">Team</a>
                     </div>
-                    <div className="menu-item">
-                        <a href="/login">Login</a>
+                    <div className="menu-item" onClick={()=>this.props.Logout}>
+                        {auth ? (<a href="/">Logout</a>) : (<a href="/login">Login</a>)}
                     </div>
                     <div className="menu-item">
                         <a href="/signup">Signup</a>
