@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "./css/Account.scss";
+import { Next } from "react-bootstrap/PageItem";
+
+console.log('Signup.js');
 
 //가입회원 db추가 부분
 const express = require('express');
 const router = express.Router();
-const db = require('../module/pool.js');
+const db = require('./Server/module/pool.js');
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/    // 이메일 정규 표현식 [아이디]@[###.###]
@@ -48,11 +51,32 @@ class Signup extends Component {
     if (formValid(this.state)) {
       console.log(`                              
         —SUBMITTING—
-        Name: ${this.state.name}
-        Email: ${this.state.email}
-        Password: ${this.state.password}
+        Name : ${this.state.name}
+        Email : ${this.state.email}
+        Password : ${this.state.password}
       `);
-      //db 추가 
+
+      //db에 유저 정보 추가 부분 
+      router.post('/', async(req, res, next) => {
+
+        try{
+          let insertUserQuery = 'insert into innodb.User(UserName, Email, Password)  values (?,?,?)';
+          let insertResult = await db.queryParamCnt_Arr(insertUserQuery,[Name, Email, password]);
+  
+          if(!insertResult){
+            console.log(err);
+            return next(500);
+          }
+  
+          res.status(201).send({
+            "message" : "insert new user success"
+          });
+        } catch(err){
+          return next(err);
+        }
+      });
+
+      module.exports = router;
       
     } else {
       console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
