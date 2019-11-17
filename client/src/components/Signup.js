@@ -4,11 +4,14 @@ import { Next } from "react-bootstrap/PageItem";
 
 console.log('Signup.js');
 
+<<<<<<< HEAD
 //가입회원 db추가 부분
 const express = require('express');
 const router = express.Router();
 const db = require('./Server/module/pool.js');
 
+=======
+>>>>>>> 5ec57cdd895e6d16e222034ec1d5bfbf54772733
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/    // 이메일 정규 표현식 [아이디]@[###.###]
 );
@@ -49,6 +52,7 @@ class Signup extends Component {
     e.preventDefault();
 
     if (formValid(this.state)) {
+<<<<<<< HEAD
       console.log(`                              
         —SUBMITTING—
         Name : ${this.state.name}
@@ -77,10 +81,10 @@ class Signup extends Component {
       });
 
       module.exports = router;
+=======
+>>>>>>> 5ec57cdd895e6d16e222034ec1d5bfbf54772733
       
-    } else {
-      console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
-    }
+    } 
   };
 
   handleChange = e => {
