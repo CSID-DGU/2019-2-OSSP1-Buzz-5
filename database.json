@@ -1,6 +1,3 @@
-#database
-/database.json
-
 {
   "host": "buzz-database.cj4klynaikoy.ap-northeast-2.rds.amazonaws.com",
   "user": "Buzz",
