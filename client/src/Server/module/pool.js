@@ -1,4 +1,5 @@
-const pool = require('../config/dbPool.js');
+/*
+const pool = require('../config/dbpool.js');
 
 module.exports = {							// 두 개의 메소드 module화
 	queryParam_None : async (...args) => {								// (...args) expression은 arrow function 사
@@ -34,3 +35,4 @@ console.log(connection);
 		}
 	}
 };
+*/
