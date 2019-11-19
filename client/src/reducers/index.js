@@ -7,6 +7,6 @@ import videoReducer from './video-reducer';
 const reducers = combineReducers({
   rooms: roomReducer,
   video: videoReducer,
-  audio: audioReducer
+  audio: audioReducer,
 });
 export default reducers;

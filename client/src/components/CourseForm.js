@@ -18,6 +18,7 @@ export class CourseForm extends Component {
       formErrors : {
         course_name : "",
         description : "",
+        password: "",
       }
     }
   }

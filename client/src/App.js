@@ -14,6 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from './App.css'
 import CourseList from './components/CourseList'
 import CourseForm from './components/CourseForm'
+
 class App extends Component {
     constructor(props) {
         super(props);
