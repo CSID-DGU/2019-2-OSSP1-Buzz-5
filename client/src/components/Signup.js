@@ -3,15 +3,15 @@ import "./css/Account.scss";
 
 console.log('Signup.js');
 
+import logo from '../assets/logo_wxw.png';
+import './css/Footer.scss';
+import "./css/Account.scss";
+
 //가입회원 db추가 부분
 // const express = require('express');
 // const router = express.Router();
-<<<<<<< HEAD
 // const db = require('../Server/module/pool.js');
 // const PORT = process.env.PORT || 3000;
-=======
-// const db = require('./Server/module/pool.js');
->>>>>>> 1c7f5123da946cb08cd19eb9aec1018164c2793d
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/    // 이메일 정규 표현식 [아이디]@[###.###]
@@ -61,11 +61,8 @@ class Signup extends Component {
       `);
 
       //db에 유저 정보 추가 부분 
-<<<<<<< HEAD
+// <<<<<<< HEAD
      /* router.post('/', async(req, res, next) => {
-=======
-      // router.post('/', async(req, res, next) => {
->>>>>>> 1c7f5123da946cb08cd19eb9aec1018164c2793d
 
       //   try{
       //     let insertUserQuery = 'insert into innodb.User(UserName, Email, Password)  values (?,?,?)';
@@ -76,7 +73,6 @@ class Signup extends Component {
       //       return next(500);
       //     }
   
-<<<<<<< HEAD
           res.status(201).send({
             "message" : "insert new user success"
           });
@@ -86,18 +82,7 @@ class Signup extends Component {
       });*/
 
       //module.exports = router;
-=======
-      //     res.status(201).send({
-      //       "message" : "insert new user success"
-      //     });
-      //   } catch(err){
-      //     return next(err);
-      //   }
-      // });
 
-      // module.exports = router;
->>>>>>> 1c7f5123da946cb08cd19eb9aec1018164c2793d
-      
     } 
   };
 
@@ -129,65 +114,88 @@ class Signup extends Component {
 
   render() {
     const { formErrors } = this.state;
-
+    const auth = this.props.authenticated;
     return (
-      <div className="wrapper">
-        <div className="form-wrapper">
-          <h1>Create Account</h1>
-          <form onSubmit={this.handleSubmit} method="post" noValidate>
-            <div className="name">
-              <label htmlFor="name">Name</label>
-              <input
-                className={formErrors.name.length > 0 ? "error" : null}
-                placeholder="Name"
-                type="name"
-                name="name"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.name.length > 0 && (
-                <span className="errorMessage">{formErrors.name}</span>
-              )}
-            </div>
-            
-            <div className="email">
-              <label htmlFor="email">Email</label>
-              <input
-                className={formErrors.email.length > 0 ? "error" : null}
-                placeholder="Email"
-                type="email"
-                name="email"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.email.length > 0 && (
-                <span className="errorMessage">{formErrors.email}</span>
-              )}
-            </div>
-
-            <div className="password">
-              <label htmlFor="password">Password</label>
-              <input
-                className={formErrors.password.length > 0 ? "error" : null}
-                placeholder="Password"
-                type="password"
-                name="password"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.password.length > 0 && (
-                <span className="errorMessage">{formErrors.password}</span>
-              )}
-            </div>
-            <div className="createAccount">
-              <button type="submit">Create Account</button>
-              <div>
-                <small>
-                  <a href="/login">Already Have an account?</a>
-                </small>
+      <div>
+        <div className="wrapper">
+          <div className="form-wrapper">
+            <h1>Create Account</h1>
+            <form onSubmit={this.handleSubmit} method="post" noValidate>
+              <div className="name">
+                <label htmlFor="name">Name</label>
+                <input
+                  className={formErrors.name.length > 0 ? "error" : null}
+                  placeholder="Name"
+                  type="name"
+                  name="name"
+                  noValidate
+                  onChange={this.handleChange}
+                />
+                {formErrors.name.length > 0 && (
+                  <span className="errorMessage">{formErrors.name}</span>
+                )}
               </div>
-            </div>
-          </form>
+              
+              <div className="email">
+                <label htmlFor="email">Email</label>
+                <input
+                  className={formErrors.email.length > 0 ? "error" : null}
+                  placeholder="Email"
+                  type="email"
+                  name="email"
+                  noValidate
+                  onChange={this.handleChange}
+                />
+                {formErrors.email.length > 0 && (
+                  <span className="errorMessage">{formErrors.email}</span>
+                )}
+              </div>
+
+              <div className="password">
+                <label htmlFor="password">Password</label>
+                <input
+                  className={formErrors.password.length > 0 ? "error" : null}
+                  placeholder="Password"
+                  type="password"
+                  name="password"
+                  noValidate
+                  onChange={this.handleChange}
+                />
+                {formErrors.password.length > 0 && (
+                  <span className="errorMessage">{formErrors.password}</span>
+                )}
+              </div>
+              <div className="createAccount">
+                <button type="submit">Create Account</button>
+                <div>
+                  <small>
+                    <a href="/login">Already Have an account?</a>
+                  </small>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div className="footer-page" >
+          <div className="container">
+              <div className="upper-part">
+                  <img src={logo} className="footer-logo" />
+                  <div className="row text-regular">
+                      <div className="menu-item">
+                          <a href="/team">Team</a>
+                      </div>
+                      <div className="menu-item" onClick={()=>this.props.Logout}>
+                          {auth ? (<a href="/">Logout</a>) : (<a href="/login">Login</a>)}
+                      </div>
+                      <div className="menu-item">
+                          <a href="/signup">Signup</a>
+                      </div>
+                  </div>
+              </div>
+              <div className="footer-part text-smaller">
+                  Copyright 2019 (c) Dongguk Univ. CSE-OSSP1-Team-Buzz
+              </div>
+          </div>
         </div>
       </div>
     );

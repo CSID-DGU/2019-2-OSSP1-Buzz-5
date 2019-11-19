@@ -63,16 +63,16 @@ class App extends Component {
                     <div>
                         <Header authenticated={this.state.authenticated} userName={this.state.name} Logout={this.logout}/>
                         <Switch>
-                            <Route exact path="/" component={Home} />
-                            <Route path="/team" component={Team} />
-                            <Route path="/login" component={Login} />
-                            <Route path="/signup" component={Signup} />
-                            { auth ? <Route path="/courselist" component={CourseList}/> : <Redirect to="/login" />}
-                            { auth ? <Route path="/courseform" component={CourseForm}/> : <Redirect to="/login" />}
+                            <Route exact path="/" authenticated={this.state.authenticated} component={Home} />
+                            <Route path="/team" authenticated={this.state.authenticated} component={Team} />
+                            <Route path="/login" authenticated={this.state.authenticated} component={Login} />
+                            <Route path="/signup" authenticated={this.state.authenticated} component={Signup} />
+                            { auth ? <Route path="/courselist" authenticated={this.state.authenticated} component={CourseList}/> : <Redirect to="/login" />}
+                            { auth ? <Route path="/courseform" authenticated={this.state.authenticated} component={CourseForm}/> : <Redirect to="/login" />}
                             { auth ? <Route path="/courseroom" component={EnterRoomPage} /> : <Redirect to="/login" />}
                             { auth ? <Route path="/r/:room" component={Room} /> : <Redirect to="/login" />}
                         </Switch>
-                        <Footer authenticated={this.state.authenticated} Logout={this.logout}/>
+                        {/* <Footer authenticated={this.state.authenticated} Logout={this.logout}/> */}
                     </div>
                 </BrowserRouter>
             </Provider>

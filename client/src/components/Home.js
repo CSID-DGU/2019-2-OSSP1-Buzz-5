@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import logo from '../assets/logo_wxw.png';
 import slide from '../assets/slide-dots.png';
 import lock from '../assets/lock.png';
 import parallex from '../assets/parallex.png';
@@ -6,11 +7,13 @@ import comming from '../assets/comming.png';
 import openIcon from '../assets/quotation-left.png';
 import closeIcon from '../assets/quotation-right.png';
 import background from '../assets/background.jpg';
+import './css/Footer.scss';
 import './css/Home.scss';
 
 
 export class Home extends Component {
     render() {
+        const auth = this.props.authenticated
         return (
             <div>
                 <div className="container content-page">
@@ -74,68 +77,27 @@ export class Home extends Component {
                         </div>
                     </div>
                 </div>
-
-                <br/><br/>
-                {/* <div className="testimonial-page">
+                <div className="footer-page" >
                     <div className="container">
-                        <div className="testimonial-title text-extra-big">
-                            Testimonials
-                        </div>
-                        <div className="row">
-                            <div className="testimonial-item col-md-6">
-                                <img src={openIcon} className="quotation-icon"/>
-                                <div className="text-regular">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod...<br/><br/>
+                        <div className="upper-part">
+                            <img src={logo} className="footer-logo" />
+                            <div className="row text-regular">
+                                <div className="menu-item">
+                                    <a href="/team">Team</a>
                                 </div>
-                                <div className="footer-part">
-                                    <div className="writer text-small">
-                                        John Updike
-                                    </div>
-                                    <img src={closeIcon} className="quotation-icon"/>
+                                <div className="menu-item" onClick={()=>this.props.Logout}>
+                                    {auth ? (<a href="/">Logout</a>) : (<a href="/login">Login</a>)}
                                 </div>
-                            </div>
-                            <div className="testimonial-item col-md-6">
-                                <img src={openIcon} className="quotation-icon"/>
-                                <div className="text-regular">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod...<br/><br/>
-                                </div>
-                                <div className="footer-part">
-                                    <div className="writer text-small">
-                                        John Updike
-                                    </div>
-                                    <img src={closeIcon} className="quotation-icon"/>
+                                <div className="menu-item">
+                                    <a href="/signup">Signup</a>
                                 </div>
                             </div>
                         </div>
-
-                        <div className="row">
-                            <div className="testimonial-item col-md-6">
-                                <img src={openIcon} className="quotation-icon"/>
-                                <div className="text-regular">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod...<br/><br/>
-                                </div>
-                                <div className="footer-part">
-                                    <div className="writer text-small">
-                                        John Updike
-                                    </div>
-                                    <img src={closeIcon} className="quotation-icon"/>
-                                </div>
-                            </div>
-                            <div className="testimonial-item col-md-6">
-                                <img src={openIcon} className="quotation-icon"/>
-                                <div className="text-regular">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod...<br/><br/>
-                                </div>
-                                <div className="footer-part">
-                                    <div className="writer text-small">
-                                        John Updike
-                                    </div>
-                                    <img src={closeIcon} className="quotation-icon"/>
-                                </div>
-                            </div>
+                        <div className="footer-part text-smaller">
+                            Copyright 2019 (c) Dongguk Univ. CSE-OSSP1-Team-Buzz
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
         )
     }
