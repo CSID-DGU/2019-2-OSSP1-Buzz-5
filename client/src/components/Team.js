@@ -4,12 +4,15 @@ import React, { Component } from 'react'
 import sjw from '../assets/sjw.jpg'
 import hyj from '../assets/hyj.jpeg'
 import lsy from '../assets/lsy.jpeg'
+import logo from '../assets/logo_wxw.png';
+import './css/Footer.scss';
 
 export class Team extends Component {
     render() {
         const style = {
             color : "#999999"
         }
+        const auth = this.props.authenticated
         return (
             <div>
                 <div id="fl-main-content" class="fl-page-content" itemprop="mainContentOfPage">
@@ -332,6 +335,27 @@ export class Team extends Component {
                                     </div>
                                 </article>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="footer-page" >
+                    <div className="container">
+                        <div className="upper-part">
+                            <img src={logo} className="footer-logo" />
+                            <div className="row text-regular">
+                                <div className="menu-item">
+                                    <a href="/team">Team</a>
+                                </div>
+                                <div className="menu-item" onClick={()=>this.props.Logout}>
+                                    {auth ? (<a href="/">Logout</a>) : (<a href="/login">Login</a>)}
+                                </div>
+                                <div className="menu-item">
+                                    <a href="/signup">Signup</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="footer-part text-smaller">
+                            Copyright 2019 (c) Dongguk Univ. CSE-OSSP1-Team-Buzz
                         </div>
                     </div>
                 </div>

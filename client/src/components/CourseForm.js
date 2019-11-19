@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
 import moment from 'moment'
+import logo from '../assets/logo_wxw.png';
 import "./css/Course.scss"
+import './css/Footer.scss';
 
 export class CourseForm extends Component {
   constructor(props) {
@@ -18,6 +20,7 @@ export class CourseForm extends Component {
       formErrors : {
         course_name : "",
         description : "",
+        password: "",
       }
     }
   }
@@ -74,69 +77,92 @@ export class CourseForm extends Component {
 
   render() {
     const { formErrors } = this.state;
-
+    const auth = this.props.authenticated;
     return (
-      <div className="row-fluid">
-        <div className="wrapper">
-          <h1>Create Course Room</h1>
-          <hr/>
-          <div className="form_wrapper">
-            <form method="post" action="" noValidate onSubmit={this.handleSubmit}>
-              <div className="course_name">
-                <label>Course Name</label>
-                <input
-                    className={formErrors.course_name.length > 0 ? "error" : null}
-                    placeholder="Course Name"
-                    name="course_name"
-                    noValidate
-                    onChange={this.handleChange}
-                  />
-              </div>
+      <div>
+        <div className="row-fluid">
+          <div className="wrapper">
+            <h1>Create Course Room</h1>
+            <hr/>
+            <div className="form_wrapper">
+              <form method="post" action="" noValidate onSubmit={this.handleSubmit}>
+                <div className="course_name">
+                  <label>Course Name</label>
+                  <input
+                      className={formErrors.course_name.length > 0 ? "error" : null}
+                      placeholder="Course Name"
+                      name="course_name"
+                      noValidate
+                      onChange={this.handleChange}
+                    />
+                </div>
 
-              <div className="description">
-                <label>Course Description</label>
-                <input
-                    className={formErrors.description.length > 0 ? "error" : null}
-                    placeholder="Brief Course Description"
-                    name="description"
-                    noValidate
-                    onChange={this.handleChange}
-                  />
-              </div>
+                <div className="description">
+                  <label>Course Description</label>
+                  <input
+                      className={formErrors.description.length > 0 ? "error" : null}
+                      placeholder="Brief Course Description"
+                      name="description"
+                      noValidate
+                      onChange={this.handleChange}
+                    />
+                </div>
 
-              <div className="language">
-                <label>Course Language</label>
-                <select noValidate onChange={this.handleChange} name="language">
-                  <option value="JavaScript" selected="selected">JavaScript</option>
-                  <option value="C++">C++</option>
-                  <option value="Java">Java</option>
-                  <option value="C">C</option>
-                  <option value="Objective-C">Objective-C</option>
-                  <option value="Python">Python</option>
-                  <option value="Go">Go</option>
-                  <option value="Kotlin">Kotlin</option>
-                  <option value="Swift">Swift</option>
-                </select>
-              </div>
+                <div className="language">
+                  <label>Course Language</label>
+                  <select noValidate onChange={this.handleChange} name="language">
+                    <option value="JavaScript" selected="selected">JavaScript</option>
+                    <option value="C++">C++</option>
+                    <option value="Java">Java</option>
+                    <option value="C">C</option>
+                    <option value="Objective-C">Objective-C</option>
+                    <option value="Python">Python</option>
+                    <option value="Go">Go</option>
+                    <option value="Kotlin">Kotlin</option>
+                    <option value="Swift">Swift</option>
+                  </select>
+                </div>
 
-              <div className="password">
-                <label>Course Pasword</label>
-                <input
-                    className={formErrors.password.length > 0 ? "error" : null}
-                    placeholder="Input Course Room Character"
-                    type="password"
-                    name="password"
-                    noValidate
-                    onChange={this.handleChange}
-                  />
-              </div>
+                <div className="password">
+                  <label>Course Pasword</label>
+                  <input
+                      className={formErrors.password.length > 0 ? "error" : null}
+                      placeholder="Input Course Room Character"
+                      type="password"
+                      name="password"
+                      noValidate
+                      onChange={this.handleChange}
+                    />
+                </div>
 
-              <button type="submit" onSubmit={this.handleSubmit}>Create Course</button>
-            </form>
+                <button type="submit" onSubmit={this.handleSubmit}>Create Course</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-page" >
+          <div className="container">
+              <div className="upper-part">
+                  <img src={logo} className="footer-logo" />
+                  <div className="row text-regular">
+                      <div className="menu-item">
+                          <a href="/team">Team</a>
+                      </div>
+                      <div className="menu-item" onClick={()=>this.props.Logout}>
+                          {auth ? (<a href="/">Logout</a>) : (<a href="/login">Login</a>)}
+                      </div>
+                      <div className="menu-item">
+                          <a href="/signup">Signup</a>
+                      </div>
+                  </div>
+              </div>
+              <div className="footer-part text-smaller">
+                  Copyright 2019 (c) Dongguk Univ. CSE-OSSP1-Team-Buzz
+              </div>
           </div>
         </div>
       </div>
-      
     )
   }
 }

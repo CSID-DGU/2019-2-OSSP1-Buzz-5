@@ -16,24 +16,6 @@ const EnterRoom = props =>
     </div>
   </div>;
 
-  // <div className="wrapper">
-  //   <div className="form-wrapper">
-  //     <h1>Create Account</h1>
-  //     <form onSubmit={this.handleSubmit} method="post" noValidate>
-  //       <div className="name">
-  //         <label htmlFor="name">Name</label>
-  //         <input
-  //           placeholder="Name"
-  //           type="name"
-  //           name="name"
-  //           noValidate
-  //           onChange={this.handleChange}
-  //         />
-  //       </div>
-  //     </form>
-  //   </div>
-  // </div>
-
 EnterRoom.propTypes = {
   handleChange: PropTypes.func.isRequired,
   defaultRoomId: PropTypes.string.isRequired,
