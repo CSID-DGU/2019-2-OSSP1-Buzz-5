@@ -18,6 +18,7 @@ export class CourseForm extends Component {
       formErrors : {
         course_name : "",
         description : "",
+        password: "",
       }
     }
   }
@@ -36,12 +37,15 @@ export class CourseForm extends Component {
     switch (name) {
       case "course_name":
         formErrors.name =
-          value.length < 3 ? "minimum 3 characaters required" : "";
+          value.length < 3 ? "minimum 3 characters required" : "";
         break;
       case "description":
         formErrors.description =
-          value.length < 3 ? "minimum 3 characaters required" : "";
+          value.length < 3 ? "minimum 3 characters required" : "";
         break;
+      case "password":
+        formErrors.password =
+          value.length < 3 ? "minimum 3 characters required" : "";
       default:
         break;
     }
@@ -59,7 +63,7 @@ export class CourseForm extends Component {
         description: this.state.description,
         language: this.state.language,
         date: moment().format('MMMM Do YYYY, h:mm:ss a'),
-        course_password: String(new Date() - new Date().setHours(0, 0, 0, 0))
+        course_password: this.state.password,
         // course_password: 
       }
     })
@@ -114,6 +118,18 @@ export class CourseForm extends Component {
                   <option value="Kotlin">Kotlin</option>
                   <option value="Swift">Swift</option>
                 </select>
+              </div>
+
+              <div className="password">
+                <label>Course Pasword</label>
+                <input
+                    className={formErrors.password.length > 0 ? "error" : null}
+                    placeholder="Input Course Room Character"
+                    type="password"
+                    name="password"
+                    noValidate
+                    onChange={this.handleChange}
+                  />
               </div>
 
               <button type="submit" onSubmit={this.handleSubmit}>Create Course</button>

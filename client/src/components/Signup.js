@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import "./css/Account.scss";
-import { Next } from "react-bootstrap/PageItem";
 
 console.log('Signup.js');
 
 //가입회원 db추가 부분
 // const express = require('express');
 // const router = express.Router();
+<<<<<<< HEAD
 // const db = require('../Server/module/pool.js');
 // const PORT = process.env.PORT || 3000;
+=======
+// const db = require('./Server/module/pool.js');
+>>>>>>> 1c7f5123da946cb08cd19eb9aec1018164c2793d
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/    // 이메일 정규 표현식 [아이디]@[###.###]
@@ -48,7 +51,7 @@ class Signup extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
+    
     if (formValid(this.state)) {
       console.log(`                              
         —SUBMITTING—
@@ -58,17 +61,22 @@ class Signup extends Component {
       `);
 
       //db에 유저 정보 추가 부분 
+<<<<<<< HEAD
      /* router.post('/', async(req, res, next) => {
+=======
+      // router.post('/', async(req, res, next) => {
+>>>>>>> 1c7f5123da946cb08cd19eb9aec1018164c2793d
 
-        try{
-          let insertUserQuery = 'insert into innodb.User(UserName, Email, Password)  values (?,?,?)';
-          let insertResult = await db.queryParamCnt_Arr(insertUserQuery,[this.state.name, this.state.email, this.state.password]);
+      //   try{
+      //     let insertUserQuery = 'insert into innodb.User(UserName, Email, Password)  values (?,?,?)';
+      //     let insertResult = await db.queryParamCnt_Arr(insertUserQuery,[this.state.name, this.state.email, this.state.password]);
   
-          if(!insertResult){
-           // console.log(err);
-            return next(500);
-          }
+      //     if(!insertResult){
+      //       console.log("Insert Error");
+      //       return next(500);
+      //     }
   
+<<<<<<< HEAD
           res.status(201).send({
             "message" : "insert new user success"
           });
@@ -78,6 +86,17 @@ class Signup extends Component {
       });*/
 
       //module.exports = router;
+=======
+      //     res.status(201).send({
+      //       "message" : "insert new user success"
+      //     });
+      //   } catch(err){
+      //     return next(err);
+      //   }
+      // });
+
+      // module.exports = router;
+>>>>>>> 1c7f5123da946cb08cd19eb9aec1018164c2793d
       
     } 
   };
