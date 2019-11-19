@@ -5,10 +5,11 @@ import { Next } from "react-bootstrap/PageItem";
 console.log('Signup.js');
 
 //가입회원 db추가 부분
-const express = require('express');
-const router = express.Router();
-const db = require('./Server/module/pool.js');
-const PORT = process.env.PORT || 3000;
+// const express = require('express');
+// const router = express.Router();
+// const db = require('../Server/module/pool.js');
+// const PORT = process.env.PORT || 3000;
+
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/    // 이메일 정규 표현식 [아이디]@[###.###]
 );
@@ -57,7 +58,7 @@ class Signup extends Component {
       `);
 
       //db에 유저 정보 추가 부분 
-      router.post('/', async(req, res, next) => {
+     /* router.post('/', async(req, res, next) => {
 
         try{
           let insertUserQuery = 'insert into innodb.User(UserName, Email, Password)  values (?,?,?)';
@@ -74,9 +75,9 @@ class Signup extends Component {
         } catch(err){
           return next(err);
         }
-      });
+      });*/
 
-      module.exports = router;
+      //module.exports = router;
       
     } 
   };

@@ -1,38 +1,87 @@
-/*
+const async = require('async');
 const pool = require('../config/dbpool.js');
+console.log('pool.js');
 
-module.exports = {							// 두 개의 메소드 module화
-	queryParam_None : async (...args) => {								// (...args) expression은 arrow function 사
-		const query = args[0];
-		let result;
+module.exports = {
+  queryParamCnt_None : async (...args) => {
+    const query = args[0];
+    let result;
+    try {
+      var connection = await pool.getConnection();
+      result = await connection.query(query);
+    }
+    catch(err) {
+      console.log("mysql error! err log =>" + err);
+    }
+    finally {
+      pool.releaseConnection(connection);
+      return result;
+    }
+  },
+  queryParamCnt_Arr : async (...args) => {
+    const query = args[0];
+    const data = args[1];
 
-		try {
-			var connection = await pool.getConnection();			// connection을 pool에서 하나 가져온다.
-			result = await connection.query(query) || null;		// query문의 결과 || null 값이 result에 들어간다.
-		} catch(err) {
-			next(err);
-		} finally {
-			//pool.releaseConnection(connection);								// waterfall 에서는 connection.release()를 사용했지만, 이 경우 pool.releaseConnection(connection) 을 해준다.
-console.log(connection);
-			return result;
-		}
+    let result;
+    try {
+      var connection = await pool.getConnection();
+      result = await connection.query(query, data);
+    }
+    catch(err) {
+      console.log("mysql error! err log =>" + err);
+    }
+    finally {
+      pool.releaseConnection(connection);
+      return result;
+    }
+  },
+  Transaction : async (...args) => {
+    let result = "Success";
 
-	},
-	queryParam_Arr : async (...args) => {
-		const query = args[0];
-		const value = args[1];	// array
-		let result;
+    try{
+      var connection = await pool.getConnection();
+      await connection.beginTransaction();
 
-		try {
-			var connection = await pool.getConnection();			// connection을 pool에서 하나 가져온다.
-			result = await connection.query(query, value) || null;	// 두 번째 parameter에 배열 => query문에 들어갈 runtime 시 결정될 value
-		} catch(err) {
-			next(err);
-			//print("aaaaaaaaa");
-		} finally {
-			pool.releaseConnection(connection);								// waterfall 에서는 connection.release()를 사용했지만, 이 경우 pool.releaseConnection(connection) 을 해준다.
-			return result;
-		}
-	}
+      await args[0](connection, ...args);
+      await connection.commit();
+    }
+    catch(err){
+      await connection.rollback();
+      console.log("mysql error! err log =>" + err);
+      result = undefined;
+    }
+    finally {
+      pool.releaseConnection(connection);
+      return result;
+    }
+  }
 };
+
+
+/* Transaction 사용 예시
+
+const db = require('../module/pool.js');
+
+await db.Transaction( async (connection) => {
+  await connection.query(query1, [data]);
+  await connection.query(query2, [data]);
+})
+
+
+let Transaction = await db.Transaction( async (connection) => {
+  var result_addvote = await connection.query(select_addvote,[vote, id]);
+  if(!result_addvote){
+    return next("500");
+  }
+
+  let result_subcoin = await connection.query(select_subcoin,[vote, id]);
+  if(!result_subcoin){
+    return next("500");
+  }
+})
+
+if(!Transaction){
+  return next("500");
+}
+
 */
