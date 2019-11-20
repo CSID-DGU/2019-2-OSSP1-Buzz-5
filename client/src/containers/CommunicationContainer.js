@@ -4,13 +4,11 @@ import MediaContainer from './MediaContainer'
 import Communication from '../components/Communication'
 import store from '../store'
 import { connect } from 'react-redux'
-import {getDisplayStream} from './media-access'
 
 class CommunicationContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      peer: {},
       sid: '',
       message: '',
       audio: true,
@@ -22,7 +20,7 @@ class CommunicationContainer extends React.Component {
     this.toggleVideo = this.toggleVideo.bind(this);
     this.toggleAudio = this.toggleAudio.bind(this);
     this.send = this.send.bind(this);
-    this.getDisplay = this.getDisplay.bind(this);
+    this.screenSharing = this.screenSharing.bind(this);
   }
   hideAuth() {
     this.props.media.setState({bridge: 'connecting'});
@@ -80,19 +78,8 @@ class CommunicationContainer extends React.Component {
   handleHangup() {
     this.props.media.hangup();
   }
-  getDisplay(){
-    console.log(111111)
-    getDisplayStream().then(stream => {
-      stream.oninactive = () => {
-        this.state.peer.removeStream(this.localStream)  
-        this.getUserMedia().then(() => {
-          this.state.peer.addStream(this.localStream)  
-        })
-      }
-      this.setState({ streamUrl: stream, localStream: stream })
-      this.localVideo.srcObject = stream   
-      this.state.peer.addStream(stream)   
-    })
+  screenSharing() {
+    this.props.media.getDisplay();
   }
   render(){
     return (
@@ -104,7 +91,7 @@ class CommunicationContainer extends React.Component {
         handleHangup={this.handleHangup}
         handleInput={this.handleInput}
         handleInvitation={this.handleInvitation}
-        getDisplay={this.getDisplay} />
+        screenSharing={this.screenSharing} />
     );
   }
 }

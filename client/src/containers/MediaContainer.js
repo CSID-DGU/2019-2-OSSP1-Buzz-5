@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
+import {getDisplayStream} from './media-access'
 
 class MediaBridge extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class MediaBridge extends Component {
     this.hangup = this.hangup.bind(this);
     this.init = this.init.bind(this);
     this.setDescription = this.setDescription.bind(this);
+    this.getDisplay = this.getDisplay.bind(this);
   }
   componentWillMount() {
     // chrome polyfill for connection between the local device and a remote peer
@@ -90,6 +92,64 @@ class MediaBridge extends Component {
   handleError(e) {
     console.log(e);
   }
+  
+  getUserMedia(cb) {
+    return new Promise((resolve, reject) => {
+      navigator.getUserMedia = navigator.getUserMedia =
+        navigator.getUserMedia ||
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia
+      const op = {
+        video: {
+          width: { min: 160, ideal: 640, max: 1280 },
+          height: { min: 120, ideal: 360, max: 720 }
+        },
+        audio: true
+      }
+      navigator.getUserMedia(
+        op,
+        stream => {
+          // this.setState({ streamUrl: stream, localStream: stream })
+          this.localVideo.srcObject = stream
+          resolve()
+        },
+        () => {}
+      )
+    })
+  }
+  
+  // getDisplay(){
+  //   getDisplayStream().then(stream => {
+  //     stream.oninactive = () => {
+  //       this.pc.removeStream(this.localStream)  
+  //       this.props.getUserMedia.then(() => {
+  //         this.pc.addStream(this.localStream)
+  //       })
+  //     }
+  //     // this.setState({ streamUrl: stream, localStream: stream })
+  //     this.localVideo.srcObject = stream
+  //     this.pc.addStream(stream)   
+  //   })
+  // }
+
+  async getDisplay() {
+    try {
+      await navigator.mediaDevices.getDisplayMedia().then(stream => {
+        stream.oninactive = () => {
+          this.pc.removeStream(this.localStream)  
+          this.props.getUserMedia.then(() => {
+            this.pc.addStream(this.localStream)
+          })
+        }
+        // this.setState({ streamUrl: stream, localStream: stream })
+        this.localVideo.srcObject = stream
+        this.pc.addStream(stream)
+      })
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
   init() {
     // wait for local media to be ready
     const attachMediaIfReady = () => {
