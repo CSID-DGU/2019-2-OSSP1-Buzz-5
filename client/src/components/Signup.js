@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./css/Account.scss";
-
-console.log('Signup.js');
-
 import logo from '../assets/logo_wxw.png';
 import './css/Footer.scss';
 import "./css/Account.scss";
+
+console.log('Signup.js');
+
 
 //가입회원 db추가 부분
 // const express = require('express');
