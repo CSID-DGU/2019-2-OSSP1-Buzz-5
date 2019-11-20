@@ -10,10 +10,11 @@ import Room from './containers/RoomPage'
 import Team from './components/Team'
 import Login from './components/Login'
 import Signup from './components/Signup'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import styles from './App.css'
 import CourseList from './components/CourseList'
 import CourseForm from './components/CourseForm'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import styles from './App.css'
+
 class App extends Component {
     constructor(props) {
         super(props);
