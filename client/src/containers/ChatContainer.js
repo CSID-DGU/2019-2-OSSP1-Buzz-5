@@ -65,12 +65,12 @@ export class ChatContainer extends Component {
   renderChat = () => {
     const { chat } = this.state;
     console.log(chat)
-    return chat.map(({user, msg}, idx) => {
+    return chat.map(({user, msg}, idx) => (
       <div key={idx}>
         <span style={{color: "green"}}>{user} : </span>
         <span>{msg}</span>
       </div>
-    });
+    ));
   }
   // showChatValue = () => {
   //   this.state.messages.map(message => {
@@ -83,7 +83,7 @@ export class ChatContainer extends Component {
       <div>
         <div className="col">
           <div className="row-xl-10">
-            {this.renderChat()}
+            {this.renderChat}
           </div>
           <hr/>
           <div className="row-xl-2">
