@@ -83,7 +83,7 @@ export class ChatContainer extends Component {
       <div>
         <div className="col">
           <div className="row-xl-10">
-            {this.renderChat}
+            {this.renderChat()}
           </div>
           <hr/>
           <div className="row-xl-2">
