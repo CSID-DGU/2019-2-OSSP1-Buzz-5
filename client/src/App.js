@@ -61,14 +61,14 @@ class App extends Component {
             <Provider store={store}>
                 <BrowserRouter basename={process.env.PUBLIC_URL}>
                     <div>
-                        <Header authenticated={this.state.authenticated} userName={this.state.name} Logout={this.logout}/>
+                        {/* <Header authenticated={this.state.authenticated} userName={this.state.name} Logout={this.logout}/> */}
                         <Switch>
-                            <Route exact path="/" authenticated={this.state.authenticated} component={Home} />
-                            <Route path="/team" authenticated={this.state.authenticated} component={Team} />
-                            <Route path="/login" authenticated={this.state.authenticated} component={Login} />
-                            <Route path="/signup" authenticated={this.state.authenticated} component={Signup} />
-                            { auth ? <Route path="/courselist" authenticated={this.state.authenticated} component={CourseList}/> : <Redirect to="/login" />}
-                            { auth ? <Route path="/courseform" authenticated={this.state.authenticated} component={CourseForm}/> : <Redirect to="/login" />}
+                            <Route exact path="/" render={(props) => (<Home {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} />
+                            <Route path="/team" render={(props) => (<Team {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} />
+                            <Route path="/login" render={(props) => (<Login {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} />
+                            <Route path="/signup" render={(props) => (<Signup {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} />
+                            { auth ? <Route path="/courselist" render={(props) => (<CourseList {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} /> : <Redirect to="/login" />}
+                            { auth ? <Route path="/courseform" render={(props) => (<CourseForm {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} /> : <Redirect to="/login" />}
                             { auth ? <Route path="/courseroom" component={EnterRoomPage} /> : <Redirect to="/login" />}
                             { auth ? <Route path="/r/:room" component={Room} /> : <Redirect to="/login" />}
                         </Switch>
