@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MediaContainer from './MediaContainer'
 import CommunicationContainer from './CommunicationContainer'
+import ChatContainer from './ChatContainer'
 import { connect } from 'react-redux'
 import store from '../store'
 import io from 'socket.io-client'
@@ -28,22 +29,7 @@ class RoomPage extends Component {
           </div>
           <hr/>
           <div className="col-xl-3">
-            <div className="col">
-              <div className="row-xl-10">
-                asdfasdf
-              </div>
-              <hr/>
-              <div className="row-xl-2">
-                <div className="input-group">
-                  <input className="form-control" placeholder="Search" name="srch-term" id="srch-term"></input>
-                  <div className="input-group-btn">
-                    <button className="btn btn-default" type="submit">
-                      <i className="fa fa-send-o"/>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ChatContainer socket={this.socket} name={this.props.userName}/>
           </div>
         </div>
       </div>

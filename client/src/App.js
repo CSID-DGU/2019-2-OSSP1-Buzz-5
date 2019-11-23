@@ -14,6 +14,7 @@ import CourseList from './components/CourseList'
 import CourseForm from './components/CourseForm'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from './App.css'
+import RoomPage from './containers/RoomPage'
 
 class App extends Component {
     constructor(props) {
@@ -70,7 +71,7 @@ class App extends Component {
                             { auth ? <Route path="/courselist" render={(props) => (<CourseList {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} /> : <Redirect to="/login" />}
                             { auth ? <Route path="/courseform" render={(props) => (<CourseForm {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} /> : <Redirect to="/login" />}
                             { auth ? <Route path="/courseroom" component={EnterRoomPage} /> : <Redirect to="/login" />}
-                            { auth ? <Route path="/r/:room" component={Room} /> : <Redirect to="/login" />}
+                            { auth ? <Route path="/r/:room" render={(props) => (<RoomPage {...props} userName={this.state.name}/> )} /> : <Redirect to="/login" />}
                         </Switch>
                         {/* <Footer authenticated={this.state.authenticated} Logout={this.logout}/> */}
                     </div>

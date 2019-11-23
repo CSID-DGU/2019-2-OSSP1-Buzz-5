@@ -58,6 +58,10 @@ io.sockets.on('connection', socket => {
     // sending to all clients in the room (channel) except sender
     socket.broadcast.to(room).emit('hangup');
     socket.leave(room);});
+  socket.on('send_msg', () => function(name, text) {
+    var msg = name + ': ' + text;
+    io.emit('receive_msg', msg);
+  });
 });
 
 // app.use(bodyParser.json());
