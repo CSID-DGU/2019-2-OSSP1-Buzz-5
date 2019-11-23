@@ -29,6 +29,7 @@ export class ChatContainer extends Component {
         chat: [...this.state.chat, {name, msg}]
       });
     });
+    console.log(chat)
   }
   
   handleChange = e => {
@@ -44,7 +45,7 @@ export class ChatContainer extends Component {
       user: this.props.name, 
       message: this.state.message
     });
-
+    console.log(this.props.name, this.state.message)
     this.setState({
       message: ""
     })
