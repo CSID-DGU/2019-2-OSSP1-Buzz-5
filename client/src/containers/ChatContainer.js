@@ -6,21 +6,29 @@ export class ChatContainer extends Component {
 
     this.state = {
       message: "",
-      messages: [],
+      chat: [],
     }
 
   
-    this.props.socket.on('receive_msg', function(data) {
-      addMessage(data)
-    })
+    // this.props.socket.on('receive_msg', function(data) {
+    //   addMessage(data)
+    // })
 
-    const addMessage = data => {
-      console.log(data)
+    // const addMessage = data => {
+    //   console.log(data)
+    //   this.setState({
+    //     chat: [...this.state.chat, data]
+    //   })
+    //   console.log(this.state.chat)
+    // };
+  }
+
+  componentDidMount = () => {
+    this.props.socket.on('chat_msg', ({name, msg}) => {
       this.setState({
-        messages: [...this.state.messages, data]
-      })
-      console.log(this.state.messages)
-    };
+        chat: [...this.state.chat, {name, msg}]
+      });
+    });
   }
   
   handleChange = e => {
@@ -36,14 +44,7 @@ export class ChatContainer extends Component {
       user: this.props.name, 
       message: this.state.message
     });
-    
-    // // console.log(data)
-    // this.setState({
-    //   messages: [...this.state.messages, this.state.message]
-    // })
-    // console.log(this.state.messages)
 
-    // this.addMessage(this.state.message)
     this.setState({
       message: ""
     })
@@ -61,6 +62,16 @@ export class ChatContainer extends Component {
     chat.scrollTop = chat.scrollHeight;
   }
 
+  renderChat = () => {
+    const { chat } = this.state;
+    console.log(chat)
+    return chat.map(({user, msg}, idx) => {
+      <div key={idx}>
+        <span style={{color: "green"}}>{user} : </span>
+        <span>{msg}</span>
+      </div>
+    });
+  }
   // showChatValue = () => {
   //   this.state.messages.map(message => {
 
@@ -72,11 +83,7 @@ export class ChatContainer extends Component {
       <div>
         <div className="col">
           <div className="row-xl-10">
-            {this.state.messages.map(message => {
-              return (
-                <div>{message.user}: {message.message}</div>
-              )
-            })}
+            {this.renderChat}
           </div>
           <hr/>
           <div className="row-xl-2">
