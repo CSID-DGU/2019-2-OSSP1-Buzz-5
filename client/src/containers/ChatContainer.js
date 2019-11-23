@@ -29,7 +29,7 @@ export class ChatContainer extends Component {
         chat: [...this.state.chat, {name, msg}]
       });
     });
-    console.log(chat)
+    console.log(this.state.chat)
   }
   
   handleChange = e => {
