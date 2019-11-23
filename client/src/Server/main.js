@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import mysql from 'mysql';
 import path from 'path';
 
-let dbconfig = require(__dirname+'./config/database.json');
+let dbconfig = require(__dirname+'../../database.json');
 let connection = mysql.createConnection(dbconfig);
 
 const app = express();
