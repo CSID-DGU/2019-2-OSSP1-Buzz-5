@@ -60,6 +60,7 @@ io.sockets.on('connection', socket => {
     socket.leave(room);});
 
   socket.on('chat_msg', ({name, msg}) => {
+    console.log(name, msg);
     // var msg = name + ': ' + text;
     io.emit('chat_msg', {name, msg});
   });
