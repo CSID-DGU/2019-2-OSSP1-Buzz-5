@@ -17,7 +17,7 @@ export class ChatContainer extends Component {
       console.log(obj)
       log.unshift(obj)
       this.setState({messages: log})
-      console.log(messages)
+      console.log(this.state.messages)
     })
   }
 
@@ -61,10 +61,11 @@ export class ChatContainer extends Component {
 
    changeFormat = (n, digits) => {
     var zero = '';
+    var i;
     n = n.toString();
 
     if (n.length < digits) {
-      for (i = 0; i < digits - n.length; i++)
+      for (i=0; i<digits-n.length; i++)
         zero += '0';
     }
     return zero + n;
