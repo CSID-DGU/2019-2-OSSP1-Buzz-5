@@ -65,7 +65,6 @@ class CommunicationContainer extends React.Component {
     this.hideAuth();
   }
   toggleVideo() {
-    console.log(123123)
     const video = this.localStream.getVideoTracks()[0].enabled = !this.state.video;
     this.setState({video: video});
     this.props.setVideo(video);

@@ -23,7 +23,7 @@ export class ChatContainer extends Component {
     // };
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.props.socket.on('chat_msg', ({name, msg}) => {
       this.setState({
         chat: [...this.state.chat, {name, msg}]       // 이부분 문제
@@ -42,8 +42,8 @@ export class ChatContainer extends Component {
 
   handleSubmit = e => {
     this.props.socket.emit('send_msg', {
-      user: this.props.name, 
-      message: this.state.message
+      name: this.props.name, 
+      msg: this.state.message
     });
     console.log(this.props.name, this.state.message)
     this.setState({
