@@ -14,10 +14,8 @@ export class ChatContainer extends Component {
     this.props.socket.on('chat',  (obj) => {
       const log = this.state.messages
       obj.key = 'key_' + (this.state.messages.length + 1)
-      console.log(obj)
-      log.unshift(obj)
+      log.push(obj)
       this.setState({messages: log})
-      console.log(this.state.messages)
     })
   }
 
@@ -37,7 +35,7 @@ export class ChatContainer extends Component {
     this.props.socket.emit('chat', {
       name: this.props.name, 
       msg: this.state.message,
-      timestamp: this.getTimeStamp
+      timestamp: this.getTimeStamp()
     });
 
     this.setState({
@@ -86,9 +84,9 @@ export class ChatContainer extends Component {
   render() {
     const messages = this.state.messages.map(e => (
       <div key={e.key}>
-        <span>{e.name}</span>
-        <span>{e.msg}</span>
-        <span>{e.timestamp}</span>
+        <span>{e.name}&nbsp;</span>
+        <span>{e.msg}&nbsp;</span>
+        <span>{e.timestamp}&nbsp;</span>
       </div>
     ))
     return (
