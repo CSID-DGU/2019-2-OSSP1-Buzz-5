@@ -23,10 +23,10 @@ export class ChatContainer extends Component {
     // };
   }
 
-  componentDidMount = () => {
+  componentWillMount = () => {
     this.props.socket.on('chat_msg', ({name, msg}) => {
       this.setState({
-        chat: [...this.state.chat, {name, msg}]
+        chat: [...this.state.chat, {name, msg}]       // 이부분 문제
       });
     });
     console.log(this.state.chat)
