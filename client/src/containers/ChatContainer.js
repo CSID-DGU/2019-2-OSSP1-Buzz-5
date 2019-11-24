@@ -14,22 +14,21 @@ export class ChatContainer extends Component {
     //   addMessage(data)
     // })
 
-
-    this.props.socket.on('chat_msg', (name, msg) => {
+    this.props.socket.on('chat_msg', ({name, msg}) => {
       this.setState({
-        chat: [...this.state.chat, {name, msg}]       // 이부분 문제
+        chat: [...this.state.chat, {name, msg}]
       });
     });
   }
 
-  // componentDidMount = () => {
-  //   this.props.socket.on('chat_msg', ({name, msg}) => {
-  //     this.setState({
-  //       chat: [...this.state.chat, {name, msg}]       // 이부분 문제
-  //     });
-  //   });
-  //   console.log(this.state.chat)
-  // }
+  componentDidMount = () => {
+    this.props.socket.on('chat_msg', ({name, msg}) => {
+      this.setState({
+        chat: [...this.state.chat, {name, msg}]       // 이부분 문제
+      });
+    });
+    console.log(this.state.chat)
+  }
   
   handleChange = e => {
     e.preventDefault();
@@ -72,7 +71,7 @@ export class ChatContainer extends Component {
   }
 
   renderChat = () => {
-    const { chat } = this.state;
+    const { chat } = this.state.chat;
     console.log(chat)
     return chat.map(({user, msg}, idx) => (
       <div key={idx}>
