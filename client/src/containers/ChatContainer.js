@@ -15,7 +15,7 @@ export class ChatContainer extends Component {
     // })
 
 
-    this.props.socket.on('chat_msg', ({name, msg}) => {
+    this.props.socket.on('chat_msg', (name, msg) => {
       this.setState({
         chat: [...this.state.chat, {name, msg}]       // 이부분 문제
       });
@@ -48,7 +48,7 @@ export class ChatContainer extends Component {
     this.props.socket.emit('send_msg', {
       name: this.props.name, 
       msg: this.state.message
-    });
+    }, console.log(12341234));
 
 
     console.log(this.props.name, this.state.message)
