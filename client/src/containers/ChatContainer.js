@@ -6,30 +6,23 @@ export class ChatContainer extends Component {
 
     this.state = {
       message: "",
-      chat: [],
+      messages: [],
     }
-
-  
-    // this.props.socket.on('receive_msg', function(data) {
-    //   addMessage(data)
-    // })
-
-    this.props.socket.on('chat_msg', ({name, msg}) => {
-      this.setState({
-        chat: [...this.state.chat, {name, msg}]
-      });
-    });
   }
 
   componentDidMount = () => {
-    this.props.socket.on('chat_msg', ({name, msg}) => {
-      this.setState({
-        chat: [...this.state.chat, {name, msg}]       // 이부분 문제
-      });
-    });
-    console.log(this.state.chat)
+    this.props.socket.on('chat',  message => {
+      message.key = JSON.stringify(message)
+      this.setState((prevState) => {
+        let messages = prevState.messages
+        messages.push(message)
+        {
+          messages: messages
+        }
+      })
+    })
   }
-  
+
   handleChange = e => {
     e.preventDefault();
     const msg = e.target.value;
@@ -43,15 +36,14 @@ export class ChatContainer extends Component {
       return
     }
 
-    console.log(1123123123432)
-    this.props.socket.emit('send_msg', {
+    this.props.socket.emit('chat', {
       name: this.props.name, 
-      msg: this.state.message
-    }, console.log(12341234));
+      msg: this.state.message,
+      timestamp: new Date().toISOString()
+    });
 
 
     console.log(this.props.name, this.state.message)
-    console.log(this.state.chat)
 
     this.setState({
       message: ""
@@ -71,7 +63,7 @@ export class ChatContainer extends Component {
   }
 
   renderChat = () => {
-    const { chat } = this.state.chat;
+    const { chat } = this.state.messages;
     console.log(chat)
     return chat.map(({user, msg}, idx) => (
       <div key={idx}>
@@ -80,11 +72,11 @@ export class ChatContainer extends Component {
       </div>
     ));
   }
-  // showChatValue = () => {
-  //   this.state.messages.map(message => {
+  showChatValue = () => {
+    this.state.messages.map(message => {
 
-  //   })
-  // }
+    })
+  }
 
   render() {
     return (

@@ -65,6 +65,10 @@ io.sockets.on('connection', socket => {
     // var msg = name + ': ' + text;
     io.emit('chat_msg', {name, msg});
   });
+
+  socket.on('chat', function(data) {
+    io.emit('chat', data);
+  });
 });
 
 // app.use(bodyParser.json());
