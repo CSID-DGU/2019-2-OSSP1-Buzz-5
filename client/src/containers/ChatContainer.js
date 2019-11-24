@@ -41,11 +41,25 @@ export class ChatContainer extends Component {
   }
 
   handleSubmit = e => {
+    if(this.state.message == "") {
+      return
+    }
+
     this.props.socket.emit('send_msg', {
       name: this.props.name, 
       msg: this.state.message
     });
+
+
+    this.props.socket.on('chat_msg', ({name, msg}) => {
+      this.setState({
+        chat: [...this.state.chat, {name, msg}]       // 이부분 문제
+      });
+    });
+
     console.log(this.props.name, this.state.message)
+    console.log(this.state.chat)
+    
     this.setState({
       message: ""
     })
@@ -97,7 +111,10 @@ export class ChatContainer extends Component {
                     onChange={this.handleChange}
                     onKeyPress={this.handleKeyPress} />
               <div className="input-group-btn">
-                <button className="btn btn-default" type="submit" onClick={this.handleSubmit} onSubmit={this.handleSubmit}>
+                <button className="btn btn-default" 
+                        type="submit"
+                        onClick={this.handleSubmit} 
+                        onSubmit={this.handleSubmit}>
                   <i className="fa fa-send-o"/>
                 </button>
               </div>
