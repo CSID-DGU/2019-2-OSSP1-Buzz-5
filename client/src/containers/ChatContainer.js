@@ -17,6 +17,7 @@ export class ChatContainer extends Component {
       console.log(obj)
       log.unshift(obj)
       this.setState({messages: log})
+      console.log(messages)
     })
   }
 
@@ -36,14 +37,37 @@ export class ChatContainer extends Component {
     this.props.socket.emit('chat', {
       name: this.props.name, 
       msg: this.state.message,
-      timestamp: new Date().toISOString()
+      timestamp: this.getTimeStamp
     });
-
-    console.log(this.props.name, this.state.message, new Date().toISOString())
 
     this.setState({
       message: ""
     })
+  }
+
+  getTimeStamp = () => {
+    var date = new Date()
+    var formatedDate = 
+      this.changeFormat(date.getFullYear(), 4) + '-' +
+      this.changeFormat(date.getMonth() + 1, 2) + '-' +
+      this.changeFormat(date.getDate(), 2) + ' ' +
+  
+      this.changeFormat(date.getHours(), 2) + ':' +
+      this.changeFormat(date.getMinutes(), 2) + ':' +
+      this.changeFormat(date.getSeconds(), 2);
+  
+    return formatedDate;
+  }
+
+   changeFormat = (n, digits) => {
+    var zero = '';
+    n = n.toString();
+
+    if (n.length < digits) {
+      for (i = 0; i < digits - n.length; i++)
+        zero += '0';
+    }
+    return zero + n;
   }
 
   handleKeyPress = event => {
@@ -56,17 +80,6 @@ export class ChatContainer extends Component {
   scrollToBottom = () => {
     const chat = document.getElementById("chatLog");
     chat.scrollTop = chat.scrollHeight;
-  }
-
-  renderChat = () => {
-    const { chat } = this.state.messages;
-    console.log(chat)
-    return chat.map(({user, msg}, idx) => (
-      <div key={idx}>
-        <span style={{color: "green"}}>{user} : </span>
-        <span>{msg}</span>
-      </div>
-    ));
   }
 
   render() {
