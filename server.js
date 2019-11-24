@@ -57,7 +57,8 @@ io.sockets.on('connection', socket => {
   socket.on('leave', () => {
     // sending to all clients in the room (channel) except sender
     socket.broadcast.to(room).emit('hangup');
-    socket.leave(room);});
+    socket.leave(room);
+  });
 
   socket.on('chat_msg', ({name, msg}) => {
     console.log(name, msg);
