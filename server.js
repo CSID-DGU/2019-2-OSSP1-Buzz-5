@@ -59,15 +59,10 @@ io.sockets.on('connection', socket => {
     socket.broadcast.to(room).emit('hangup');
     socket.leave(room);
   });
-  console.log(">>>> connection")
-  socket.on('chat_msg', ({name, msg}) => {
-    console.log(name, msg);
-    // var msg = name + ': ' + text;
-    io.emit('chat_msg', {name, msg});
-  });
 
-  socket.on('chat', function(data) {
-    io.emit('chat', data);
+  socket.on('chat', (msg) => {
+    console.log('message:', msg)
+    io.emit('chat', msg);
   });
 });
 

@@ -11,15 +11,12 @@ export class ChatContainer extends Component {
   }
 
   componentDidMount = () => {
-    this.props.socket.on('chat',  message => {
-      message.key = JSON.stringify(message)
-      this.setState((prevState) => {
-        let messages = prevState.messages
-        messages.push(message)
-        {
-          messages: messages
-        }
-      })
+    this.props.socket.on('chat',  (obj) => {
+      const log = this.state.messages
+      obj.key = 'key_' + (this.state.messages.length + 1)
+      console.log(obj)
+      log.unshift(obj)
+      this.setState({messages: log})
     })
   }
 
@@ -42,8 +39,7 @@ export class ChatContainer extends Component {
       timestamp: new Date().toISOString()
     });
 
-
-    console.log(this.props.name, this.state.message)
+    console.log(this.props.name, this.state.message, new Date().toISOString())
 
     this.setState({
       message: ""
@@ -72,18 +68,20 @@ export class ChatContainer extends Component {
       </div>
     ));
   }
-  showChatValue = () => {
-    this.state.messages.map(message => {
-
-    })
-  }
 
   render() {
+    const messages = this.state.messages.map(e => (
+      <div key={e.key}>
+        <span>{e.name}</span>
+        <span>{e.msg}</span>
+        <span>{e.timestamp}</span>
+      </div>
+    ))
     return (
       <div>
         <div className="col">
           <div className="row-xl-10">
-            {this.renderChat}
+            {messages}
           </div>
           <hr/>
           <div className="row-xl-2">
