@@ -170,7 +170,7 @@ class MediaBridge extends Component {
             video: this.localStream.getVideoTracks()[0].enabled
           }
         });
-        // sendData('hello');
+        //sendData('hello');
     };
     // attach local media to the peer connection
     this.localStream.getTracks().forEach(track => this.pc.addTrack(track, this.localStream));
