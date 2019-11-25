@@ -8,12 +8,15 @@ import "./css/Account.scss";
 
 console.log('Signup.js');
 
+<<<<<<< HEAD
 
 //가입회원 db추가 부분
 // const express = require('express');
 // const router = express.Router();
 // const db = require('../Server/module/pool.js');
 // const PORT = process.env.PORT || 3000;
+=======
+>>>>>>> 4aacb911d46f749c95bdfdde394e85c5e2c09039
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/    // 이메일 정규 표현식 [아이디]@[###.###]
@@ -63,7 +66,10 @@ class Signup extends Component {
       `);
 
       //db에 유저 정보 추가 부분 
+<<<<<<< HEAD
 // <<<<<<< HEAD
+=======
+>>>>>>> 4aacb911d46f749c95bdfdde394e85c5e2c09039
      /* router.post('/', async(req, res, next) => {
 
       //   try{
@@ -84,7 +90,11 @@ class Signup extends Component {
       });*/
 
       //module.exports = router;
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 4aacb911d46f749c95bdfdde394e85c5e2c09039
     } 
   };
 
