@@ -110,22 +110,17 @@ class MediaBridge extends Component {
   async getDisplay() {
     try {
       console.log(1111111)
-      await navigator.mediaDevices.getDisplayMedia({video: true, audio: true}).then(stream => {
-        console.log(22222222)
-        // var track;
-        stream.oninactive = () => {
-          // track = stream.getVideoTracks()[0];
-          // this.pc.removeTrack(track, this.localStream)
-          this.pc.removeStream(this.localStream)
-          this.props.getUserMedia.then(() => {
-            // this.pc.addTrack(track, this.localStream)
-            this.pc.addStream(this.localStream)
-          })
+      await navigator.mediaDevices.getDisplayMedia().then(stream => {
+          console.log(22222222)
+          stream.oninactive = () => {
+            this.pc.removeTrack(this.localStream)  
+            this.props.getUserMedia.then(() => {
+              this.pc.addTrack(this.localStream)
+            })
         }
         // this.setState({ streamUrl: stream, localStream: stream })
         this.localVideo.srcObject = stream
-        // this.pc.addTrack(track, stream)
-        this.pc.addStream(stream)
+        this.pc.addTrack(stream)
       })
     } catch(err) {
       console.log(err)
