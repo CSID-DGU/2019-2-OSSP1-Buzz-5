@@ -18,6 +18,11 @@ export class ChatContainer extends Component {
       log.push(obj)
       this.setState({messages: log})
     })
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate = () => {
+    this.scrollToBottom();
   }
 
   handleChange = e => {
@@ -82,39 +87,12 @@ export class ChatContainer extends Component {
     chat.scrollTop = chat.scrollHeight;
   }
 
-  renderChat = () => {
-    this.state.messages.map(e => {
-      console.log(e.name)
-      if(e.name == window.sessionStorage.getItem('name')) {
-        return (
-          <div key={e.key} className="d-flex flex-row-reverse">
-            <span className="chat_spacer">
-            <span className="badge badge-pill badge-primary">{e.name}</span>
-              <span className="chat_message">{e.msg}</span>
-              <span className="chat_timestamp">{e.timestamp}</span>
-            </span>
-          </div>
-        );
-      } else {
-        return (
-          <div key={e.key} className="d-flex flex-row">
-            <span className="chat_spacer">
-              <span className="badge badge-pill badge-primary">{e.name}</span>
-              <span className="chat_message">{e.msg}</span>
-              <span className="chat_timestamp">{e.timestamp}</span>
-            </span>
-          </div>
-        );
-      }
-    })
-  }
-
   render() {
     var messages;
     if(this.props.name == window.sessionStorage.getItem('name')) {
        messages = this.state.messages.map(e => (
         <div key={e.key} className="d-flex flex-row-reverse chat_spacer">
-          {/* <span className="badge badge-pill badge-primary">{e.name}</span> */}
+          <span className="badge badge-pill badge-primary chat_name">{e.name}</span>
           <span className="chat_message">{e.msg}</span>
           <span className="chat_timestamp">{e.timestamp}</span>
         </div>
@@ -133,7 +111,7 @@ export class ChatContainer extends Component {
       <div>
         <div className="col">
           <div className="row-xl-10">
-            <div className="chatLog">
+            <div className="chatLog" id="chatLog">
               {messages}
             </div>
           </div>
