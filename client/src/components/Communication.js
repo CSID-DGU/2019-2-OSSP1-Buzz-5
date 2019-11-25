@@ -82,7 +82,7 @@ Communication.propTypes = {
   handleInput: PropTypes.func.isRequired,
   handleInvitation: PropTypes.func.isRequired,
   screenSharing: PropTypes.func.isRequired,
-  screenRecording: PropTypes.func.isRequired,
+  // screenRecording: PropTypes.func.isRequired,
 };
 
 export default Communication;

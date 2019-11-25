@@ -81,9 +81,9 @@ class CommunicationContainer extends React.Component {
   screenSharing() {
     this.props.media.getDisplay();
   }
-  screenRecording() {
-    this.props.media.getRecord();
-  }
+  // screenRecording() {
+  //   this.props.media.getRecord();
+  // }
   render(){
     return (
       <Communication
@@ -94,8 +94,8 @@ class CommunicationContainer extends React.Component {
         handleHangup={this.handleHangup}
         handleInput={this.handleInput}
         handleInvitation={this.handleInvitation}
-        screenSharing={this.screenSharing}
-        screenRecording={this.screenRecording} />
+        screenSharing={this.screenSharing} />
+        // screenRecording={this.screenRecording} />
     );
   }
 }
