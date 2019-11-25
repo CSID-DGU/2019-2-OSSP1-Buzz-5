@@ -83,6 +83,7 @@ export class ChatContainer extends Component {
   }
 
   renderChat = () => {
+    console.log(12341234)
     this.state.messages.map(e => {
       if(e.name == window.sessionStorage.getItem('name')) {
         return (
@@ -129,7 +130,7 @@ export class ChatContainer extends Component {
         <div className="col">
           <div className="row-xl-10">
             <div className="chatLog">
-              {this.renderChat}
+              {this.renderChat()}
             </div>
           </div>
           <hr/>
