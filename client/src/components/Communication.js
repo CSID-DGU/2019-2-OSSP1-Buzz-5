@@ -36,9 +36,15 @@ const Communication = props =>
       </button>
       <button className="screen-share-btn" onClick={props.screenSharing}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" className="svg">
-          <path d="M0 0h24v24H0V0z"/>
-          <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.11-.9-2-2-2H4c-1.11 0-2 .89-2 2v10c0 1.1.89 2 2 2H0v2h24v-2h-4zm-7-3.53v-2.19c-2.78 0-4.61.85-6 2.72.56-2.67 2.11-5.33 6-5.87V7l4 3.73-4 3.74z"/>
+          <path d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46C8.97 19.54 10.43 20 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46C15.03 4.46 13.57 4 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z" fill="white"/>
+          <path d="M0 0h24v24H0z" fill="white"/></svg>
+      </button>
+      <button className="screen-recording-btn" onClick={props.screenRecording}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+          <path d="M0 0h24v24H0z" className="on" fill="white"/><path className="on" d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 14H6v-2h2v2zm0-3H6V9h2v2zm0-3H6V6h2v2zm7 6h-5v-2h5v2zm3-3h-8V9h8v2zm0-3h-8V6h8v2z" fill="white"/>
+          <path className="off" d="M10.54 11l-.54-.54L7.54 8 6 6.46 2.38 2.84 1.27 1.73 0 3l2.01 2.01L2 22l4-4h9l5.73 5.73L22 22.46 17.54 18l-7-7zM8 14H6v-2h2v2zm-2-3V9l2 2H6zm14-9H4.08L10 7.92V6h8v2h-7.92l1 1H18v2h-4.92l6.99 6.99C21.14 17.95 22 17.08 22 16V4c0-1.1-.9-2-2-2z" fill="white"/><path className="off" fill="white" d="M0 0h24v24H0z"/>
         </svg>
+
       </button>
     </div>
     <div className="request-access">
@@ -75,7 +81,8 @@ Communication.propTypes = {
   handleHangup: PropTypes.func.isRequired,
   handleInput: PropTypes.func.isRequired,
   handleInvitation: PropTypes.func.isRequired,
-  screenSharing: PropTypes.func.isRequired
+  screenSharing: PropTypes.func.isRequired,
+  screenRecording: PropTypes.func.isRequired,
 };
 
 export default Communication;
