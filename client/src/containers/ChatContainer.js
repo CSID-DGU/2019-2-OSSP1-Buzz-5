@@ -87,18 +87,22 @@ export class ChatContainer extends Component {
       console.log(e.name)
       if(e.name == window.sessionStorage.getItem('name')) {
         return (
-          <div key={e.key} className="d-flex flex-row-reverse chat_spacer">
-            {/* <span className="badge badge-pill badge-primary">{e.name}</span> */}
-            <span className="chat_message">{e.msg}</span>
-            <span className="chat_timestamp">{e.timestamp}</span>
+          <div key={e.key} className="d-flex flex-row-reverse">
+            <span className="chat_spacer">
+            <span className="badge badge-pill badge-primary">{e.name}</span>
+              <span className="chat_message">{e.msg}</span>
+              <span className="chat_timestamp">{e.timestamp}</span>
+            </span>
           </div>
         );
       } else {
         return (
-          <div key={e.key} className="d-flex flex-row chat_spacer">
-            <span className="badge badge-pill badge-primary">{e.name}</span>
-            <span className="chat_message">{e.msg}</span>
-            <span className="chat_timestamp">{e.timestamp}</span>
+          <div key={e.key} className="d-flex flex-row">
+            <span className="chat_spacer">
+              <span className="badge badge-pill badge-primary">{e.name}</span>
+              <span className="chat_message">{e.msg}</span>
+              <span className="chat_timestamp">{e.timestamp}</span>
+            </span>
           </div>
         );
       }
