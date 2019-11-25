@@ -35,9 +35,9 @@ const Communication = props =>
         </svg>
       </button>
       <button className="screen-share-btn" onClick={props.screenSharing}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" className="svg">
-          <path d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46C8.97 19.54 10.43 20 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46C15.03 4.46 13.57 4 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z" fill="white"/>
-          <path d="M0 0h24v24H0z" fill="white"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 50 50" className="svg">
+          <path d="M15 16v5l9-10.062-9-9.938v5c-14.069 1.711-19.348 15.107-10.606 16.981-3.804-2.936 3.251-7.441 10.606-6.981z" fill="white"/>
+        </svg>
       </button>
       {/* <button className="screen-recording-btn" onClick={props.screenRecording}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">

@@ -39,7 +39,8 @@ input[type=text] {
 .audio-button-false,
 .video-button-true,
 .video-button-false,
-.fullscreen-button {
+.fullscreen-button,
+.screen-share-btn {
     width: 3em;
     height: 3em;
     border-radius: 50%;
