@@ -47,9 +47,9 @@ export class ChatContainer extends Component {
   getTimeStamp = () => {
     var date = new Date()
     var formatedDate = 
-      this.changeFormat(date.getFullYear(), 4) + '-' +
-      this.changeFormat(date.getMonth() + 1, 2) + '-' +
-      this.changeFormat(date.getDate(), 2) + ' ' +
+      // this.changeFormat(date.getFullYear(), 4) + '-' +
+      // this.changeFormat(date.getMonth() + 1, 2) + '-' +
+      // this.changeFormat(date.getDate(), 2) + ' ' +
   
       this.changeFormat(date.getHours(), 2) + ':' +
       this.changeFormat(date.getMinutes(), 2) + ':' +
@@ -83,9 +83,8 @@ export class ChatContainer extends Component {
   }
 
   render() {
-    const log = this.state.messages;
     var messages;
-    if(log.filter((name) => (name == window.sessionStorage.getItem('name')))) {
+    if(this.props.name == window.sessionStorage.getItem('name')) {
        messages = this.state.messages.map(e => (
         <div key={e.key} className="d-flex flex-row-reverse">
           {/* <span className="badge badge-pill badge-primary">{e.name}</span> */}
@@ -102,7 +101,7 @@ export class ChatContainer extends Component {
         </div>
       ))
     }
-    
+
     return (
       <div>
         <div className="col">
