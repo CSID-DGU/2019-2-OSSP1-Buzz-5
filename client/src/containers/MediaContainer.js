@@ -107,26 +107,31 @@ class MediaBridge extends Component {
   //   })
   // }
 
+// console.log(22222222)
+        // stream.oninactive = () => {
+        //   console.log(33333333)
+        //   // this.pc.removeTrack(this.localStream)  
+        //   this.pc.removeStream(this.localStream)
+        //   console.log(4444444)
+        //   this.props.getUserMedia.then(() => {
+        //     // this.pc.addTrack(this.localStream)
+        //     this.pc.addStream(this.localStream)
+        //   })
+        // }
+        // // this.setState({ streamUrl: stream, localStream: stream })
+        // this.localStream = stream;
+        // this.localVideo.srcObject = stream
+        // // this.pc.addTrack(stream)
+        // this.pc.addStream(stream)
   async getDisplay() {
     try {
       console.log(1111111)
       await navigator.mediaDevices.getDisplayMedia({video: true, audio:true}).then(stream => {
-          console.log(22222222)
-          stream.oninactive = () => {
-            console.log(33333333)
-            // this.pc.removeTrack(this.localStream)  
-            this.pc.removeStream(this.localStream)
-            console.log(4444444)
-            this.props.getUserMedia.then(() => {
-              // this.pc.addTrack(this.localStream)
-              this.pc.addStream(this.localStream)
-            })
-        }
-        // this.setState({ streamUrl: stream, localStream: stream })
-        this.localStream = stream;
-        this.localVideo.srcObject = stream
-        // this.pc.addTrack(stream)
-        this.pc.addStream(stream)
+        var track = stream.getVideoTracks()[0];
+        var sender = this.pc.getSenders().find(function (s) {
+          return s.track.kind == track.kind;
+        })
+        sender.replaceTrack(track);
       })
     } catch(err) {
       console.log(err)
