@@ -83,8 +83,8 @@ export class ChatContainer extends Component {
   }
 
   renderChat = () => {
-    console.log(12341234)
     this.state.messages.map(e => {
+      console.log(e.name)
       if(e.name == window.sessionStorage.getItem('name')) {
         return (
           <div key={e.key} className="d-flex flex-row-reverse">
@@ -124,13 +124,13 @@ export class ChatContainer extends Component {
     //     </div>
     //   ))
     // }
-
+    const messages = this.renderChat()
     return (
       <div>
         <div className="col">
           <div className="row-xl-10">
             <div className="chatLog">
-              {this.renderChat()}
+              {messages}
             </div>
           </div>
           <hr/>
