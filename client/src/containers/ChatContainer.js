@@ -88,7 +88,7 @@ export class ChatContainer extends Component {
   }
 
   render() {
-    var messages;
+    // var messages;
     // if(this.props.name == window.sessionStorage.getItem('name')) {
     //    messages = this.state.messages.map(e => (
     //     <div key={e.key} className="d-flex flex-row-reverse chat_spacer">
