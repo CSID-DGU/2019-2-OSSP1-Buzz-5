@@ -83,8 +83,12 @@ export class ChatContainer extends Component {
   }
 
   render() {
+    const log = this.state.messages;
+    if(log.filter((name) => (name == window.sessionStorage.getItem('name'))))
+      console.log(log)
+      
     const messages = this.state.messages.map(e => (
-      <div className="chatLog" key={e.key}>
+      <div key={e.key}>
         <span className="badge badge-pill badge-primary">{e.name}</span>
         <span className="chat_message">{e.msg}</span>
         <span className="chat_timestamp">{e.timestamp}</span>
@@ -94,7 +98,9 @@ export class ChatContainer extends Component {
       <div>
         <div className="col">
           <div className="row-xl-10">
-            {messages}
+            <div className="chatLog">
+              {messages}
+            </div>
           </div>
           <hr/>
           <div className="row-xl-2">
