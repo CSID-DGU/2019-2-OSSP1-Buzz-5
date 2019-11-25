@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "../components/css/Room.scss"
 
 export class ChatContainer extends Component {
   constructor(props) {
@@ -83,10 +84,10 @@ export class ChatContainer extends Component {
 
   render() {
     const messages = this.state.messages.map(e => (
-      <div key={e.key}>
-        <span>{e.name}&nbsp;</span>
-        <span>{e.msg}&nbsp;</span>
-        <span>{e.timestamp}&nbsp;</span>
+      <div className="chatLog" key={e.key}>
+        <span className="badge badge-pill badge-primary">{e.name}</span>
+        <span className="chat_message">{e.msg}</span>
+        <span className="chat_timestamp">{e.timestamp}</span>
       </div>
     ))
     return (
