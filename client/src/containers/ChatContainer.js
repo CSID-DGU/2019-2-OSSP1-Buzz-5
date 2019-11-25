@@ -109,7 +109,7 @@ export class ChatContainer extends Component {
     var messages;
     if(this.props.name == window.sessionStorage.getItem('name')) {
        messages = this.state.messages.map(e => (
-        <div key={e.key} className="d-flex flex-row-reverse">
+        <div key={e.key} className="d-flex flex-row-reverse chat_spacer">
           {/* <span className="badge badge-pill badge-primary">{e.name}</span> */}
           <span className="chat_message">{e.msg}</span>
           <span className="chat_timestamp">{e.timestamp}</span>
@@ -117,7 +117,7 @@ export class ChatContainer extends Component {
       ))
     } else {
       messages = this.state.messages.map(e => (
-        <div key={e.key} className="d-flex flex-row">
+        <div key={e.key} className="d-flex flex-row chat_spacer">
           <span className="badge badge-pill badge-primary">{e.name}</span>
           <span className="chat_message">{e.msg}</span>
           <span className="chat_timestamp">{e.timestamp}</span>
