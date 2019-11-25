@@ -82,6 +82,28 @@ export class ChatContainer extends Component {
     chat.scrollTop = chat.scrollHeight;
   }
 
+  renderChat = () => {
+    this.state.messages.map(e => {
+      if(e.name == window.sessionStorage.getItem('name')) {
+        return (
+          <div key={e.key} className="d-flex flex-row-reverse">
+            {/* <span className="badge badge-pill badge-primary">{e.name}</span> */}
+            <span className="chat_message">{e.msg}</span>
+            <span className="chat_timestamp">{e.timestamp}</span>
+          </div>
+        );
+      } else {
+        return (
+          <div key={e.key} className="d-flex flex-row">
+            <span className="badge badge-pill badge-primary">{e.name}</span>
+            <span className="chat_message">{e.msg}</span>
+            <span className="chat_timestamp">{e.timestamp}</span>
+          </div>
+        );
+      }
+    })
+  }
+
   render() {
     // var messages;
     // if(this.props.name == window.sessionStorage.getItem('name')) {
@@ -102,28 +124,12 @@ export class ChatContainer extends Component {
     //   ))
     // }
 
-    var messages = this.state.messages.map(e => {
-      if(e.name == window.sessionStorage.getItem('name')) {
-        <div key={e.key} className="d-flex flex-row-reverse">
-          {/* <span className="badge badge-pill badge-primary">{e.name}</span> */}
-          <span className="chat_message">{e.msg}</span>
-          <span className="chat_timestamp">{e.timestamp}</span>
-        </div>
-      } else {
-        <div key={e.key} className="d-flex flex-row">
-          <span className="badge badge-pill badge-primary">{e.name}</span>
-          <span className="chat_message">{e.msg}</span>
-          <span className="chat_timestamp">{e.timestamp}</span>
-        </div>
-      }
-    })
-
     return (
       <div>
         <div className="col">
           <div className="row-xl-10">
             <div className="chatLog">
-              {messages}
+              {this.renderChat}
             </div>
           </div>
           <hr/>
