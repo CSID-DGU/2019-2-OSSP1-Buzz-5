@@ -8,6 +8,7 @@ const sio = require('socket.io');
 const compression = require('compression');
 const bodyParser = require('body-parser');
 
+console.log(" server.js ");
 const app = express(),
   // options = { 
   //   key: fs.readFileSync(__dirname + '/rtc-video-room-key.pem'),
@@ -60,43 +61,6 @@ io.sockets.on('connection', socket => {
     socket.leave(room);});
 });
 
-
-/* 유진 추가 부분 */
-app.use(bodyParser.urlencoded({extended:true}));
-
-var mysql = require('mysql');
-
-var connection = mysql.createConnection({
-   host: "buzz-database.cj4klynaikoy.ap-northeast-2.rds.amazonaws.com",
-   user: "Buzz",
-   password : "buzz1234",
-   port : 3306,
-   database : "innodb"
-})
-
-connection.connect();
-
-app.post('/signup', function(req, res) {
-   var UserName = req.body.id;
-   var Email = req.body.email;
-   var Password = req.body.pw;
-
-   if(UserName && Email && Password) {
-      connection.query("INSERT INTO User (UserName, Email, Password) VALUES ('"+ UserName + "', '" + Email + "', '" + Password + "')", function(error, result, fields) {
-         if (error) {
-            res.send("err : " + error)
-         }
-         else {
-            console.log(Email + ', ' + Password)
-            res.send("Success " + Email + ", " + Password)
-         }
-      })
-   }
-})
-
-app.listen(3000, function() {
-  console.log("Server starting with 3000");
-})
 
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));

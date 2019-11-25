@@ -3,7 +3,6 @@ import "./css/Account.scss";
 
 console.log('Signup.js');
 
-
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/    // 이메일 정규 표현식 [아이디]@[###.###]
 );
@@ -51,28 +50,11 @@ class Signup extends Component {
         Password : ${this.state.password}
       `);
 
-      //db에 유저 정보 추가 부분 
-     /* router.post('/', async(req, res, next) => {
+      // var xhr = new XMLHttpRequest()
+      // xhr.open('GET', 'https://localhost:3000/')
+      // // send the request
+      // xhr.send()
 
-      //   try{
-      //     let insertUserQuery = 'insert into innodb.User(UserName, Email, Password)  values (?,?,?)';
-      //     let insertResult = await db.queryParamCnt_Arr(insertUserQuery,[this.state.name, this.state.email, this.state.password]);
-  
-      //     if(!insertResult){
-      //       console.log("Insert Error");
-      //       return next(500);
-      //     }
-  
-          res.status(201).send({
-            "message" : "insert new user success"
-          });
-        } catch(err){
-          return next(err);
-        }
-      });*/
-
-      //module.exports = router;
-      
     } 
   };
 

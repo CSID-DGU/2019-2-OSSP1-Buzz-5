@@ -15,7 +15,7 @@ import styles from './App.css'
 import CourseList from './components/CourseList'
 import CourseForm from './components/CourseForm'
 
-
+console.log(" App.js ")
 class App extends Component {
     constructor(props) {
         super(props);
