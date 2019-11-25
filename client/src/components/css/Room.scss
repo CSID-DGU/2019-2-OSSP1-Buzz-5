@@ -68,7 +68,7 @@ float: none;
   font-size: 5px;
   color: gray;
   margin-bottom: 10px;
-  vertical-align: bottom;
+  padding: 5px;
 }
 
 .chat_message {
@@ -77,10 +77,10 @@ float: none;
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 15px;
   margin-bottom: 10px;
-  vertical-align: middle;
+  padding: 5px;
 }
 
 .chat_spacer {
-  display: inline-block;
   vertical-align: bottom;
+  text-align: bottom;
 }
