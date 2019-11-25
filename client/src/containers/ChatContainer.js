@@ -84,16 +84,25 @@ export class ChatContainer extends Component {
 
   render() {
     const log = this.state.messages;
-    if(log.filter((name) => (name == window.sessionStorage.getItem('name'))))
-      console.log(log)
-      
-    const messages = this.state.messages.map(e => (
-      <div key={e.key}>
-        <span className="badge badge-pill badge-primary">{e.name}</span>
-        <span className="chat_message">{e.msg}</span>
-        <span className="chat_timestamp">{e.timestamp}</span>
-      </div>
-    ))
+    var messages;
+    if(log.filter((name) => (name == window.sessionStorage.getItem('name')))) {
+       messages = this.state.messages.map(e => (
+        <div key={e.key} className="d-flex flex-row-reverse">
+          {/* <span className="badge badge-pill badge-primary">{e.name}</span> */}
+          <span className="chat_message">{e.msg}</span>
+          <span className="chat_timestamp">{e.timestamp}</span>
+        </div>
+      ))
+    } else {
+      messages = this.state.messages.map(e => (
+        <div key={e.key} className="d-flex flex-row">
+          <span className="badge badge-pill badge-primary">{e.name}</span>
+          <span className="chat_message">{e.msg}</span>
+          <span className="chat_timestamp">{e.timestamp}</span>
+        </div>
+      ))
+    }
+    
     return (
       <div>
         <div className="col">
