@@ -115,12 +115,18 @@ class MediaBridge extends Component {
           stream.oninactive = () => {
             this.pc.removeTrack(this.localStream)  
             this.props.getUserMedia.then(() => {
-              this.pc.addTrack(this.localStream)
+              stream.getTracks().forEach(function(track) {
+                this.pc.addTrack(track, this.localStream)
+              })
             })
         }
         // this.setState({ streamUrl: stream, localStream: stream })
         this.localVideo.srcObject = stream
-        this.pc.addTrack(stream)
+        
+        stream.getTracks().forEach(function(track) {
+          this.pc.addTrack(track,this.localStream)
+        })
+        // this.pc.addTrack(stream)
       })
     } catch(err) {
       console.log(err)
