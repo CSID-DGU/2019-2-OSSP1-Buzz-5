@@ -126,23 +126,42 @@ class MediaBridge extends Component {
   //     console.log(err)
   //   }
   // }
-  async getDisplay() {
-    try {
-      console.log(1111111)
-      await navigator.mediaDevices.getDisplayMedia({video:true, audio:true}).then(stream => {
-          console.log(22222222)
-          stream.oninactive = () => {
-            this.pc.removeStream(this.localStream)  
-            this.props.getUserMedia.then(() => {
-              this.pc.addStream(this.localStream)
-            })
+  // async getDisplay() {
+  //   try {
+  //     console.log(1111111)
+  //     await navigator.mediaDevices.getDisplayMedia({video:true, audio:true}).then(stream => {
+  //         console.log(22222222)
+  //         stream.oninactive = () => {
+  //           this.pc.removeStream(this.localStream)  
+  //           this.props.getUserMedia.then(() => {
+  //             this.pc.addStream(this.localStream)
+  //           })
+  //       }
+  //       // this.setState({ streamUrl: stream, localStream: stream })
+  //       this.localStream = this.localVideo.srcObject = stream
+  //       this.pc.addStream(stream)
+  //     })
+  //   } catch(err) {
+  //     console.log(err)
+  //   }
+  // }
+
+  getDisplay = () => {
+    var constraints = {
+      video:true,
+      audio:true
+    }
+    if(navigator.mediaDevices.getDisplayMedia) {
+      navigator.mediaDevices.getDisplayMedia(constraints).then(stream => {
+        stream.oninactivate = () => {
+          this.pc.removeStream(this.localStream)
+          this.props.getUserMedia.then(() => {
+            this.pc.addStream(this.localStream)
+          })
         }
-        // this.setState({ streamUrl: stream, localStream: stream })
         this.localStream = this.localVideo.srcObject = stream
         this.pc.addStream(stream)
-      })
-    } catch(err) {
-      console.log(err)
+      }).catch(err, () => {console.log(err)})
     }
   }
 
