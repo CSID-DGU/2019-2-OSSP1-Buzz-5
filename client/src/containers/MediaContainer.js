@@ -184,6 +184,7 @@ class MediaBridge extends Component {
         var sender = this.pc.getSenders().find(function(s) {
           return s.track.kind == videoTrack.kind;
         })
+        this.localStream = this.localVideo.srcObject = stream;
         sender.replaceTrack(videoTrack)
       })
     }
