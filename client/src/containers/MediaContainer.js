@@ -152,16 +152,18 @@ class MediaBridge extends Component {
       audio:true
     }
     if(navigator.mediaDevices.getDisplayMedia) {
-      navigator.mediaDevices.getDisplayMedia(constraints).then(stream => {
-        stream.oninactivate = () => {
-          this.pc.removeStream(this.localStream)
-          this.props.getUserMedia.then(() => {
-            this.pc.addStream(this.localStream)
-          })
-        }
-        this.localStream = this.localVideo.srcObject = stream
-        this.pc.addStream(stream)
-      }).catch(err, () => {console.log(err)})
+      // try {
+        navigator.mediaDevices.getDisplayMedia(constraints).then(stream => {
+          stream.oninactivate = () => {
+            this.pc.removeStream(this.localStream)
+            this.props.getUserMedia.then(() => {
+              this.pc.addStream(this.localStream)
+            })
+          }
+          this.localStream = this.localVideo.srcObject = stream
+          this.pc.addStream(stream)
+        })
+      // }
     }
   }
 
