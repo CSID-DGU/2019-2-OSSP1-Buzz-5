@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import {getDisplayStream} from './media-access'
 
 class MediaBridge extends Component {
   constructor(props) {
@@ -9,10 +8,6 @@ class MediaBridge extends Component {
       bridge: '',
       user: ''
     }
-    this.enableDownloadRecording = false;
-    this.chunks = [];
-    this.recording = null;
-    this.mediaRecorder = null;
     this.onRemoteHangup = this.onRemoteHangup.bind(this);
     this.onMessage = this.onMessage.bind(this);
     this.sendData = this.sendData.bind(this);
@@ -22,7 +17,8 @@ class MediaBridge extends Component {
     this.hangup = this.hangup.bind(this);
     this.init = this.init.bind(this);
     this.setDescription = this.setDescription.bind(this);
-    this.getDisplay = this.getDisplay.bind(this);
+    this.onShare = this.onShare.bind(this);
+    this.offShare = this.offShare.bind(this);
   }
   componentWillMount() {
     // chrome polyfill for connection between the local device and a remote peer
@@ -177,18 +173,35 @@ class MediaBridge extends Component {
   //   }
   // }
 
-  getDisplay = () => {
+  onShare = () => {
     if(navigator.mediaDevices.getDisplayMedia) {
       navigator.mediaDevices.getDisplayMedia({video:true, audio:true}).then(stream => {
-        let videoTrack = stream.getVideoTracks()[0];
+        let screenTrack = stream.getVideoTracks()[0];
         var sender = this.pc.getSenders().find(function(s) {
-          return s.track.kind == videoTrack.kind;
+          return s.track.kind == screenTrack.kind;
         })
         this.localStream = this.localVideo.srcObject = stream;
-        sender.replaceTrack(videoTrack)
+        sender.replaceTrack(screenTrack)
+        
+        stream.oninactive = () => {
+          this.props.getUserMedia.then(stream => {
+            const camTrack = stream.getVideoTracks()[0];
+            const sender = this.pc.getSenders().find(function(s) {
+              return s.track.kind == camTrack.kind;
+            })
+            this.localStream = this.localVideo.srcObject = stream;
+            sender.replaceTrack(camTrack);
+          });
+        }
       })
     }
   }
+
+  offShare = () => {
+    
+    
+  }
+
 
   init() {
     // wait for local media to be ready

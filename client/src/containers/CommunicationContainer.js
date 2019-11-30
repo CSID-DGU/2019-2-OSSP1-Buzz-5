@@ -79,7 +79,7 @@ class CommunicationContainer extends React.Component {
     this.props.media.hangup();
   }
   screenSharing() {
-    this.props.media.getDisplay();
+    this.props.media.onShare();
   }
   // screenRecording() {
   //   this.props.media.getRecord();
