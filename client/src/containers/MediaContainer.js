@@ -9,6 +9,10 @@ class MediaBridge extends Component {
       bridge: '',
       user: ''
     }
+    this.enableDownloadRecording = false;
+    this.chunks = [];
+    this.recording = null;
+    this.mediaRecorder = null;
     this.onRemoteHangup = this.onRemoteHangup.bind(this);
     this.onMessage = this.onMessage.bind(this);
     this.sendData = this.sendData.bind(this);
@@ -159,7 +163,7 @@ class MediaBridge extends Component {
             this.localStream.getTracks().forEach(track => this.pc.removeTrack(track, this.localStream));
             this.props.getUserMedia.then(() => {
               // this.pc.addStream(this.localStream)
-              this.localStream.getTracks().forEach(track => this.pc.addTrack(track, this.localStream));
+              this.localStream.getTracks().forEach(track => this.pc.addTrack(track, stream));
             })
           }
           this.localStream = this.localVideo.srcObject = stream
