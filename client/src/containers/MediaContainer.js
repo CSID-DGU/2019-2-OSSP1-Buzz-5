@@ -150,30 +150,42 @@ class MediaBridge extends Component {
   //   }
   // }
 
-  getDisplay = () => {
-    var constraints = {
-      video:true,
-      audio:true
-    }
-    if(navigator.mediaDevices.getDisplayMedia) {
-      // try {
-        navigator.mediaDevices.getDisplayMedia(constraints).then(stream => {
-          stream.oninactivate = () => {
-            // this.pc.removeStream(this.localStream)
-            this.localStream.getTracks().forEach(track => this.pc.removeTrack(track, this.localStream));
-            this.props.getUserMedia.then(() => {
-              // this.pc.addStream(this.localStream)
-              this.localStream.getTracks().forEach(track => this.pc.addTrack(track, stream));
-            })
-          }
-          this.localStream = this.localVideo.srcObject = stream
-          // this.remoteStream = stream;
-          // this.remoteVideo.srcObject = this.remoteStream = stream;
-          // this.pc.addStream(stream)
-          this.localStream.getTracks().forEach(track => this.pc.addTrack(track, this.localStream));
+  // getDisplay = () => {
+  //   var constraints = {
+  //     video:true,
+  //     audio:true
+  //   }
+  //   if(navigator.mediaDevices.getDisplayMedia) {
+  //     // try {
+  //       navigator.mediaDevices.getDisplayMedia(constraints).then(stream => {
+  //         stream.oninactivate = () => {
+  //           // this.pc.removeStream(this.localStream)
+  //           this.localStream.getTracks().forEach(track => this.pc.removeTrack(track, this.localStream));
+  //           this.props.getUserMedia.then(() => {
+  //             // this.pc.addStream(this.localStream)
+  //             this.localStream.getTracks().forEach(track => this.pc.addTrack(track, stream));
+  //           })
+  //         }
+  //         this.localStream = this.localVideo.srcObject = stream
+  //         // this.remoteStream = stream;
+  //         // this.remoteVideo.srcObject = this.remoteStream = stream;
+  //         // this.pc.addStream(stream)
+  //         this.localStream.getTracks().forEach(track => this.pc.addTrack(track, this.localStream));
 
+  //       })
+  //     // }
+  //   }
+  // }
+
+  getDisplay = () => {
+    if(navigator.mediaDevices.getDisplayMedia) {
+      navigator.mediaDevices.getDisplayMedia({video:true, audio:true}).then(stream => {
+        let videoTrack = stream.getVideoTracks()[0];
+        var sender = this.pc.getSenders().find(function(s) {
+          return s.track.kind == videoTrack.kind;
         })
-      // }
+        sender.replaceTrack(videoTrack)
+      })
     }
   }
 
