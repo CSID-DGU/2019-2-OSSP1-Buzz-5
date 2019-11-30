@@ -162,8 +162,10 @@ class MediaBridge extends Component {
           }
           this.localStream = this.localVideo.srcObject = stream
           // this.remoteStream = stream;
-          this.remoteVideo.srcObject = this.remoteStream = stream;
-          this.pc.addStream(stream)
+          // this.remoteVideo.srcObject = this.remoteStream = stream;
+          // this.pc.addStream(stream)
+          this.localStream.getTracks().forEach(track => this.pc.addTrack(track, this.localStream));
+
         })
       // }
     }
