@@ -1,7 +1,8 @@
 const users = [
-  { email: 'kim@test.com', password: '123456', name: 'Kim' },
-  { email: 'lee@test.com', password: '456789', name: 'Lee' },
-  { email: 'park@test.com', password: '789012', name: 'Park' }
+  { email: 'kim@test.com', password: '111111', name: 'Kim' },
+  { email: 'lee@test.com', password: '111111', name: 'Lee' },
+  { email: 'park@test.com', password: '111111', name: 'Park' },
+  { email: 'seo@test.com', password: '111111', name: 'Seo' },
 ]
 
 export function signIn( email, password ) {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import {getDisplayStream} from './media-access'
 
 class MediaBridge extends Component {
   constructor(props) {
@@ -18,7 +17,8 @@ class MediaBridge extends Component {
     this.hangup = this.hangup.bind(this);
     this.init = this.init.bind(this);
     this.setDescription = this.setDescription.bind(this);
-    this.getDisplay = this.getDisplay.bind(this);
+    this.onShare = this.onShare.bind(this);
+    this.offShare = this.offShare.bind(this);
   }
   componentWillMount() {
     // chrome polyfill for connection between the local device and a remote peer
@@ -93,39 +93,35 @@ class MediaBridge extends Component {
     console.log(e);
   }
   
-  // getDisplay(){
-  //   getDisplayStream().then(stream => {
-  //     stream.oninactive = () => {
-  //       this.pc.removeStream(this.localStream)  
-  //       this.props.getUserMedia.then(() => {
-  //         this.pc.addStream(this.localStream)
-  //       })
-  //     }
-  //     // this.setState({ streamUrl: stream, localStream: stream })
-  //     this.localVideo.srcObject = stream
-  //     this.pc.addStream(stream)   
-  //   })
-  // }
-
-  async getDisplay() {
-    try {
-      console.log(1111111)
-      await navigator.mediaDevices.getDisplayMedia().then(stream => {
-          console.log(22222222)
-          stream.oninactive = () => {
-            this.pc.removeTrack(this.localStream)  
-            this.props.getUserMedia.then(() => {
-              this.pc.addTrack(this.localStream)
+  onShare = () => {
+    if(navigator.mediaDevices.getDisplayMedia) {
+      navigator.mediaDevices.getDisplayMedia({video:true, audio:true}).then(stream => {
+        let screenTrack = stream.getVideoTracks()[0];
+        var sender = this.pc.getSenders().find(function(s) {
+          return s.track.kind == screenTrack.kind;
+        })
+        this.localStream = this.localVideo.srcObject = stream;
+        sender.replaceTrack(screenTrack)
+        
+        stream.oninactive = () => {
+          this.props.getUserMedia.then(stream => {
+            const camTrack = stream.getVideoTracks()[0];
+            const sender = this.pc.getSenders().find(function(s) {
+              return s.track.kind == camTrack.kind;
             })
+            this.localStream = this.localVideo.srcObject = stream;
+            sender.replaceTrack(camTrack);
+          });
         }
-        // this.setState({ streamUrl: stream, localStream: stream })
-        this.localVideo.srcObject = stream
-        this.pc.addTrack(stream)
       })
-    } catch(err) {
-      console.log(err)
     }
   }
+
+  offShare = () => {
+    
+    
+  }
+
 
   init() {
     // wait for local media to be ready
