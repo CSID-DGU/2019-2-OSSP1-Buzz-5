@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
+import {getDisplayStream} from './media-access'
 
 class MediaBridge extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class MediaBridge extends Component {
     this.hangup = this.hangup.bind(this);
     this.init = this.init.bind(this);
     this.setDescription = this.setDescription.bind(this);
+    this.getDisplay = this.getDisplay.bind(this);
   }
   componentWillMount() {
     // chrome polyfill for connection between the local device and a remote peer
@@ -90,6 +92,41 @@ class MediaBridge extends Component {
   handleError(e) {
     console.log(e);
   }
+  
+  // getDisplay(){
+  //   getDisplayStream().then(stream => {
+  //     stream.oninactive = () => {
+  //       this.pc.removeStream(this.localStream)  
+  //       this.props.getUserMedia.then(() => {
+  //         this.pc.addStream(this.localStream)
+  //       })
+  //     }
+  //     // this.setState({ streamUrl: stream, localStream: stream })
+  //     this.localVideo.srcObject = stream
+  //     this.pc.addStream(stream)   
+  //   })
+  // }
+
+  async getDisplay() {
+    try {
+      console.log(1111111)
+      await navigator.mediaDevices.getDisplayMedia().then(stream => {
+          console.log(22222222)
+          stream.oninactive = () => {
+            this.pc.removeTrack(this.localStream)  
+            this.props.getUserMedia.then(() => {
+              this.pc.addTrack(this.localStream)
+            })
+        }
+        // this.setState({ streamUrl: stream, localStream: stream })
+        this.localVideo.srcObject = stream
+        this.pc.addTrack(stream)
+      })
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
   init() {
     // wait for local media to be ready
     const attachMediaIfReady = () => {
@@ -145,10 +182,19 @@ class MediaBridge extends Component {
   }
   render(){
     return (
-      <div className={`media-bridge ${this.state.bridge}`}>
-        <video className="remote-video" ref={(ref) => this.remoteVideo = ref} autoPlay></video>
-        <video className="local-video" ref={(ref) => this.localVideo = ref} autoPlay muted></video>
-      </div>
+      // <div className="container">
+      //   <div className="row">
+      //     <div className="col-md-9">
+            <div className={`media-bridge ${this.state.bridge}`}>
+              <video className="remote-video" ref={(ref) => this.remoteVideo = ref} autoPlay></video>
+              <video className="local-video" ref={(ref) => this.localVideo = ref} autoPlay muted></video>
+            </div>
+      //     </div>
+      //     <div className="col-md-3">
+      //       asdfasdf
+      //     </div>
+      //   </div>
+      // </div>
     );
   }
 }

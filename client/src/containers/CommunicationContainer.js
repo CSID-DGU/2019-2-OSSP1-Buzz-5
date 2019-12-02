@@ -4,6 +4,7 @@ import MediaContainer from './MediaContainer'
 import Communication from '../components/Communication'
 import store from '../store'
 import { connect } from 'react-redux'
+
 class CommunicationContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -19,6 +20,7 @@ class CommunicationContainer extends React.Component {
     this.toggleVideo = this.toggleVideo.bind(this);
     this.toggleAudio = this.toggleAudio.bind(this);
     this.send = this.send.bind(this);
+    this.screenSharing = this.screenSharing.bind(this);
   }
   hideAuth() {
     this.props.media.setState({bridge: 'connecting'});
@@ -63,6 +65,7 @@ class CommunicationContainer extends React.Component {
     this.hideAuth();
   }
   toggleVideo() {
+    console.log(123123)
     const video = this.localStream.getVideoTracks()[0].enabled = !this.state.video;
     this.setState({video: video});
     this.props.setVideo(video);
@@ -75,6 +78,9 @@ class CommunicationContainer extends React.Component {
   handleHangup() {
     this.props.media.hangup();
   }
+  screenSharing() {
+    this.props.media.getDisplay();
+  }
   render(){
     return (
       <Communication
@@ -84,7 +90,8 @@ class CommunicationContainer extends React.Component {
         send={this.send}
         handleHangup={this.handleHangup}
         handleInput={this.handleInput}
-        handleInvitation={this.handleInvitation} />
+        handleInvitation={this.handleInvitation}
+        screenSharing={this.screenSharing} />
     );
   }
 }

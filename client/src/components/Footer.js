@@ -3,13 +3,6 @@ import logo from '../assets/logo_wxw.png';
 import './css/Footer.scss';
 
 export default class Footer extends Component {
-  scrollTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-  }
-
   render() {
     const auth = this.props.authenticated
     return (

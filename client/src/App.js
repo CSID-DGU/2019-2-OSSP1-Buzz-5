@@ -10,10 +10,11 @@ import Room from './containers/RoomPage'
 import Team from './components/Team'
 import Login from './components/Login'
 import Signup from './components/Signup'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import styles from './App.css'
 import CourseList from './components/CourseList'
 import CourseForm from './components/CourseForm'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import styles from './App.css'
+import RoomPage from './containers/RoomPage'
 
 console.log(" App.js ")
 class App extends Component {
@@ -62,18 +63,18 @@ class App extends Component {
             <Provider store={store}>
                 <BrowserRouter basename={process.env.PUBLIC_URL}>
                     <div>
-                        <Header authenticated={this.state.authenticated} userName={this.state.name} Logout={this.logout}/>
+                        {/* <Header authenticated={this.state.authenticated} userName={this.state.name} Logout={this.logout}/> */}
                         <Switch>
-                            <Route exact path="/" component={Home} />
-                            <Route path="/team" component={Team} />
-                            <Route path="/login" component={Login} />
-                            <Route path="/signup" component={Signup} />
-                            { auth ? <Route path="/courselist" component={CourseList}/> : <Redirect to="/login" />}
-                            { auth ? <Route path="/courseform" component={CourseForm}/> : <Redirect to="/login" />}
+                            <Route exact path="/" render={(props) => (<Home {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} />
+                            <Route path="/team" render={(props) => (<Team {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} />
+                            <Route path="/login" render={(props) => (<Login {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} />
+                            <Route path="/signup" render={(props) => (<Signup {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} />
+                            { auth ? <Route path="/courselist" render={(props) => (<CourseList {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} /> : <Redirect to="/login" />}
+                            { auth ? <Route path="/courseform" render={(props) => (<CourseForm {...props} auth={auth} userName={this.state.name} Logout={this.logout} /> )} /> : <Redirect to="/login" />}
                             { auth ? <Route path="/courseroom" component={EnterRoomPage} /> : <Redirect to="/login" />}
-                            { auth ? <Route path="/r/:room" component={Room} /> : <Redirect to="/login" />}
+                            { auth ? <Route path="/r/:room" render={(props) => (<RoomPage {...props} userName={this.state.name}/> )} /> : <Redirect to="/login" />}
                         </Switch>
-                        <Footer authenticated={this.state.authenticated} Logout={this.logout}/>
+                        {/* <Footer authenticated={this.state.authenticated} Logout={this.logout}/> */}
                     </div>
                 </BrowserRouter>
             </Provider>

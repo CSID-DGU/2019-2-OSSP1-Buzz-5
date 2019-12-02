@@ -4,14 +4,48 @@ import React, { Component } from 'react'
 import sjw from '../assets/sjw.jpg'
 import hyj from '../assets/hyj.jpeg'
 import lsy from '../assets/lsy.jpeg'
+import logo from '../assets/logo_wxw.png';
+import { Navbar, NavbarBrand, Nav, Badge, Button } from 'react-bootstrap'
+import './css/Header.scss'
+import './css/Footer.scss';
 
 export class Team extends Component {
     render() {
         const style = {
             color : "#999999"
         }
+        const auth = this.props.auth
         return (
             <div>
+                {/* Header */}
+                <Navbar bg="light" variant="light" expand="xl" sticky="top">
+                    <NavbarBrand href="/">
+                        <img
+                            src={logo}
+                            width="100"
+                            height="100"
+                            className="d-inline-block align-top"
+                            alt="WxW logo"
+                        />
+                    </NavbarBrand>
+                    <Nav className="mr-auto">
+                        <Nav.Link className="Navbar-Font" href="/">Home</Nav.Link>
+                        <Nav.Link className="Navbar-Font" href="/team">Team</Nav.Link>
+                        <Nav.Link className="Navbar-Font" href="/courselist">Course</Nav.Link>
+                    </Nav>
+                    {auth ? (
+                        <Badge className="mr-sm-2" variant="primary">{this.props.userName}</Badge>
+                    ): (
+                        <Button className="mr-sm-2" variant="outline-primary" size="sm" href="signup">Signup</Button>
+                    )}
+
+                    {auth ? (
+                        <Button className="mr-sm-2" variant="outline-primary" size="sm" href="/" align="right" onClick={this.props.Logout}>Logout</Button>
+                    ): (
+                        <Button className="mr-sm-2" variant="outline-primary" size="sm" href="/login" align="right">Login</Button>
+                    )}
+                </Navbar>
+
                 <div id="fl-main-content" class="fl-page-content" itemprop="mainContentOfPage">
                     <div class="fl-content-full container">
                         <div class="row">
@@ -332,6 +366,27 @@ export class Team extends Component {
                                     </div>
                                 </article>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="footer-page" >
+                    <div className="container">
+                        <div className="upper-part">
+                            <img src={logo} className="footer-logo" />
+                            <div className="row text-regular">
+                                <div className="menu-item">
+                                    <a href="/team">Team</a>
+                                </div>
+                                <div className="menu-item" onClick={()=>this.props.Logout}>
+                                    {auth ? (<a href="/">Logout</a>) : (<a href="/login">Login</a>)}
+                                </div>
+                                <div className="menu-item">
+                                    <a href="/signup">Signup</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="footer-part text-smaller">
+                            Copyright 2019 (c) Dongguk Univ. CSE-OSSP1-Team-Buzz
                         </div>
                     </div>
                 </div>

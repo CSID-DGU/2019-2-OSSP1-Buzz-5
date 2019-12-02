@@ -1,6 +1,10 @@
 import React, { Component, PropTypes } from "react";
 import {withRouter, Redirect, Link} from 'react-router-dom';
 import { signIn } from '../auth/Auth'
+import logo from '../assets/logo_wxw.png';
+import { Navbar, NavbarBrand, Nav, Badge, Button } from 'react-bootstrap'
+import './css/Header.scss'
+import './css/Footer.scss';
 import "./css/Account.scss";
 
 const emailRegex = RegExp(
@@ -81,53 +85,105 @@ class Login extends Component {
   
   render() {
     const { formErrors } = this.state;
+    const auth = this.props.authenticated
     return (
-      <div className="wrapper">
-        <div className="form-wrapper">
-          <h1>Login</h1>
-          <form onSubmit={this.handleSubmit} method="post" noValidate>
-            
-            <div className="email">
-              <label htmlFor="email">Email</label>
-              <input
-                className={formErrors.email.length > 0 ? "error" : null}
-                placeholder="Email"
-                type="email"
-                name="email"
-                value={this.state.email}
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.email.length > 0 && (
-                <span className="errorMessage">{formErrors.email}</span>
-              )}
-            </div>
+      <div>
+        <Navbar bg="light" variant="light" expand="xl" sticky="top">
+            <NavbarBrand href="/">
+                <img
+                    src={logo}
+                    width="100"
+                    height="100"
+                    className="d-inline-block align-top"
+                    alt="WxW logo"
+                />
+            </NavbarBrand>
+            <Nav className="mr-auto">
+                <Nav.Link className="Navbar-Font" href="/">Home</Nav.Link>
+                <Nav.Link className="Navbar-Font" href="/team">Team</Nav.Link>
+                <Nav.Link className="Navbar-Font" href="/courselist">Course</Nav.Link>
+            </Nav>
+            {auth ? (
+                <Badge className="mr-sm-2" variant="primary">{this.props.userName}</Badge>
+            ): (
+                <Button className="mr-sm-2" variant="outline-primary" size="sm" href="signup">Signup</Button>
+            )}
 
-            <div className="password">
-              <label htmlFor="password">Password</label>
-              <input
-                className={formErrors.password.length > 0 ? "error" : null}
-                placeholder="Password"
-                type="password"
-                name="password"
-                value={this.state.password}
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.password.length > 0 && (
-                <span className="errorMessage">{formErrors.password}</span>
-              )}
-            </div>
-            <div className="createAccount">
-              <button type="submit">Login</button>
-              <div>
-                <small>
-                  Don't have an Account Yet?
-                  <a href="/signup"> Sign up</a>
-                </small>
+            {auth ? (
+                <Button className="mr-sm-2" variant="outline-primary" size="sm" href="/" align="right" onClick={this.props.Logout}>Logout</Button>
+            ): (
+                <Button className="mr-sm-2" variant="outline-primary" size="sm" href="/login" align="right">Login</Button>
+            )}
+        </Navbar>
+
+        <div className="wrapper">
+          <div className="form-wrapper">
+            <h1>Login</h1>
+            <form onSubmit={this.handleSubmit} method="post" noValidate>
+              
+              <div className="email">
+                <label htmlFor="email">Email</label>
+                <input
+                  className={formErrors.email.length > 0 ? "error" : null}
+                  placeholder="Email"
+                  type="email"
+                  name="email"
+                  value={this.state.email}
+                  noValidate
+                  onChange={this.handleChange}
+                />
+                {formErrors.email.length > 0 && (
+                  <span className="errorMessage">{formErrors.email}</span>
+                )}
               </div>
-            </div>
-          </form>
+
+              <div className="password">
+                <label htmlFor="password">Password</label>
+                <input
+                  className={formErrors.password.length > 0 ? "error" : null}
+                  placeholder="Password"
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  noValidate
+                  onChange={this.handleChange}
+                />
+                {formErrors.password.length > 0 && (
+                  <span className="errorMessage">{formErrors.password}</span>
+                )}
+              </div>
+              <div className="createAccount">
+                <button type="submit">Login</button>
+                <div>
+                  <small>
+                    Don't have an Account Yet?
+                    <a href="/signup"> Sign up</a>
+                  </small>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div className="footer-page" >
+          <div className="container">
+              <div className="upper-part">
+                  <img src={logo} className="footer-logo" />
+                  <div className="row text-regular">
+                      <div className="menu-item">
+                          <a href="/team">Team</a>
+                      </div>
+                      <div className="menu-item" onClick={()=>this.props.Logout}>
+                          {auth ? (<a href="/">Logout</a>) : (<a href="/login">Login</a>)}
+                      </div>
+                      <div className="menu-item">
+                          <a href="/signup">Signup</a>
+                      </div>
+                  </div>
+              </div>
+              <div className="footer-part text-smaller">
+                  Copyright 2019 (c) Dongguk Univ. CSE-OSSP1-Team-Buzz
+              </div>
+          </div>
         </div>
       </div>
     );

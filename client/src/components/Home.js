@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import logo from '../assets/logo_wxw.png';
 import slide from '../assets/slide-dots.png';
 import lock from '../assets/lock.png';
 import parallex from '../assets/parallex.png';
@@ -6,13 +7,47 @@ import comming from '../assets/comming.png';
 import openIcon from '../assets/quotation-left.png';
 import closeIcon from '../assets/quotation-right.png';
 import background from '../assets/background.jpg';
+import { Navbar, NavbarBrand, Nav, Badge, Button } from 'react-bootstrap'
+import './css/Header.scss'
+import './css/Footer.scss';
 import './css/Home.scss';
 
 
 export class Home extends Component {
     render() {
+        const auth = this.props.auth
+        console.log(auth);
+        console.log(this.props.userName)
         return (
             <div>
+                <Navbar bg="light" variant="light" expand="xl" sticky="top">
+                    <NavbarBrand href="/">
+                        <img
+                            src={logo}
+                            width="100"
+                            height="100"
+                            className="d-inline-block align-top"
+                            alt="WxW logo"
+                        />
+                    </NavbarBrand>
+                    <Nav className="mr-auto">
+                        <Nav.Link className="Navbar-Font" href="/">Home</Nav.Link>
+                        <Nav.Link className="Navbar-Font" href="/team">Team</Nav.Link>
+                        <Nav.Link className="Navbar-Font" href="/courselist">Course</Nav.Link>
+                    </Nav>
+                    {auth ? (
+                        <Badge className="mr-sm-2" variant="primary">{this.props.userName}</Badge>
+                    ): (
+                        <Button className="mr-sm-2" variant="outline-primary" size="sm" href="signup">Signup</Button>
+                    )}
+
+                    {auth ? (
+                        <Button className="mr-sm-2" variant="outline-primary" size="sm" href="/" align="right" onClick={this.props.Logout}>Logout</Button>
+                    ): (
+                        <Button className="mr-sm-2" variant="outline-primary" size="sm" href="/login" align="right">Login</Button>
+                    )}
+                </Navbar>
+
                 <div className="container content-page">
                     <div className="contents">
                         <img src={background} weight="400" height = "500" className="content-background"/>
@@ -74,68 +109,27 @@ export class Home extends Component {
                         </div>
                     </div>
                 </div>
-
-                <br/><br/>
-                {/* <div className="testimonial-page">
+                <div className="footer-page" >
                     <div className="container">
-                        <div className="testimonial-title text-extra-big">
-                            Testimonials
-                        </div>
-                        <div className="row">
-                            <div className="testimonial-item col-md-6">
-                                <img src={openIcon} className="quotation-icon"/>
-                                <div className="text-regular">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod...<br/><br/>
+                        <div className="upper-part">
+                            <img src={logo} className="footer-logo" />
+                            <div className="row text-regular">
+                                <div className="menu-item">
+                                    <a href="/team">Team</a>
                                 </div>
-                                <div className="footer-part">
-                                    <div className="writer text-small">
-                                        John Updike
-                                    </div>
-                                    <img src={closeIcon} className="quotation-icon"/>
+                                <div className="menu-item" onClick={()=>this.props.Logout}>
+                                    {auth ? (<a href="/">Logout</a>) : (<a href="/login">Login</a>)}
                                 </div>
-                            </div>
-                            <div className="testimonial-item col-md-6">
-                                <img src={openIcon} className="quotation-icon"/>
-                                <div className="text-regular">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod...<br/><br/>
-                                </div>
-                                <div className="footer-part">
-                                    <div className="writer text-small">
-                                        John Updike
-                                    </div>
-                                    <img src={closeIcon} className="quotation-icon"/>
+                                <div className="menu-item">
+                                    <a href="/signup">Signup</a>
                                 </div>
                             </div>
                         </div>
-
-                        <div className="row">
-                            <div className="testimonial-item col-md-6">
-                                <img src={openIcon} className="quotation-icon"/>
-                                <div className="text-regular">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod...<br/><br/>
-                                </div>
-                                <div className="footer-part">
-                                    <div className="writer text-small">
-                                        John Updike
-                                    </div>
-                                    <img src={closeIcon} className="quotation-icon"/>
-                                </div>
-                            </div>
-                            <div className="testimonial-item col-md-6">
-                                <img src={openIcon} className="quotation-icon"/>
-                                <div className="text-regular">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod...<br/><br/>
-                                </div>
-                                <div className="footer-part">
-                                    <div className="writer text-small">
-                                        John Updike
-                                    </div>
-                                    <img src={closeIcon} className="quotation-icon"/>
-                                </div>
-                            </div>
+                        <div className="footer-part text-smaller">
+                            Copyright 2019 (c) Dongguk Univ. CSE-OSSP1-Team-Buzz
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
         )
     }

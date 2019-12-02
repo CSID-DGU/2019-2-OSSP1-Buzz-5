@@ -1,0 +1,59 @@
+html, body, .container {
+  height: 100%;
+}
+
+.wrap {
+  display: table;
+  width: 100%;
+  height: 100%;
+  margin-top: -50px;
+  padding: 50px 0 0 0; /*set left/right padding according to needs*/
+  box-sizing: border-box;
+}
+
+.row {
+  height: 100%;
+  width: 100%;
+}
+
+.chatLog {
+  overflow-y: scroll;
+}
+
+.row .no-float {
+display: table-cell;
+float: none;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    width: 100%;
+    height: 668px;
+  }
+  .chatLog {
+    height: 710px;
+    width:100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .wrap {
+    width: 100%;
+    height: 689px;
+  }
+  .chatLog {
+    height: 710px;
+    width:100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wrap {
+    width: 100%;
+    height: 830px;
+  }
+  .chatLog {
+    height: 710px;
+    width:100%;
+  }
+}
