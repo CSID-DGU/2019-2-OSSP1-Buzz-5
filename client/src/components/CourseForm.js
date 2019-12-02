@@ -29,6 +29,7 @@ export class CourseForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    console.log("handleSubmit 버튼 누르면 나타나는 로그")
     // DB에 저장하는 부분
     this.routeChange()
   }
