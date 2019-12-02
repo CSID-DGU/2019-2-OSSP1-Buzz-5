@@ -6,6 +6,8 @@ import { Navbar, NavbarBrand, Nav, Badge, Button } from 'react-bootstrap'
 import './css/Header.scss'
 import "./css/Course.scss"
 import './css/Footer.scss';
+import axios from 'axios'
+console.log('CourseForm.js')
 
 export class CourseForm extends Component {
   constructor(props) {
@@ -30,7 +32,19 @@ export class CourseForm extends Component {
   handleSubmit = e => {
     e.preventDefault()
     // DB에 저장하는 부분
-    this.routeChange()
+    console.log('handleSubmit')
+    let path = '../../src/Makeroom'
+    
+    axios.post(path, {
+      RoomName : this.state.course_name,
+      RoomPwd : this.state.course_password,
+    }).then (Response => {
+      console.log('success : ', Response)
+    }).catch(error => {
+      console.log('fail :', error)
+    })
+    
+    //this.routeChange()
   }
 
   handleChange = e => {
@@ -115,7 +129,7 @@ export class CourseForm extends Component {
             <h1>Create Course Room</h1>
             <hr/>
             <div className="form_wrapper">
-              <form method="post" action="" noValidate onSubmit={this.handleSubmit}>
+              <form method="post" action="" noValidate onSubmit={this.handleSubmit} >
                 <div className="course_name">
                   <label>Course Name</label>
                   <input

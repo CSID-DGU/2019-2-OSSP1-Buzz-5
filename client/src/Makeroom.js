@@ -4,33 +4,35 @@ var app = express();
 var bodyParser = require('body-parser');
 var test = require('./main');
 //const db = require('../src/Server/module/pool');
-const db = require('../src/Server/config/dbpool');
+const db = require('./Server/config/dbpool');
 
-console.log("serverindex.js");
 
-app.get('/test', async function (req, res) {
-    console.log("in router ");
+console.log("makeroom.js");
+
+app.get('/Makeroom', async function (req, res) {
+    console.log("in makeroom router ");
+    console.log('req :', req);
 
     try {
-        console.log("in try ");
-        let insertUserQuery = 'insert into innodb.User(UserName, Email, Password)  values ("yejiikim", "yejiiii@naver.com", "iamyejii")';
+        let makeRoomQuery = 'insert into innodb.Room(RoomName, RoomPassword) values(@req.RoomName, @req.RoomPassword)';
 
-        db.query(insertUserQuery, (err, rows) => {
+
+        db.query(makeRoomQuery, (err, rows) => {
             if (!err) {
                 console.log("no err");
                 console.log(rows);
 
                 res.status(201).send({
-                    message : "Insert Success",
+                    message : "make room Success",
                     data : rows
                 });
                 
             } else {
                 console.log(`query error : ${err}`);
-                console.log("Insert Error");
+                console.log("make room Error");
 
                 res.status(500).send({
-                    message : "Insert Error",
+                    message : "make room Error",
                     data : err
                 });
             }
