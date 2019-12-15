@@ -1,8 +1,7 @@
+
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import './style.css'
-
-console.log("test.js");
 
 class App extends Component {
   constructor() {

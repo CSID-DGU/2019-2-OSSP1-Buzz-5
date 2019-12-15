@@ -3,3 +3,6 @@
 
 # database
 /database.json
+
+# database pool
+/dbpool.js
