@@ -155,10 +155,10 @@ export class CourseForm extends Component {
                 </div>
 
                 <div className="password">
-                  <label>Course Pasword</label>
+                  <label>Course ID</label>
                   <input
                       className={formErrors.password.length > 0 ? "error" : null}
-                      placeholder="Input Course Room Character"
+                      placeholder="Input Course Room ID"
                       type="password"
                       name="password"
                       noValidate
