@@ -5,10 +5,14 @@ import logo from '../assets/logo_wxw.png';
 import { Navbar, NavbarBrand, Nav, Badge, Button } from 'react-bootstrap'
 import './css/Header.scss'
 import "./css/Course.scss"
-import './css/Footer.scss';
+import './css/Footer.scss'
+import axios from 'axios'
+import 'url-search-params-polyfill'
+
+console.log('CourseForm.js')
 
 export class CourseForm extends Component {
-  constructor(props) {
+  constructor(props) { 
     super(props)
 
     this.state = {
@@ -31,7 +35,47 @@ export class CourseForm extends Component {
     e.preventDefault()
     console.log("handleSubmit 버튼 누르면 나타나는 로그")
     // DB에 저장하는 부분
-    this.routeChange()
+    console.log('handleSubmit')
+    console.log('before axios post')
+
+  //   var config = {
+  //     mode: "no-cors",
+  //     headers: {
+  //         "X-RapidAPI-Host": "hackerrank-hackerrank.p.rapidapi.com",
+  //         "X-RapidAPI-Key": "a72a0f1b5dmshdc3f55e233876eap1b8939jsnffad2a5b6e6e",
+  //         'Access-Control-Allow-Origin': '*',
+  //         "Content-Type": "application/x-www-form-urlencoded"
+  //     }
+  // }
+
+    var data= {};
+    data['RoomName']= this.state.course_name;
+    data['RoomPwd']= 1234;
+    console.log(data)
+    // axios.post('./Makeroom', {
+    //   data : {RoomName : this.state.course_name, RoomPwd : this.state.course_password}
+    //   })
+    // .then (Response => {
+    //   console.log('success : ', Response)
+    // }).catch(error => {
+    //   console.log('fail :', error)
+    // })
+
+  // { headers: {
+  //   'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+  // }
+  axios.post('./Makeroom', data)
+  .then(response => { 
+  	console.log(response)
+  })
+  .catch(error => {
+      console.log(error.response)
+  });
+
+
+    console.log('after axios post')
+
+    //this.routeChange()
   }
 
   handleChange = e => {
@@ -69,7 +113,6 @@ export class CourseForm extends Component {
         language: this.state.language,
         date: moment().format('MMMM Do YYYY, h:mm:ss a'),
         course_password: this.state.password,
-        // course_password: 
       }
     })
   }
@@ -116,7 +159,7 @@ export class CourseForm extends Component {
             <h1>Create Course Room</h1>
             <hr/>
             <div className="form_wrapper">
-              <form method="post" action="" noValidate onSubmit={this.handleSubmit}>
+              <form method="post" action="" noValidate onSubmit={this.handleSubmit} >
                 <div className="course_name">
                   <label>Course Name</label>
                   <input
