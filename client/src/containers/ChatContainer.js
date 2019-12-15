@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "../components/css/Room.scss"
 
 export class ChatContainer extends Component {
   constructor(props) {
@@ -17,6 +18,11 @@ export class ChatContainer extends Component {
       log.push(obj)
       this.setState({messages: log})
     })
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate = () => {
+    this.scrollToBottom();
   }
 
   handleChange = e => {
@@ -46,9 +52,9 @@ export class ChatContainer extends Component {
   getTimeStamp = () => {
     var date = new Date()
     var formatedDate = 
-      this.changeFormat(date.getFullYear(), 4) + '-' +
-      this.changeFormat(date.getMonth() + 1, 2) + '-' +
-      this.changeFormat(date.getDate(), 2) + ' ' +
+      // this.changeFormat(date.getFullYear(), 4) + '-' +
+      // this.changeFormat(date.getMonth() + 1, 2) + '-' +
+      // this.changeFormat(date.getDate(), 2) + ' ' +
   
       this.changeFormat(date.getHours(), 2) + ':' +
       this.changeFormat(date.getMinutes(), 2) + ':' +
@@ -82,18 +88,40 @@ export class ChatContainer extends Component {
   }
 
   render() {
-    const messages = this.state.messages.map(e => (
-      <div key={e.key}>
-        <span>{e.name}&nbsp;</span>
-        <span>{e.msg}&nbsp;</span>
-        <span>{e.timestamp}&nbsp;</span>
+    // var messages;
+    // if(this.props.name == window.sessionStorage.getItem('name')) {
+    //    messages = this.state.messages.map(e => (
+    //     <div key={e.key} className="d-flex flex-row-reverse chat_spacer">
+    //       <span className="badge badge-pill badge-primary chat_name">{e.name}</span>
+    //       <span className="chat_message">{e.msg}</span>
+    //       <span className="chat_timestamp">{e.timestamp}</span>
+    //     </div>
+    //   ))
+    // } else {
+    //   messages = this.state.messages.map(e => (
+    //     <div key={e.key} className="d-flex flex-row chat_spacer">
+    //       <span className="badge badge-pill badge-primary">{e.name}</span>
+    //       <span className="chat_message">{e.msg}</span>
+    //       <span className="chat_timestamp">{e.timestamp}</span>
+    //     </div>
+    //   ))
+    // }
+    // const messages = this.renderChat()
+    var messages = this.state.messages.map(e => (
+      <div key={e.key} className="d-flex flex-row">
+        <span className="badge badge-pill badge-primary chat_name">{e.name}</span>
+        <span className="chat_message">{e.msg}</span>
+        <span className="chat_timestamp">{e.timestamp}</span>
       </div>
     ))
+
     return (
       <div>
         <div className="col">
           <div className="row-xl-10">
-            {messages}
+            <div className="chatLog" id="chatLog">
+              {messages}
+            </div>
           </div>
           <hr/>
           <div className="row-xl-2">
