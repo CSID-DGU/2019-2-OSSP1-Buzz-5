@@ -19,7 +19,7 @@ const app = express(),
     https.createServer(app).listen(port),
   io = sio(server);
 // compress all requests
-app.use(compression());
+app.use(compression()); 
 app.use(express.static(path.join(__dirname, '/client/build')));
 app.use((req, res) => res.sendFile(__dirname + '/client/build/index.html'));
 // app.use(favicon('/client/dist/favicon.ico'));

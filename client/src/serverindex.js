@@ -14,7 +14,7 @@ app.get('/test', async function (req, res) {
     try {
         console.log("in try ");
         let insertUserQuery = 'insert into innodb.User(UserName, Email, Password)  values ("yejiikim", "yejiiii@naver.com", "iamyejii")';
-
+  
         db.query(insertUserQuery, (err, rows) => {
             if (!err) {
                 console.log("no err");
