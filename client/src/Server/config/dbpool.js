@@ -1,3 +1,4 @@
+
 const mysql = require('mysql');
 const connection = mysql.createPool({
 host: 'buzz-database.cj4klynaikoy.ap-northeast-2.rds.amazonaws.com',

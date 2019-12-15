@@ -1,49 +1,52 @@
-var express = require('express');
-var router = express.Router();
-var app = express();
-var bodyParser = require('body-parser');
-var test = require('./main');
-//const db = require('../src/Server/module/pool');
-const db = require('../src/Server/config/dbpool');
+// var express = require('express');
+// var router = express.Router();
+// var app = express();
+// var bodyParser = require('body-parser');
+// var test = require('./main');
+// //const db = require('../src/Server/module/pool');
+// const db = require('../src/Server/config/dbpool');
 
-console.log("serverindex.js");
+// console.log("serverindex.js");
 
-app.post('/', async function (req, res) {
-    // console.log("in router ");
-    var 
+// app.post('/', async function (req, res) {
+//     // console.log("in router ");
+//     var 
     
-    try {
-        console.log("in try ");
-        let insertUserQuery = 'insert into innodb.User(UserName, Email, Password)  values ("yejiikim", "yejiiii@naver.com", "iamyejii")';
+// app.get('/test', async function (req, res) {
+//     console.log("in router ");
 
-        db.query(insertUserQuery, (err, rows) => {
-            if (!err) {
-                console.log("no err");
-                console.log(rows);
+//     try {
+//         console.log("in try ");
+//         let insertUserQuery = 'insert into innodb.User(UserName, Email, Password)  values ("yejiikim", "yejiiii@naver.com", "iamyejii")';
 
-                res.status(201).send({
-                    message : "Insert Success",
-                    data : rows
-                });
+//         db.query(insertUserQuery, (err, rows) => {
+//             if (!err) {
+//                 console.log("no err");
+//                 console.log(rows);
+
+//                 res.status(201).send({
+//                     message : "Insert Success",
+//                     data : rows
+//                 });
                 
-            } else {
-                console.log(`query error : ${err}`);
-                console.log("Insert Error");
+//             } else {
+//                 console.log(`query error : ${err}`);
+//                 console.log("Insert Error");
 
-                res.status(500).send({
-                    message : "Insert Error",
-                    data : err
-                });
-            }
+//                 res.status(500).send({
+//                     message : "Insert Error",
+//                     data : err
+//                 });
+//             }
 
-        })
+//         })
 
 
-    } catch (err) {
-        //return next(err);
-    }
-});
+//     } catch (err) {
+//         //return next(err);
+//     }
+// });
 
-app.listen(8080);
+// app.listen(8080);
 
-module.exports = app;
+// module.exports = app;
