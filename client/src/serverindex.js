@@ -8,9 +8,10 @@ const db = require('../src/Server/config/dbpool');
 
 console.log("serverindex.js");
 
-app.get('/', async function (req, res) {
-    console.log("in router ");
-
+app.post('/', async function (req, res) {
+    // console.log("in router ");
+    var 
+    
     try {
         console.log("in try ");
         let insertUserQuery = 'insert into innodb.User(UserName, Email, Password)  values ("yejiikim", "yejiiii@naver.com", "iamyejii")';

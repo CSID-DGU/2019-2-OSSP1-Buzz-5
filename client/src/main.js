@@ -1,4 +1,3 @@
-/* 유진 추가 부분 */
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -8,20 +7,8 @@ const bodyParser = require('body-parser');
 
 console.log("main.js ");
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended:true}))
 
-// var mysql = require('mysql')
 
-// var connection = mysql.createConnection({
-//    host: "buzz-database.cj4klynaikoy.ap-northeast-2.rds.amazonaws.com",
-//    user: "Buzz",
-//    password : "buzz1234",
-//    port : 3306,
-//    database : "innodb"
-// });
-
-// connection.connect();
 
 
 
