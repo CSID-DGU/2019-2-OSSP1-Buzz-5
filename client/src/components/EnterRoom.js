@@ -7,9 +7,9 @@ const EnterRoom = props =>
   <div className="wrapper">
     <div className="form-wrapper">
       <h1>Room ID</h1>
-      <p>Please enter a room ID.</p>
-      <input type="password" placeholder="input ID" name="room" value={ props.roomId } onChange={props.handleChange} pattern="^\w+$" required autoFocus/>
+      <input type="password" placeholder="input ID" name="room" onChange={props.handleChange} pattern="^\w+$" required autoFocus/>
       <Link className="primary-button" to={ '/r/' + props.roomId }>Join</Link>
+      <Link className="primary-button" to={ '/courselist' }>Cancel</Link>
     </div>
   </div>;
 
