@@ -15,3 +15,9 @@ https://wisdom-x-wisdom.herokuapp.com/
 ## Deploy
 Node.js를 지원하고 무료로 제공하는 Heroku를 통하여 Heroku Git으로 해당 코드를 push하면 build가 용이하게 진행되는 플랫폼을 선택하였습니다.
 
+
+## Set-up
+To install Modules
+- npm i
+
+
