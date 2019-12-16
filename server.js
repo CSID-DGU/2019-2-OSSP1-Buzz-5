@@ -8,6 +8,7 @@ const sio = require('socket.io');
 const compression = require('compression');
 const bodyParser = require('body-parser');
 
+console.log(" server.js ");
 const app = express(),
   // options = { 
   //   key: fs.readFileSync(__dirname + '/rtc-video-room-key.pem'),
@@ -19,7 +20,7 @@ const app = express(),
     https.createServer(app).listen(port),
   io = sio(server);
 // compress all requests
-app.use(compression());
+app.use(compression()); 
 app.use(express.static(path.join(__dirname, '/client/build')));
 app.use((req, res) => res.sendFile(__dirname + '/client/build/index.html'));
 // app.use(favicon('/client/dist/favicon.ico'));
@@ -65,6 +66,7 @@ io.sockets.on('connection', socket => {
     io.emit('chat', msg);
   });
 });
+
 
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));

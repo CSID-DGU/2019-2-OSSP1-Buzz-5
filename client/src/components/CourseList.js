@@ -26,7 +26,6 @@ export class CourseList extends Component {
     const {RoomInformation} = this.state.RoomInformation;
     console.log(temp)
     if(temp!=undefined) {
-      console.log(111121212)
       this.setState(state => {
         state.RoomInformation.push(temp)
       })

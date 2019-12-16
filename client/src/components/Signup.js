@@ -5,15 +5,10 @@ import { Navbar, NavbarBrand, Nav, Badge, Button } from 'react-bootstrap'
 import './css/Header.scss'
 import './css/Footer.scss';
 import "./css/Account.scss";
-
+import axios from "axios";
 console.log('Signup.js');
+const $ = window.$;
 
-
-//가입회원 db추가 부분
-// const express = require('express');
-// const router = express.Router();
-// const db = require('../Server/module/pool.js');
-// const PORT = process.env.PORT || 3000;
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/    // 이메일 정규 표현식 [아이디]@[###.###]
@@ -53,8 +48,106 @@ class Signup extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    // DB저장하는 부분 
+
+    console.log('singup log');
+
+    // const data = {
+    //   name : this.state.name,
+    //   email : this.state.email,
+    //   password : this.state.password,
+    // };
     
-    if (formValid(this.state)) {
+    // const url = '/serversignup';
+    // axios.post(url, data)
+    // .then(res => { 
+    //   console.log('success post post');
+    //   console.log(data);
+    // })
+    // .catch(error => {
+    //   console.log('failed', error);
+    // })
+  
+    $.ajax({
+      type : 'POST',
+      url : '/serversignup',
+      data : {
+        'name' : this.state.name,
+        'email' : this.state.email,
+        'password' : this.state.password,
+      }
+    }).done(function(response) {
+      console.log('success!!!!!!')
+    }).fail(function(data) {
+      console.log('error!!!!!!!')
+    })
+    // const axios = require('axios');
+
+    // const data = new FormData(form);
+ 
+    // var request = new XMLHttpRequest();
+    // request.open('POST', '../serversignup', true); 
+    // request.send(data);
+  
+  //   axios.post('../serversignup', user)
+  //   .then(response => {
+  //     const users = response.data;
+  //     this.setState({users});
+  //     // console.log('suc res: ', JSON.stringify(response, null, 3))
+  //     console.log('successsss resonpalne');
+
+  //   }).catch(error => {
+  //     console.log('failed');
+  // })
+      
+      
+  // axios({
+  //     methond: 'post',
+  //     url : '../serversignup',
+  //     data : {
+  //       name : this.state.name,
+  //       email : this.state.email,
+  //       password : this.state.password
+  //     },
+  //     validateSatus: (status) => {
+  //       console.log('postehuahfoeaofafe');
+  //       return true;
+  //     },
+  //   }).catch(error => {
+  //     console.log('post errorororo');
+  //   }).then(response=> {
+  //     console.log('success response');
+  //   })
+
+    /*
+    const formData={
+      name : this.state.name,
+      email : this.state.email,
+      password : this.state.password,
+    }
+    
+    request.post({
+      url:'../serversignup', 
+      formData: formData}, 
+      function callback(err, httpResponse, body) {
+      console.log('post signup')
+    });
+    */
+    
+    
+  //   const frm = new FormData();
+  //   frm.append('name', 'this.state.name');
+  //   frm.append('email', 'this.state.email');
+  //   frm.append('password', 'this.state.password');
+
+  //   axios.post('/../serversignup', frm).then(res => { 
+  //     console.log('post signup')
+  // }).catch(error => {
+  //     console.log('fail : post error')
+  // })
+ 
+    console.log('hello');
+      if (formValid(this.state)) {
       console.log(`                              
         —SUBMITTING—
         Name : ${this.state.name}
@@ -63,7 +156,7 @@ class Signup extends Component {
       `);
 
       //db에 유저 정보 추가 부분 
-// <<<<<<< HEAD
+      
      /* router.post('/', async(req, res, next) => {
 
       //   try{
@@ -84,7 +177,6 @@ class Signup extends Component {
       });*/
 
       //module.exports = router;
-
     } 
   };
 
